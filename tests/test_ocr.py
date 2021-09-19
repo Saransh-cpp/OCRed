@@ -1,12 +1,12 @@
 import os
 import unittest
-from ocr import OCR
+from aiview_ocr.ocr import OCR
 
 
 class TestOCR(unittest.TestCase):
     def setUp(self):
-        self.path_scanned = "test_images/Page.png"
-        self.path_real = "test_images/CosmosOne.jpg"
+        self.path_scanned = "images/Page.png"
+        self.path_real = "images/CosmosOne.jpg"
         self.tesseract_path = r"D:\Saransh\Softwares\Tesseract-OCR\tesseract.exe"
 
     def test_ocr_with_scanned_image(self):

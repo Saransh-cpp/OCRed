@@ -1,12 +1,12 @@
 import os
 import unittest
 import numpy as np
-from preprocessing import Preprocessor
+from aiview_ocr.preprocessing import Preprocessor
 
 
 class TestOCR(unittest.TestCase):
     def setUp(self):
-        self.path = "test_images/CosmosOne.jpg"
+        self.path = "images/CosmosOne.jpg"
 
     def test_scan(self):
         pre = Preprocessor(self.path)
