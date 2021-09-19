@@ -1,3 +1,6 @@
 .vscode
 .idea
 __pycache__
+build
+dist
+aiview_ocr.egg-info

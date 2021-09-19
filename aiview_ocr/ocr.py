@@ -72,17 +72,3 @@ class OCR:
         self.text = self.text.replace("-\n", "").replace("\n", " ")
         speech = gTTS(self.text, lang="en", tld="com")
         speech.save("audio.mp3")
-
-
-if __name__ == "__main__":
-
-    ocr = OCR(
-        True,
-        "test_images/Page.png",
-        r"D:\Saransh\Softwares\Tesseract-OCR\tesseract.exe",
-    )
-    ocr.ocr()
-    ocr.text_to_speech()
-
-    if not ocr.is_scanned:
-        os.remove("rotated.png")
