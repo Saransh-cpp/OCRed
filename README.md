@@ -5,7 +5,7 @@
 This module is the base module for all the OCR related things that will be performed in AiView.
 
 ## Structure
-`OCR` is performed using the [OCR]() class and preprocessing of an image is performed using the `Preprocessor` class. All the details are available in the docstrings.
+`OCR` is performed using the [`OCR`](https://github.com/Saransh-cpp/aiview_ocr/blob/main/aiview_ocr/ocr.py) class and preprocessing of an image is performed using the [`Preprocessor`](https://github.com/Saransh-cpp/aiview_ocr/blob/main/aiview_ocr/preprocessing.py) class. All the details are available in the docstrings.
 
 ## Installation
 1. Install Tesseract for your OS
@@ -14,7 +14,7 @@ The installation guide is available [here](https://tesseract-ocr.github.io/tessd
 
 2. Clone this repository
 ```
-git clone https://github.com/
+git clone https://github.com/Saransh-cpp/aiview_ocr
 ```
 3. Change directory
 ```
