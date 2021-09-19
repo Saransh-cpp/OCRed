@@ -2,7 +2,7 @@ import os
 import cv2
 import pytesseract
 from gtts import gTTS
-from preprocessing import Preprocessor
+from aiview_ocr.preprocessing import Preprocessor
 
 
 class OCR:
