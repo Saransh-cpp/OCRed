@@ -9,7 +9,9 @@ This module is the base module for all the OCR related things that will be perfo
 
 ## Installation
 1. Install Tesseract for your OS
+
 The installation guide is available [here](https://tesseract-ocr.github.io/tessdoc/Installation.html)
+
 2. Clone this repository
 ```
 git clone https://github.com/
