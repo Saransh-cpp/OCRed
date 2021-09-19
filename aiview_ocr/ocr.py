@@ -17,8 +17,8 @@ class OCR:
         processed before OCRing.
     path : str
         Path of the image to be used.
-    tesseract_location : str
-        Location of the executable file of Tesseract.
+    tesseract_location : str (default = None)
+        Location of the executable file of Tesseract (usually used in Windows systems).
     """
 
     def __init__(self, is_scanned, path, tesseract_location=None):

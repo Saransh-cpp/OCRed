@@ -14,7 +14,6 @@ class TestOCR(unittest.TestCase):
         ocr = OCR(
             True,
             self.path_scanned,
-            # self.tesseract_path,
         )
 
         self.assertEqual(ocr.path, self.path_scanned)
@@ -40,7 +39,6 @@ class TestOCR(unittest.TestCase):
         ocr = OCR(
             False,
             self.path_real,
-            # self.tesseract_path,
         )
 
         self.assertEqual(ocr.path, "rotated.png")
