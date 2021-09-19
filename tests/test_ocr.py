@@ -7,18 +7,18 @@ class TestOCR(unittest.TestCase):
     def setUp(self):
         self.path_scanned = "images/Page.png"
         self.path_real = "images/CosmosOne.jpg"
-        self.tesseract_path = r"D:\Saransh\Softwares\Tesseract-OCR\tesseract.exe"
+        # self.tesseract_path = r"D:\Saransh\Softwares\Tesseract-OCR\tesseract.exe"
 
     def test_ocr_with_scanned_image(self):
 
         ocr = OCR(
             True,
             self.path_scanned,
-            self.tesseract_path,
+            # self.tesseract_path,
         )
 
         self.assertEqual(ocr.path, self.path_scanned)
-        self.assertEqual(ocr.tesseract_location, self.tesseract_path)
+        self.assertIsNone(ocr.tesseract_location)
         self.assertTrue(ocr.is_scanned)
 
         ocr.ocr()
@@ -40,11 +40,11 @@ class TestOCR(unittest.TestCase):
         ocr = OCR(
             False,
             self.path_real,
-            self.tesseract_path,
+            # self.tesseract_path,
         )
 
         self.assertEqual(ocr.path, "rotated.png")
-        self.assertEqual(ocr.tesseract_location, self.tesseract_path)
+        self.assertIsNone(ocr.tesseract_location)
         self.assertFalse(ocr.is_scanned)
 
         ocr.ocr()

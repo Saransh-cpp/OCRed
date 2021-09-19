@@ -21,7 +21,7 @@ class OCR:
         Location of the executable file of Tesseract.
     """
 
-    def __init__(self, is_scanned, path, tesseract_location):
+    def __init__(self, is_scanned, path, tesseract_location=None):
         self.path = path
         self.is_scanned = is_scanned
         self.tesseract_location = tesseract_location
@@ -37,7 +37,8 @@ class OCR:
         Performs OCR on the image and saves the image with boxes around the words.
         """
         # specifying tesseract's installation path
-        pytesseract.pytesseract.tesseract_cmd = self.tesseract_location
+        if self.tesseract_location is not None: # pragma: no cover
+            pytesseract.pytesseract.tesseract_cmd = self.tesseract_location
 
         # reading the image
         img = cv2.imread(self.path)
