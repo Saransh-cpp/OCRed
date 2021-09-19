@@ -1,4 +1,3 @@
-import os
 import cv2
 import pytesseract
 from gtts import gTTS

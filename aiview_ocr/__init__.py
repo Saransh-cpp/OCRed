@@ -1,2 +1,2 @@
-from .ocr import OCR
-from.preprocessing import Preprocessor
+from .ocr import OCR    # noqa
+from .preprocessing import Preprocessor    # noqa
