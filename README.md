@@ -1,5 +1,7 @@
 # OCR module for AiView
 
+[![aiview_ocr](https://github.com/Saransh-cpp/aiview_ocr/actions/workflows/aiview_ocr.yml/badge.svg)](https://github.com/Saransh-cpp/aiview_ocr/actions/workflows/aiview_ocr.yml)
+
 This module is the base module for all the OCR related things that will be performed in AiView.
 
 ## Structure
