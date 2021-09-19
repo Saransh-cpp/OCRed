@@ -37,7 +37,7 @@ class OCR:
         Performs OCR on the image and saves the image with boxes around the words.
         """
         # specifying tesseract's installation path
-        if self.tesseract_location is not None: # pragma: no cover
+        if self.tesseract_location is not None:  # pragma: no cover
             pytesseract.pytesseract.tesseract_cmd = self.tesseract_location
 
         # reading the image
