@@ -30,6 +30,8 @@ cd dist
 python -m pip install aiview_ocr-0.1.0-py3-none-any.whl
 ```
 
+**NOTE**: To update the package, first uninstall the existing package and then follow the same steps.
+
 ## Usage example
 ```py
 import aiview_ocr
@@ -41,7 +43,7 @@ ocr = aiview_ocr.OCR(
     "path/to/an/image", # path
     r"D:\Saransh\Softwares\Tesseract-OCR\tesseract.exe", # tesseract_location
 )
-ocr.ocr()
+ocr.ocr_book()
 ocr.text_to_speech()
 ```
 
