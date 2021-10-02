@@ -13,14 +13,14 @@ class OCR:
     Parameters
     ----------
     is_scanned : bool
-        Set True if the image is of a scanned page or an e-book.
+        Set True if the image is of a scanned page, e-book or of a signboard.
         When set to False, the image is treated as a real life photo and is therefore
         processed before OCRing.
     path : str
         Path of the image to be used.
     tesseract_location : str (default = None)
         Location of the executable file of Tesseract (usually used in Windows systems).
-        This is only rewuired for OCRing books.
+        This is only required for OCRing books.
     """
 
     def __init__(self, is_scanned, path, tesseract_location=None):
@@ -75,7 +75,7 @@ class OCR:
 
         return self.text
 
-    def ocr_sign_boards(self, languages=["en", "hi"], save_output=False):
+    def ocr_sign_board(self, languages=["en", "hi"], save_output=False):
         """
         Performs OCR on a signboard and saves the image with boxes around the words.
 
@@ -102,10 +102,10 @@ class OCR:
             coords_upper = text[0][2:4]
 
             coords_lower.sort(key=lambda x: x[0])
-            pt1 = coords_upper[-1]
+            pt1 = [int(x) for x in coords_upper[-1]]
 
             coords_lower.sort(key=lambda x: x[0])
-            pt2 = coords_lower[-1]
+            pt2 = [int(x) for x in coords_lower[-1]]
 
             # highlighting the text
             cv2.rectangle(img, pt1, pt2, (0, 0, 255), 1)

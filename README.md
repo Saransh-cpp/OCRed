@@ -43,8 +43,15 @@ ocr = aiview_ocr.OCR(
     "path/to/an/image", # path
     r"D:\Saransh\Softwares\Tesseract-OCR\tesseract.exe", # tesseract_location
 )
-ocr.ocr_book()
+ocr.ocr_book(save_output=True)
 ocr.text_to_speech()
+
+ocr = aiview_ocr.OCR(
+    True, # is_scanned
+    "path/to/an/image", # path
+)
+print(ocr.ocr_sign_board())
+
 ```
 
 ## Testing
