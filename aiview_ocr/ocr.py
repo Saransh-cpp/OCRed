@@ -123,7 +123,7 @@ class OCR:
         """
         Saves the extracted text in the `output.txt` file.
         """
-        f = open("output.txt", "w")
+        f = open("output.txt", "w", encoding="utf-8")
         f.write(self.text)
         f.close()
 
