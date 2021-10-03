@@ -50,7 +50,8 @@ ocr = aiview_ocr.OCR(
     True, # is_scanned
     "path/to/an/image", # path
 )
-print(ocr.ocr_sign_board())
+extracted_text = ocr.ocr_sign_board()
+print(extracted_text)
 
 ```
 
