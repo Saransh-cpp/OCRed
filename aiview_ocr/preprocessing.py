@@ -13,16 +13,29 @@ class Preprocessor:
     ----------
     path : str
         Path of the image.
-    Methods
-    -------
-    scan(save=False):
-        Transforms the image view into black and white (proper scanned colour scheme).
-    rotate(image=None, save=False, resize_height=500):
-        Automatically rotates the image to a straight (top-down, face-on) view.
+
     """
 
     def __init__(self, path):
         self.path = path
+
+    def remove_noise(image):
+
+        kernel = np.ones((1, 1), np.uint8)
+        image = cv2.dilate(image, kernel, iterations=1)
+        kernel = np.ones((1, 1), np.uint8)
+        image = cv2.erode(image, kernel, iterations=1)
+        image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
+        image = cv2.medianBlur(image, 3)
+        return image
+
+    def thicken_font(image):
+
+        image = cv2.bitwise_not(image)
+        kernel = np.ones((2, 2), np.uint8)
+        image = cv2.dilate(image, kernel, iterations=1)
+        image = cv2.bitwise_not(image)
+        return image
 
     def scan(self, save=False):
         """
@@ -34,7 +47,7 @@ class Preprocessor:
             Saves the image.
         Returns
         -------
-        Resized image (array)
+        scanned image (array)
         """
 
         # apply threshold to "scannify" it
@@ -51,7 +64,7 @@ class Preprocessor:
 
         return image
 
-    def rotate(self, image=None, save=False, resize_height=500):
+    def rotate(self, image=None, save=False):
         """
         Rotates an image for a face-on view (view from the top).
 
@@ -61,15 +74,12 @@ class Preprocessor:
             Pass an image to be rotated.
         save : bool (default = False)
             Saves the rotated image.
-        resize_height : int (default = 500)
-            Final height to resize an image to (in pixels)
         Returns
         -------
-        Rotated image (array)
+        rotated image (array)
         """
 
-        # read the original image, copy it,
-        # rotate it
+        # read the original image
         if image is None:
             image = cv2.imread(self.path)
 
@@ -86,17 +96,16 @@ class Preprocessor:
         # calculate all the angles:
         angles = []
         for [[x1, y1, x2, y2]] in lines:
-            # Drawing Hough lines
-            # cv2.line(image, (x1, y1), (x2, y2), (128,0,0), 30)
+            # drawing Hough lines
             angle = math.degrees(math.atan2(y2 - y1, x2 - x1))
             angles.append(angle)
 
-        # average angles
+        # median angle
         median_angle = np.median(angles)
         # actual rotate
         image = ndimage.rotate(image, median_angle)
 
         if save:
-            # Saving an image itself
+            # save the image
             cv2.imwrite("rotated.png", image)
         return image
