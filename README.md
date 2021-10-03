@@ -41,7 +41,9 @@ help(aiview_ocr.OCR)
 ocr = aiview_ocr.OCR(
     False, # is_scanned
     "path/to/an/image", # path
-    r"D:\Saransh\Softwares\Tesseract-OCR\tesseract.exe", # tesseract_location
+    r"D:\Saransh\Softwares\Tesseract-OCR\tesseract.exe", # tesseract_location for windows users
+    # r"/usr/bin/tesseract", # tesseract_location for linux users
+    # if not working, search for tesseract location using linux terminal command 'which tesseract'
 )
 ocr.ocr_book(save_output=True)
 ocr.text_to_speech()
