@@ -7,3 +7,7 @@ aiview_ocr.egg-info
 OCR.png
 output.txt
 audio.mp3
+preprocessed.png
+scanned.png
+thick_font.png
+noise_free.png
