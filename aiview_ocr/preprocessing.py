@@ -83,12 +83,14 @@ class Preprocessor:
 
         return image
 
-    def scan(self, save=False):
+    def scan(self, image=None, save=False):
         """
         Transforms an image/document view into B&W view (proper scanned colour scheme).
 
         Parameters
-        ----------
+        ==========
+        image : array (default = None (image located at `path`))
+            Pass an image to be scanned.
         save : bool (default = False)
             Saves the image.
 
@@ -98,7 +100,8 @@ class Preprocessor:
         """
 
         # apply threshold to "scannify" it
-        image = cv2.imread(self.path)
+        if image is None:
+            image = cv2.imread(self.path)
 
         # convert our image to grayscale, apply threshold
         # to create scanned paper effect
