@@ -2,6 +2,7 @@ import cv2
 import easyocr
 import pytesseract
 from gtts import gTTS
+from scipy import ndimage
 from aiview_ocr.preprocessing import Preprocessor
 
 
@@ -30,9 +31,17 @@ class OCR:
 
         if not self.is_scanned:
             preprocess = Preprocessor(self.path)
-            preprocessed = preprocess.scan()
-            preprocess.rotate(image=preprocessed, save=True)
-            self.path = "rotated.png"
+            scanned = preprocess.scan()
+            orig = scanned.copy()
+
+            noise_free = preprocess.remove_noise(scanned)
+            thickened = preprocess.thicken_font(noise_free)
+            _, median_angle = preprocess.rotate(thickened)
+
+            preprocessed = ndimage.rotate(orig, median_angle)
+            cv2.imwrite("preprocessed.png", preprocessed)
+
+            self.path = "preprocessed.png"
 
     def ocr_book(self, save_output=False):
         """

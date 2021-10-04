@@ -19,7 +19,10 @@ class Preprocessor:
     def __init__(self, path):
         self.path = path
 
-    def remove_noise(image):
+    def remove_noise(self, image=None, save=False):
+
+        if image is None:
+            image = cv2.imread(self.path)
 
         kernel = np.ones((1, 1), np.uint8)
         image = cv2.dilate(image, kernel, iterations=1)
@@ -27,14 +30,25 @@ class Preprocessor:
         image = cv2.erode(image, kernel, iterations=1)
         image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
         image = cv2.medianBlur(image, 3)
+
+        if save:
+            cv2.imwrite("noise_free.png", image)
+
         return image
 
-    def thicken_font(image):
+    def thicken_font(self, image=None, save=False):
+
+        if image is None:
+            image = cv2.imread(self.path)
 
         image = cv2.bitwise_not(image)
         kernel = np.ones((2, 2), np.uint8)
-        image = cv2.dilate(image, kernel, iterations=1)
+        image = cv2.dilate(image, kernel, iterations=2)
         image = cv2.bitwise_not(image)
+        
+        if save:
+            cv2.imwrite("thick_font.png", image)
+        
         return image
 
     def scan(self, save=False):
@@ -60,7 +74,7 @@ class Preprocessor:
         image = (image > thr).astype("uint8") * 255
 
         if save:
-            cv2.imwrite("preprocessed.png", image)
+            cv2.imwrite("scanned.png", image)
 
         return image
 
@@ -108,4 +122,5 @@ class Preprocessor:
         if save:
             # save the image
             cv2.imwrite("rotated.png", image)
-        return image
+        
+        return image, median_angle
