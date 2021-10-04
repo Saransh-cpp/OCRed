@@ -19,7 +19,7 @@ class Preprocessor:
     def __init__(self, path):
         self.path = path
 
-    def remove_noise(self, image=None, save=False):
+    def remove_noise(self, image=None, save=False, iterations=1):
         """
         Removes noise from an image.
 
@@ -29,6 +29,8 @@ class Preprocessor:
             Pass an image to be made noise free.
         save : bool (default = False)
             Saves the resultant image.
+        iterations : int (default = 1)
+            Number of times the image is processed.
 
         Returns
         =======
@@ -39,9 +41,9 @@ class Preprocessor:
             image = cv2.imread(self.path)
 
         kernel = np.ones((1, 1), np.uint8)
-        image = cv2.dilate(image, kernel, iterations=1)
+        image = cv2.dilate(image, kernel, iterations=iterations)
         kernel = np.ones((1, 1), np.uint8)
-        image = cv2.erode(image, kernel, iterations=1)
+        image = cv2.erode(image, kernel, iterations=iterations)
         image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
         image = cv2.medianBlur(image, 3)
 
@@ -50,7 +52,7 @@ class Preprocessor:
 
         return image
 
-    def thicken_font(self, image=None, save=False):
+    def thicken_font(self, image=None, save=False, iterations=2):
         """
         Thickens the ink of an image.
 
@@ -60,6 +62,8 @@ class Preprocessor:
             Pass an image to be thickened.
         save : bool (default = False)
             Saves the resultant image.
+        iterations : int (default = 1)
+            Number of times the image is processed.
 
         Returns
         =======
@@ -71,7 +75,7 @@ class Preprocessor:
 
         image = cv2.bitwise_not(image)
         kernel = np.ones((2, 2), np.uint8)
-        image = cv2.dilate(image, kernel, iterations=2)
+        image = cv2.dilate(image, kernel, iterations=iterations)
         image = cv2.bitwise_not(image)
 
         if save:
