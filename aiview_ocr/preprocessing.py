@@ -10,35 +10,98 @@ class Preprocessor:
     Preprocesses an image and makes it ready for OCR.
 
     Parameters
-    ----------
+    ==========
     path : str
         Path of the image.
-    Methods
-    -------
-    scan(save=False):
-        Transforms the image view into black and white (proper scanned colour scheme).
-    rotate(image=None, save=False, resize_height=500):
-        Automatically rotates the image to a straight (top-down, face-on) view.
+
     """
 
     def __init__(self, path):
         self.path = path
 
-    def scan(self, save=False):
+    def remove_noise(self, image=None, save=False, iterations=1):
+        """
+        Removes noise from an image.
+
+        Parameters
+        ==========
+        image : array (default = None (image located at `path`))
+            Pass an image to be made noise free.
+        save : bool (default = False)
+            Saves the resultant image.
+        iterations : int (default = 1)
+            Number of times the image is processed.
+
+        Returns
+        =======
+        noise free image (array)
+        """
+
+        if image is None:
+            image = cv2.imread(self.path)
+
+        kernel = np.ones((1, 1), np.uint8)
+        image = cv2.dilate(image, kernel, iterations=iterations)
+        kernel = np.ones((1, 1), np.uint8)
+        image = cv2.erode(image, kernel, iterations=iterations)
+        image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
+        image = cv2.medianBlur(image, 3)
+
+        if save:
+            cv2.imwrite("noise_free.png", image)
+
+        return image
+
+    def thicken_font(self, image=None, save=False, iterations=2):
+        """
+        Thickens the ink of an image.
+
+        Parameters
+        ==========
+        image : array (default = None (image located at `path`))
+            Pass an image to be thickened.
+        save : bool (default = False)
+            Saves the resultant image.
+        iterations : int (default = 1)
+            Number of times the image is processed.
+
+        Returns
+        =======
+        thickened image (array)
+        """
+
+        if image is None:
+            image = cv2.imread(self.path)
+
+        image = cv2.bitwise_not(image)
+        kernel = np.ones((2, 2), np.uint8)
+        image = cv2.dilate(image, kernel, iterations=iterations)
+        image = cv2.bitwise_not(image)
+
+        if save:
+            cv2.imwrite("thick_font.png", image)
+
+        return image
+
+    def scan(self, image=None, save=False):
         """
         Transforms an image/document view into B&W view (proper scanned colour scheme).
 
         Parameters
-        ----------
+        ==========
+        image : array (default = None (image located at `path`))
+            Pass an image to be scanned.
         save : bool (default = False)
             Saves the image.
+
         Returns
-        -------
-        Resized image (array)
+        =======
+        scanned image (array)
         """
 
         # apply threshold to "scannify" it
-        image = cv2.imread(self.path)
+        if image is None:
+            image = cv2.imread(self.path)
 
         # convert our image to grayscale, apply threshold
         # to create scanned paper effect
@@ -47,29 +110,27 @@ class Preprocessor:
         image = (image > thr).astype("uint8") * 255
 
         if save:
-            cv2.imwrite("preprocessed.png", image)
+            cv2.imwrite("scanned.png", image)
 
         return image
 
-    def rotate(self, image=None, save=False, resize_height=500):
+    def rotate(self, image=None, save=False):
         """
         Rotates an image for a face-on view (view from the top).
 
         Parameters
-        ----------
+        ==========
         image : array (default = None (image located at `path`))
             Pass an image to be rotated.
         save : bool (default = False)
             Saves the rotated image.
-        resize_height : int (default = 500)
-            Final height to resize an image to (in pixels)
+
         Returns
-        -------
-        Rotated image (array)
+        =======
+        rotated image (array)
         """
 
-        # read the original image, copy it,
-        # rotate it
+        # read the original image
         if image is None:
             image = cv2.imread(self.path)
 
@@ -86,17 +147,17 @@ class Preprocessor:
         # calculate all the angles:
         angles = []
         for [[x1, y1, x2, y2]] in lines:
-            # Drawing Hough lines
-            # cv2.line(image, (x1, y1), (x2, y2), (128,0,0), 30)
+            # drawing Hough lines
             angle = math.degrees(math.atan2(y2 - y1, x2 - x1))
             angles.append(angle)
 
-        # average angles
+        # median angle
         median_angle = np.median(angles)
         # actual rotate
         image = ndimage.rotate(image, median_angle)
 
         if save:
-            # Saving an image itself
+            # save the image
             cv2.imwrite("rotated.png", image)
-        return image
+
+        return image, median_angle

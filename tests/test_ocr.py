@@ -32,7 +32,7 @@ class TestOCR(unittest.TestCase):
         self.assertIsInstance(text, str)
         assert os.path.exists("OCR.png")
         assert os.path.exists("output.txt")
-        assert not os.path.exists("rotated.png")
+        assert not os.path.exists("preprocessed.png")
         assert not os.path.exists("audio.mp3")
 
         ocr.text_to_speech()
@@ -52,7 +52,7 @@ class TestOCR(unittest.TestCase):
             self.tesseract_path if platform.system() == "Windows" else None,
         )
 
-        self.assertEqual(ocr.path, "rotated.png")
+        self.assertEqual(ocr.path, "preprocessed.png")
         self.assertIsNone(
             ocr.tesseract_location
         ) if platform.system() != "Windows" else self.assertEqual(
@@ -64,7 +64,7 @@ class TestOCR(unittest.TestCase):
 
         self.assertIsInstance(text, str)
         assert os.path.exists("OCR.png")
-        assert os.path.exists("rotated.png")
+        assert os.path.exists("preprocessed.png")
         assert not os.path.exists("audio.mp3")
 
         ocr.text_to_speech()
@@ -74,7 +74,7 @@ class TestOCR(unittest.TestCase):
 
         os.remove("audio.mp3")
         os.remove("OCR.png")
-        os.remove("rotated.png")
+        os.remove("preprocessed.png")
 
     def test_ocr_sign_board(self):
         ocr = OCR(
@@ -90,7 +90,7 @@ class TestOCR(unittest.TestCase):
         self.assertIsInstance(text, str)
         assert os.path.exists("OCR.png")
         assert os.path.exists("output.txt")
-        assert not os.path.exists("rotated.png")
+        assert not os.path.exists("preprocessed.png")
         assert not os.path.exists("audio.mp3")
 
         ocr.text_to_speech(lang="hi")

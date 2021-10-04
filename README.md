@@ -34,12 +34,11 @@ python -m pip install aiview_ocr-0.1.0-py3-none-any.whl
 
 ## Usage example
 ```py
+# OCRing a book
 import aiview_ocr
 
-help(aiview_ocr.OCR)
-
 ocr = aiview_ocr.OCR(
-    False, # is_scanned
+    False, # is_scanned -> to preprocess the image
     "path/to/an/image", # path
     r"D:\Saransh\Softwares\Tesseract-OCR\tesseract.exe", # tesseract_location for windows users
     # r"/usr/bin/tesseract", # tesseract_location for linux users
@@ -47,16 +46,47 @@ ocr = aiview_ocr.OCR(
 )
 ocr.ocr_book(save_output=True)
 ocr.text_to_speech()
+```
+```py
+# OCRing a signboard
+import aiview_ocr
 
 ocr = aiview_ocr.OCR(
-    True, # is_scanned
+    True, # is_scanned -> sign boards don't need to be preprocessed
     "path/to/an/image", # path
+    # sign boards OCR doesn't use Tesseract
 )
 extracted_text = ocr.ocr_sign_board()
 print(extracted_text)
-
 ```
+```py
+# manually preprocessing an image
+from scipy import ndimage
+from aiview_ocr import Preprocessor
 
+preprocess = Preprocessor("path/to/an/image")
+
+# scan the image and copy the scanned image
+scanned = preprocess.scan()
+orig = scanned.copy()
+
+# remove noise
+noise_free = preprocess.remove_noise(scanned)
+
+# thicken the ink to draw Hough lines better
+thickened = preprocess.thicken_font(noise_free)
+
+# calculate the median angle of all the Hough lines
+_, median_angle = preprocess.rotate(thickened)
+
+# rotate the original scanned image
+preprocessed = ndimage.rotate(orig, median_angle)
+
+# remove noise again
+preprocessed = preprocess.remove_noise(preprocessed)
+
+cv2.imwrite("preprocessed.png", preprocessed)
+```
 ## Testing
 The tests are present in the `tests` directory. New tests must be added with any additional features.
 
@@ -66,11 +96,13 @@ python -m unittest
 ```
 
 ## Some examples
-### Picture
+![roof-500x500](https://user-images.githubusercontent.com/74055102/135721441-7516bbf1-da6f-498b-a30b-d381c66b187e.jpg)
+![OCR](https://user-images.githubusercontent.com/74055102/135721446-5ea2e3f9-7cab-41f9-a1b0-52ff6707b0c2.png)
+```
+जयपुर JAIPUR 321 आगरा AGRA 554 श्री गगांनगर 242 SRIGANGANAGAR JODHPUR 261 जोधपुर
+```
 ![Page](https://user-images.githubusercontent.com/74055102/133644506-3dcf08fc-36f9-404a-b1b7-65117a3f9869.png)
-### OCR'ed
 ![OCR](https://user-images.githubusercontent.com/74055102/133644598-89551323-df51-45cc-8210-871b2c4dd756.png)
-### Extracted text
 ```
 Preface
 
@@ -111,13 +143,9 @@ puter. New problems have been formulated for eleven of the thirteen chapters.
 
 ‘The physical organization of a particular computer including its registers,
 ```
-### Picture
 ![CosmosOne](https://user-images.githubusercontent.com/74055102/133640550-eba241af-db0a-46e3-9b24-b4219dd74cfd.jpg)
-### Processed
 ![rotated](https://user-images.githubusercontent.com/74055102/133640466-c37d171d-7302-4227-bc6c-de2faa40ad9e.png)
-### OCR'ed
 ![OCR](https://user-images.githubusercontent.com/74055102/133640501-735f2587-f3b0-49b2-8274-27fa760892a9.png)
-### Extracted text
 ```
 organisms Of our globe, including hydrogen, sodium,
 magnesium, and iron. May it not be thai, at least, the
