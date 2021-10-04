@@ -17,25 +17,28 @@ class TestOCR(unittest.TestCase):
 
         img = pre.scan(save=True)
         self.assertIsInstance(img, np.ndarray)
-        assert os.path.exists("preprocessed.png")
+        assert os.path.exists("scanned.png")
 
-        os.remove("preprocessed.png")
+        os.remove("scanned.png")
 
     def test_rotate(self):
         pre = Preprocessor(self.path)
         self.assertEqual(pre.path, self.path)
 
-        img = pre.rotate()
+        img, median_angle = pre.rotate()
+        self.assertIsInstance(median_angle, float)
         self.assertIsInstance(img, np.ndarray)
 
-        img = pre.rotate(save=True)
+        img, median_angle = pre.rotate(save=True)
         self.assertIsInstance(img, np.ndarray)
+        self.assertIsInstance(median_angle, float)
         assert os.path.exists("rotated.png")
 
         os.remove("rotated.png")
 
-        img = pre.rotate(image=img)
-        img1 = pre.rotate(image=img)
+        img, median_angle = pre.rotate(image=img)
+        img1, median_angle = pre.rotate(image=img)
+        self.assertIsInstance(median_angle, float)
         self.assertIsInstance(img, np.ndarray)
         self.assertIsInstance(img1, np.ndarray)
         np.testing.assert_array_equal(img, img1)
