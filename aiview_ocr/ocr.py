@@ -31,16 +31,27 @@ class OCR:
 
         if not self.is_scanned:
             preprocess = Preprocessor(self.path)
+
+            # scan the image and copy the scanned image
             scanned = preprocess.scan()
             orig = scanned.copy()
 
+            # remove noise
             noise_free = preprocess.remove_noise(scanned)
+
+            # thicken the ink to draw Hough lines better
             thickened = preprocess.thicken_font(noise_free)
+
+            # calculate the median angle of all the Hough lines
             _, median_angle = preprocess.rotate(thickened)
 
+            # rotate the original scanned image
             preprocessed = ndimage.rotate(orig, median_angle)
-            cv2.imwrite("preprocessed.png", preprocessed)
 
+            # remove noise again
+            preprocessed = preprocess.remove_noise(preprocessed)
+
+            cv2.imwrite("preprocessed.png", preprocessed)
             self.path = "preprocessed.png"
 
     def ocr_book(self, save_output=False):
