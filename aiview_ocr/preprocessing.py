@@ -10,7 +10,7 @@ class Preprocessor:
     Preprocesses an image and makes it ready for OCR.
 
     Parameters
-    ----------
+    ==========
     path : str
         Path of the image.
 
@@ -20,6 +20,20 @@ class Preprocessor:
         self.path = path
 
     def remove_noise(self, image=None, save=False):
+        """
+        Removes noise from an image.
+
+        Parameters
+        ==========
+        image : array (default = None (image located at `path`))
+            Pass an image to be made noise free.
+        save : bool (default = False)
+            Saves the resultant image.
+
+        Returns
+        =======
+        noise free image (array)
+        """
 
         if image is None:
             image = cv2.imread(self.path)
@@ -37,6 +51,20 @@ class Preprocessor:
         return image
 
     def thicken_font(self, image=None, save=False):
+        """
+        Thickens the ink of an image.
+
+        Parameters
+        ==========
+        image : array (default = None (image located at `path`))
+            Pass an image to be thickened.
+        save : bool (default = False)
+            Saves the resultant image.
+
+        Returns
+        =======
+        thickened image (array)
+        """
 
         if image is None:
             image = cv2.imread(self.path)
@@ -45,10 +73,10 @@ class Preprocessor:
         kernel = np.ones((2, 2), np.uint8)
         image = cv2.dilate(image, kernel, iterations=2)
         image = cv2.bitwise_not(image)
-        
+
         if save:
             cv2.imwrite("thick_font.png", image)
-        
+
         return image
 
     def scan(self, save=False):
@@ -59,8 +87,9 @@ class Preprocessor:
         ----------
         save : bool (default = False)
             Saves the image.
+
         Returns
-        -------
+        =======
         scanned image (array)
         """
 
@@ -83,13 +112,14 @@ class Preprocessor:
         Rotates an image for a face-on view (view from the top).
 
         Parameters
-        ----------
+        ==========
         image : array (default = None (image located at `path`))
             Pass an image to be rotated.
         save : bool (default = False)
             Saves the rotated image.
+
         Returns
-        -------
+        =======
         rotated image (array)
         """
 
@@ -122,5 +152,5 @@ class Preprocessor:
         if save:
             # save the image
             cv2.imwrite("rotated.png", image)
-        
+
         return image, median_angle
