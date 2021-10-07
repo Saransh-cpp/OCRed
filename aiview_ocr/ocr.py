@@ -1,8 +1,12 @@
+import re
 import cv2
+import nltk
 import easyocr
 import pytesseract
 from gtts import gTTS
 from scipy import ndimage
+from nltk.corpus import wordnet
+from nltk.tokenize import word_tokenize
 from aiview_ocr.preprocessing import Preprocessor
 
 
@@ -15,7 +19,7 @@ class OCR:
     ==========
     is_scanned : bool
         Set False if the image is a real life photo of some large meaningful (page of a
-        book). Usually set to False when OCRing using `ocr_meaningful_text` to 
+        book). Usually set to False when OCRing using `ocr_meaningful_text` to
         preprocess the image.
         Set True if the image is a scanned photo (an e-book). It will not be
         pre-processed before OCRing.
@@ -74,8 +78,8 @@ class OCR:
         img = cv2.imread(self.path)
 
         # extracting the text
-        self.text = pytesseract.image_to_string(img, config="-l eng --oem 1")
-        self.text = self.text.replace("-\n", "").replace("\n", " ")
+        self.oriented_text = pytesseract.image_to_string(img, config="-l eng --oem 1")
+        self.text = self.oriented_text.replace("-\n", "").replace("\n", " ")
 
         # adding boxes around the words
         boxes = pytesseract.image_to_data(img)
@@ -126,9 +130,9 @@ class OCR:
         reader = easyocr.Reader(
             languages
         )  # slow for the first time (also depends upon CPU/GPU)
-        result = reader.readtext(self.path, decoder=decoder, batch_size=5)
+        self.detailed_text = reader.readtext(self.path, decoder=decoder, batch_size=5)
 
-        for text in result:
+        for text in self.detailed_text:
 
             # extracting the coordinates to highlight the text
             coords_lower = text[0][:2]
@@ -151,6 +155,49 @@ class OCR:
             self.save_output()
 
         return self.text
+
+    def process_extracted_text_from_invoice(self):
+
+        # TODO: Try Order number, phone number
+
+        nltk.download("punkt")
+        nltk.download("wordnet")
+        nltk.download("stopwords")
+
+        self.extracted_info = {}
+
+        date = re.findall(r"\d+[/.-]\d+[/.-]\d+", self.text)
+
+        place = self.detailed_text[0][-2]
+
+        try:
+            price = re.findall(r"[\₹](\d+(?:\.\d{1,2})?)", self.text)
+            price = list(map(float, price))
+            price = max(price)
+        except Exception:
+            tokenizer = nltk.RegexpTokenizer(r"\w+")
+            removed_punctuation = tokenizer.tokenize(self.text)
+
+            stop_words = set(nltk.corpus.stopwords.words("english"))
+            post_processed_word_list = [
+                w for w in removed_punctuation if w not in stop_words
+            ]
+
+            for i in range(len(post_processed_word_list)):
+                if post_processed_word_list[i].lower() == "total":
+                    price = post_processed_word_list[i + 1]
+                    break
+
+        self.extracted_info.update(
+            {
+                "price": price,
+                "date": date,
+                "place": place,
+                "post_processed_word_list": post_processed_word_list,
+            }
+        )
+
+        return self.extracted_info
 
     def save_output(self):
         """
