@@ -5,8 +5,6 @@ import easyocr
 import pytesseract
 from gtts import gTTS
 from scipy import ndimage
-from nltk.corpus import wordnet
-from nltk.tokenize import word_tokenize
 from aiview_ocr.preprocessing import Preprocessor
 
 
