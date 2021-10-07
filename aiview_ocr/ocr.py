@@ -12,11 +12,13 @@ class OCR:
     converts the extracted text to an MP3 file.
 
     Parameters
-    ----------
+    ==========
     is_scanned : bool
-        Set True if the image is of a scanned page, e-book or of a signboard.
-        When set to False, the image is treated as a real life photo and is therefore
-        processed before OCRing.
+        Set False if the image is a real life photo of some large meaningful (page of a
+        book). Usually set to False when OCRing using `ocr_meaningful_text` to 
+        preprocess the image.
+        Set True if the image is a scanned photo (an e-book). It will not be
+        pre-processed before OCRing.
     path : str
         Path of the image to be used.
     tesseract_location : str (default = None)
@@ -54,9 +56,10 @@ class OCR:
             cv2.imwrite("preprocessed.png", preprocessed)
             self.path = "preprocessed.png"
 
-    def ocr_book(self, save_output=False):
+    def ocr_meaningful_text(self, save_output=False):
         """
-        Performs OCR on a book's page and saves the image with boxes around the words.
+        Performs OCR on long meaningful text documents and saves the image with boxes
+        around the words. For example - books, PDFs etc.
 
         Parameters
         ==========
@@ -95,14 +98,24 @@ class OCR:
 
         return self.text
 
-    def ocr_sign_board(self, languages=["en", "hi"], save_output=False):
+    def ocr_sparse_text(
+        self, languages=["en", "hi"], decoder="greedy", save_output=False
+    ):
         """
-        Performs OCR on a signboard and saves the image with boxes around the words.
+        Performs OCR on sparse text and saves the image with boxes around the words.
+        This method can be used to OCR documents in which the character don't form some
+        proper/meaningful sentences or if there are very less meaningful sentences,
+        for example - bills, sign-boards etc.
 
         Parameters
         ==========
         languages : list (default = ["en", "hi"] where "en" = English and "hi" = Hindi)
             A list of languages that the signboard possible has.
+            Note: Provide only the languages that are present in the image, as adding
+            additional languages misguides the model.
+        decoder : str (default = "greedy)
+            If the document has a larger number of meaningful sentences then use
+            "beamsearch". For most of the cases "greedy" works very well.
         save_output : bool (default = False)
             Saves the text to `output.txt` file.
         """
@@ -113,7 +126,7 @@ class OCR:
         reader = easyocr.Reader(
             languages
         )  # slow for the first time (also depends upon CPU/GPU)
-        result = reader.readtext(self.path)
+        result = reader.readtext(self.path, decoder=decoder, batch_size=5)
 
         for text in result:
 

@@ -27,7 +27,7 @@ class TestOCR(unittest.TestCase):
         )
         self.assertTrue(ocr.is_scanned)
 
-        text = ocr.ocr_book(save_output=True)
+        text = ocr.ocr_meaningful_text(save_output=True)
 
         self.assertIsInstance(text, str)
         assert os.path.exists("OCR.png")
@@ -60,7 +60,7 @@ class TestOCR(unittest.TestCase):
         )
         self.assertFalse(ocr.is_scanned)
 
-        text = ocr.ocr_book()
+        text = ocr.ocr_meaningful_text()
 
         self.assertIsInstance(text, str)
         assert os.path.exists("OCR.png")
@@ -85,7 +85,7 @@ class TestOCR(unittest.TestCase):
         self.assertEqual(ocr.path, self.path_sign_board)
         self.assertTrue(ocr.is_scanned)
 
-        text = ocr.ocr_sign_board(save_output=True)
+        text = ocr.ocr_sparse_text(save_output=True)
 
         self.assertIsInstance(text, str)
         assert os.path.exists("OCR.png")
