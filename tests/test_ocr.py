@@ -138,6 +138,13 @@ class TestOCR(unittest.TestCase):
             and "phone_number" in extracted_text
             and "post_processed_word_list" in extracted_text
         )
+        self.assertIsInstance(extracted_text["price"], str)
+        self.assertIsInstance(extracted_text["date"], list)
+        self.assertTrue(len(extracted_text["date"]) == 0)
+        self.assertIsInstance(extracted_text["place"], str)
+        self.assertIsInstance(extracted_text["price"], int)
+        self.assertIsInstance(extracted_text["phone_number"], str)
+        self.assertIsInstance(extracted_text["post_processed_word_list"], list)
 
         os.remove("OCR.png")
 

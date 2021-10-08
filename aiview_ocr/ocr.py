@@ -179,15 +179,15 @@ class OCR:
         nltk.download("stopwords")
 
         self.extracted_info = {}
+        self.text_list = self.text.split(" ")
 
         # find date
-        date = re.findall(
-            r"^([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])(\.|-|/)([1-9]|0[1-9]|1[0-2])(\.|-|/)([0-9][0-9]|19[0-9][0-9]|20[0-9][0-9])$|^([0-9][0-9]|19[0-9][0-9]|20[0-9][0-9])(\.|-|/)([1-9]|0[1-9]|1[0-2])(\.|-|/)([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])$",   # noqa
-            self.text,
+        date_re = re.compile(
+            r"^([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])(\.|-|\/)([1-9]|0[1-9]|1[0-2])(\.|-|\/)([0-9][0-9]|19[0-9][0-9]|20[0-9][0-9])$",   # noqa
         )
+        date = list(filter(date_re.match, self.text_list))[0]
 
         # find phone number
-        self.text_list = self.text.split(" ")
         phone_number_re = re.compile(
             r"((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}",
         )
@@ -226,7 +226,6 @@ class OCR:
                 self.text,
             )
             price = list(map(float, price))
-            print(price)
             price = max(price)
         # try finding numbers with "grand total" or "total" written in front of them
         except ValueError:
