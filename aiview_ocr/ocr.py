@@ -110,15 +110,15 @@ class OCR:
     ):
         """
         Performs OCR on sparse text and saves the image with boxes around the words.
-        This method can be used to OCR documents in which the character don't form some
-        proper/meaningful sentences or if there are very less meaningful sentences,
+        This method can be used to OCR documents in which the characters don't form any
+        proper/meaningful sentences, or if there are very less meaningful sentences,
         for example - bills, sign-boards etc.
 
         Parameters
         ==========
         languages : list (default = ["en", "hi"] where "en" = English and "hi" = Hindi)
             A list of languages that the signboard possible has.
-            Note: Provide only the languages that are present in the image, as adding
+            Note: Provide only the languages that are present in the image, adding
             additional languages misguides the model.
         decoder : str (default = "greedy)
             If the document has a larger number of meaningful sentences then use
@@ -181,13 +181,17 @@ class OCR:
         self.extracted_info = {}
 
         # find date
-        date = re.findall(r"\d+[/.-]\d+[/.-]\d+", self.text)
-
-        # find phone number
-        phone_number = re.findall(
-            r"((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}",
+        date = re.findall(
+            r"^([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])(\.|-|/)([1-9]|0[1-9]|1[0-2])(\.|-|/)([0-9][0-9]|19[0-9][0-9]|20[0-9][0-9])$|^([0-9][0-9]|19[0-9][0-9]|20[0-9][0-9])(\.|-|/)([1-9]|0[1-9]|1[0-2])(\.|-|/)([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])$",   # noqa
             self.text,
         )
+
+        # find phone number
+        self.text_list = self.text.split(" ")
+        phone_number_re = re.compile(
+            r"((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}",
+        )
+        phone_number = list(filter(phone_number_re.match, self.text_list))
 
         # find place
         place = self.detailed_text[0][-2]
@@ -205,7 +209,10 @@ class OCR:
         order_number = ""
         for i in range(len(post_processed_word_list)):
             if post_processed_word_list[i].lower() == "order":
-                order_number = post_processed_word_list[i + 1]
+                try:
+                    order_number = int(post_processed_word_list[i + 1])
+                except Exception:
+                    order_number = post_processed_word_list[i + 2]
                 break
 
         # find total price
