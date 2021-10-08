@@ -67,6 +67,11 @@ class OCR:
         ==========
         save_output : bool (default = False)
             Saves the text to `output.txt` file.
+
+        Returns
+        =======
+        text : str
+            The extracted text.
         """
         # specifying tesseract's installation path
         if self.tesseract_location is not None:  # pragma: no cover
@@ -120,6 +125,11 @@ class OCR:
             "beamsearch". For most of the cases "greedy" works very well.
         save_output : bool (default = False)
             Saves the text to `output.txt` file.
+
+        Returns
+        =======
+        text : str
+            The extracted text.
         """
         self.text = ""
 
@@ -155,42 +165,80 @@ class OCR:
         return self.text
 
     def process_extracted_text_from_invoice(self):
+        """
+        This method processes the extracted text from invoices, and returns some useful
+        information.
 
-        # TODO: Try Order number, phone number
-
+        Returns
+        =======
+        extracted_info : dict
+            The extracted information.
+        """
         nltk.download("punkt")
         nltk.download("wordnet")
         nltk.download("stopwords")
 
         self.extracted_info = {}
 
+        # find date
         date = re.findall(r"\d+[/.-]\d+[/.-]\d+", self.text)
 
+        # find phone number
+        phone_number = re.findall(
+            r"((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}",
+            self.text,
+        )
+
+        # find place
         place = self.detailed_text[0][-2]
 
+        # remove puntuations and redundant words
+        tokenizer = nltk.RegexpTokenizer(r"\w+")
+        removed_punctuation = tokenizer.tokenize(self.text)
+
+        stop_words = set(nltk.corpus.stopwords.words("english"))
+        post_processed_word_list = [
+            w for w in removed_punctuation if w not in stop_words
+        ]
+
+        # find order number
+        order_number = ""
+        for i in range(len(post_processed_word_list)):
+            if post_processed_word_list[i].lower() == "order":
+                order_number = post_processed_word_list[i + 1]
+                break
+
+        # find total price
+        price = ""
+
+        # try finding a number with Rs, INR or ₹ in front of it or Rs, INR at the end of it
         try:
-            price = re.findall(r"[\₹](\d+(?:\.\d{1,2})?)", self.text)
+            price = re.findall(
+                r"(?:Rs\.?|INR|₹\.?)\s*(\d+(?:[.,]\d+)*)|(\d+(?:[.,]\d+)*)\s*(?:Rs\.?|INR)",  # noqa
+                self.text,
+            )
             price = list(map(float, price))
+            print(price)
             price = max(price)
-        except Exception:
-            tokenizer = nltk.RegexpTokenizer(r"\w+")
-            removed_punctuation = tokenizer.tokenize(self.text)
-
-            stop_words = set(nltk.corpus.stopwords.words("english"))
-            post_processed_word_list = [
-                w for w in removed_punctuation if w not in stop_words
-            ]
-
-            for i in range(len(post_processed_word_list)):
-                if post_processed_word_list[i].lower() == "total":
-                    price = post_processed_word_list[i + 1]
-                    break
+        # try finding numbers with "grand total" or "total" written in front of them
+        except ValueError:
+            lowered_list = [x.lower() for x in post_processed_word_list]
+            if "grand" in lowered_list:
+                indices = [i for i, x in enumerate(lowered_list) if x == "grand"]
+                i = indices[-1]
+                price = post_processed_word_list[i + 2]
+            elif "total" in lowered_list:
+                indices = [i for i, x in enumerate(lowered_list) if x == "total"]
+                i = indices[-1]
+                price = post_processed_word_list[i + 1]
 
         self.extracted_info.update(
             {
                 "price": price,
                 "date": date,
                 "place": place,
+                "order_number": order_number,
+                "phone_number": phone_number,
                 "post_processed_word_list": post_processed_word_list,
             }
         )
