@@ -185,7 +185,7 @@ class OCR:
         date_re = re.compile(
             r"^([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])(\.|-|\/)([1-9]|0[1-9]|1[0-2])(\.|-|\/)([0-9][0-9]|19[0-9][0-9]|20[0-9][0-9])$",   # noqa
         )
-        date = list(filter(date_re.match, self.text_list))[0]
+        date = list(filter(date_re.match, self.text_list))
 
         # find phone number
         phone_number_re = re.compile(

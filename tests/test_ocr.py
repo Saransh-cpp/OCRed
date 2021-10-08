@@ -121,30 +121,68 @@ class TestOCR(unittest.TestCase):
         self.assertIsInstance(text, str)
         self.assertEqual(text, ocr.text)
         assert os.path.exists("OCR.png")
-        assert os.path.exists("output.txt")
         assert not os.path.exists("preprocessed.png")
-        assert not os.path.exists("audio.mp3")
 
-        extracted_text = ocr.process_extracted_text_from_invoice()
+        extracted_info = ocr.process_extracted_text_from_invoice()
 
-        self.assertIsInstance(extracted_text, dict)
-        self.assertIsInstance(ocr.extracted_text, dict)
-        self.assertEqual(ocr.extracted_text, extracted_text)
+        self.assertIsInstance(extracted_info, dict)
+        self.assertIsInstance(ocr.extracted_info, dict)
+        self.assertEqual(ocr.extracted_info, extracted_info)
         self.assertTrue(
-            "price" in extracted_text
-            and "date" in extracted_text
-            and "place" in extracted_text
-            and "order_number" in extracted_text
-            and "phone_number" in extracted_text
-            and "post_processed_word_list" in extracted_text
+            "price" in extracted_info
+            and "date" in extracted_info
+            and "place" in extracted_info
+            and "order_number" in extracted_info
+            and "phone_number" in extracted_info
+            and "post_processed_word_list" in extracted_info
         )
-        self.assertIsInstance(extracted_text["price"], str)
-        self.assertIsInstance(extracted_text["date"], list)
-        self.assertTrue(len(extracted_text["date"]) == 0)
-        self.assertIsInstance(extracted_text["place"], str)
-        self.assertIsInstance(extracted_text["price"], int)
-        self.assertIsInstance(extracted_text["phone_number"], str)
-        self.assertIsInstance(extracted_text["post_processed_word_list"], list)
+        self.assertIsInstance(extracted_info["price"], str)
+        self.assertIsInstance(extracted_info["date"], list)
+        self.assertTrue(len(extracted_info["date"]) == 0)
+        self.assertIsInstance(extracted_info["place"], str)
+        self.assertIsInstance(extracted_info["phone_number"], list)
+        self.assertTrue(len(extracted_info["phone_number"]) == 1)
+        self.assertIsInstance(extracted_info["order_number"], int)
+        self.assertIsInstance(extracted_info["post_processed_word_list"], list)
+
+        self.path_invoice = "images/1166-receipt.jpg"
+        ocr = OCR(
+            True,
+            self.path_invoice,
+        )
+
+        self.assertEqual(ocr.path, self.path_invoice)
+        self.assertTrue(ocr.is_scanned)
+
+        text = ocr.ocr_sparse_text()
+
+        self.assertIsInstance(ocr.text, str)
+        self.assertIsInstance(text, str)
+        self.assertEqual(text, ocr.text)
+        assert os.path.exists("OCR.png")
+        assert not os.path.exists("preprocessed.png")
+
+        extracted_info = ocr.process_extracted_text_from_invoice()
+
+        self.assertIsInstance(extracted_info, dict)
+        self.assertIsInstance(ocr.extracted_info, dict)
+        self.assertEqual(ocr.extracted_info, extracted_info)
+        self.assertTrue(
+            "price" in extracted_info
+            and "date" in extracted_info
+            and "place" in extracted_info
+            and "order_number" in extracted_info
+            and "phone_number" in extracted_info
+            and "post_processed_word_list" in extracted_info
+        )
+        self.assertIsInstance(extracted_info["price"], str)
+        self.assertIsInstance(extracted_info["date"], list)
+        self.assertTrue(len(extracted_info["date"]) == 1)
+        self.assertIsInstance(extracted_info["place"], str)
+        self.assertIsInstance(extracted_info["phone_number"], list)
+        self.assertTrue(len(extracted_info["phone_number"]) == 0)
+        self.assertIsInstance(extracted_info["order_number"], str)
+        self.assertIsInstance(extracted_info["post_processed_word_list"], list)
 
         os.remove("OCR.png")
 
