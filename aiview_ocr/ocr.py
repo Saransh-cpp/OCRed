@@ -218,11 +218,11 @@ class OCR:
         # find total price
         price = ""
 
-        # try finding a number with Rs, INR or ₹ in front of it or Rs, INR at the end of
-        # it
+        # try finding a number with Rs, INR, ₹ or रे in front of it or Rs, INR at the end
+        # of it
         try:
             price = re.findall(
-                r"(?:Rs\.?|INR|₹\.?)\s*(\d+(?:[.,]\d+)*)|(\d+(?:[.,]\d+)*)\s*(?:Rs\.?|INR)",  # noqa
+                r"(?:Rs\.?|INR|₹\.?|रे\.?)\s*(\d+(?:[.,]\d+)*)|(\d+(?:[.,]\d+)*)\s*(?:Rs\.?|INR)",  # noqa
                 self.text,
             )
             price = list(map(float, price))
