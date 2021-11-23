@@ -15,7 +15,7 @@ class TestOCR(unittest.TestCase):
     def test_ocr_with_scanned_image(self):
 
         ocr = OCR(
-            True,
+            False,
             self.path_scanned,
             self.tesseract_path if platform.system() == "Windows" else None,
         )
@@ -49,7 +49,7 @@ class TestOCR(unittest.TestCase):
     def test_ocr_with_real_image(self):
 
         ocr = OCR(
-            False,
+            True,
             self.path_real,
             self.tesseract_path if platform.system() == "Windows" else None,
         )
@@ -81,7 +81,7 @@ class TestOCR(unittest.TestCase):
 
     def test_ocr_sign_board(self):
         ocr = OCR(
-            True,
+            False,
             self.path_sign_board,
         )
 
@@ -108,7 +108,7 @@ class TestOCR(unittest.TestCase):
 
     def test_ocr_invoices(self):
         ocr = OCR(
-            True,
+            False,
             self.path_invoice,
         )
 
@@ -147,7 +147,7 @@ class TestOCR(unittest.TestCase):
 
         self.path_invoice = "images/1166-receipt.jpg"
         ocr = OCR(
-            True,
+            False,
             self.path_invoice,
         )
 

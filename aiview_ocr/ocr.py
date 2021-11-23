@@ -15,11 +15,11 @@ class OCR:
 
     Parameters
     ==========
-    is_scanned : bool
-        Set False if the image is a real life photo of some large meaningful (page of a
+    preprocess : bool
+        Set True if the image is a real life photo of some large meaningful (page of a
         book). Usually set to False when OCRing using `ocr_meaningful_text` to
         preprocess the image.
-        Set True if the image is a scanned photo (an e-book). It will not be
+        Set False if the image is a scanned photo (an e-book). It will not be
         pre-processed before OCRing.
     path : str
         Path of the image to be used.
@@ -28,12 +28,12 @@ class OCR:
         This is only required for OCRing books.
     """
 
-    def __init__(self, is_scanned, path, tesseract_location=None):
+    def __init__(self, preprocess, path, tesseract_location=None):
         self.path = path
-        self.is_scanned = is_scanned
+        self.preprocess = preprocess
         self.tesseract_location = tesseract_location
 
-        if not self.is_scanned:
+        if self.preprocess:
             preprocess = Preprocessor(self.path)
 
             # scan the image and copy the scanned image
