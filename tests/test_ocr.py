@@ -15,7 +15,7 @@ class TestOCR(unittest.TestCase):
     def test_ocr_with_scanned_image(self):
 
         ocr = OCR(
-            True,
+            False,
             self.path_scanned,
             self.tesseract_path if platform.system() == "Windows" else None,
         )
@@ -26,7 +26,7 @@ class TestOCR(unittest.TestCase):
         ) if platform.system() != "Windows" else self.assertEqual(
             ocr.tesseract_location, self.tesseract_path
         )
-        self.assertTrue(ocr.is_scanned)
+        self.assertFalse(ocr.preprocess)
 
         text = ocr.ocr_meaningful_text(save_output=True)
 
@@ -49,7 +49,7 @@ class TestOCR(unittest.TestCase):
     def test_ocr_with_real_image(self):
 
         ocr = OCR(
-            False,
+            True,
             self.path_real,
             self.tesseract_path if platform.system() == "Windows" else None,
         )
@@ -60,7 +60,7 @@ class TestOCR(unittest.TestCase):
         ) if platform.system() != "Windows" else self.assertEqual(
             ocr.tesseract_location, self.tesseract_path
         )
-        self.assertFalse(ocr.is_scanned)
+        self.assertTrue(ocr.preprocess)
 
         text = ocr.ocr_meaningful_text()
 
@@ -81,12 +81,12 @@ class TestOCR(unittest.TestCase):
 
     def test_ocr_sign_board(self):
         ocr = OCR(
-            True,
+            False,
             self.path_sign_board,
         )
 
         self.assertEqual(ocr.path, self.path_sign_board)
-        self.assertTrue(ocr.is_scanned)
+        self.assertFalse(ocr.preprocess)
 
         text = ocr.ocr_sparse_text(save_output=True)
 
@@ -108,12 +108,12 @@ class TestOCR(unittest.TestCase):
 
     def test_ocr_invoices(self):
         ocr = OCR(
-            True,
+            False,
             self.path_invoice,
         )
 
         self.assertEqual(ocr.path, self.path_invoice)
-        self.assertTrue(ocr.is_scanned)
+        self.assertFalse(ocr.preprocess)
 
         text = ocr.ocr_sparse_text()
 
@@ -147,12 +147,12 @@ class TestOCR(unittest.TestCase):
 
         self.path_invoice = "images/1166-receipt.jpg"
         ocr = OCR(
-            True,
+            False,
             self.path_invoice,
         )
 
         self.assertEqual(ocr.path, self.path_invoice)
-        self.assertTrue(ocr.is_scanned)
+        self.assertFalse(ocr.preprocess)
 
         text = ocr.ocr_sparse_text()
 
