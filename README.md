@@ -108,7 +108,7 @@ The tests are present in the `tests` directory. New tests must be added with any
 
 To run the tests -
 ```
-python -m unittest
+python -m unittest -v
 ```
 
 ## Some examples

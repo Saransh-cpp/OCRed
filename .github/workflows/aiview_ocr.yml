@@ -40,6 +40,6 @@ jobs:
         pip install wheel coverage
         pip install -r requirements.txt
         sudo apt-get install tesseract-ocr
-    - name: Unittests
+    - name: Run unit tests
       run: |
-        python -m unittest
+        python -m unittest -v
