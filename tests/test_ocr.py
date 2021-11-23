@@ -26,7 +26,7 @@ class TestOCR(unittest.TestCase):
         ) if platform.system() != "Windows" else self.assertEqual(
             ocr.tesseract_location, self.tesseract_path
         )
-        self.assertTrue(ocr.is_scanned)
+        self.assertFalse(ocr.preprocess)
 
         text = ocr.ocr_meaningful_text(save_output=True)
 
@@ -60,7 +60,7 @@ class TestOCR(unittest.TestCase):
         ) if platform.system() != "Windows" else self.assertEqual(
             ocr.tesseract_location, self.tesseract_path
         )
-        self.assertFalse(ocr.is_scanned)
+        self.assertTrue(ocr.preprocess)
 
         text = ocr.ocr_meaningful_text()
 
@@ -86,7 +86,7 @@ class TestOCR(unittest.TestCase):
         )
 
         self.assertEqual(ocr.path, self.path_sign_board)
-        self.assertTrue(ocr.is_scanned)
+        self.assertFalse(ocr.preprocess)
 
         text = ocr.ocr_sparse_text(save_output=True)
 
@@ -113,7 +113,7 @@ class TestOCR(unittest.TestCase):
         )
 
         self.assertEqual(ocr.path, self.path_invoice)
-        self.assertTrue(ocr.is_scanned)
+        self.assertFalse(ocr.preprocess)
 
         text = ocr.ocr_sparse_text()
 
@@ -152,7 +152,7 @@ class TestOCR(unittest.TestCase):
         )
 
         self.assertEqual(ocr.path, self.path_invoice)
-        self.assertTrue(ocr.is_scanned)
+        self.assertFalse(ocr.preprocess)
 
         text = ocr.ocr_sparse_text()
 

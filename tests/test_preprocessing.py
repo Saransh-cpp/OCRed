@@ -5,7 +5,7 @@ import numpy as np
 from aiview_ocr.preprocessing import Preprocessor
 
 
-class TestOCR(unittest.TestCase):
+class TestPreprocessing(unittest.TestCase):
     def setUp(self):
         self.path = "images/CosmosOne.jpg"
 
