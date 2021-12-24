@@ -18,7 +18,7 @@ git clone https://github.com/AI-View/OCR
 ```
 3. Change directory
 ```
-cd aiview_ocr
+cd OCR
 ```
 4. Create a wheel file
 ```
