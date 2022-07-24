@@ -72,4 +72,4 @@ jobs:
           coverage run -m unittest -v
 
       - name: Upload coverage report
-        uses: codecov/codecov-action@v2.1.0
+        uses: codecov/codecov-action@v3.1.0
