@@ -3,10 +3,12 @@
 [![CI](https://github.com/Saransh-cpp/OCRed/actions/workflows/ci.yml/badge.svg)](https://github.com/Saransh-cpp/OCRed/actions/workflows/ci.yml)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Saransh-cpp/OCRed/main.svg)](https://results.pre-commit.ci/latest/github/Saransh-cpp/OCRed/main)
 [![pre-commit.ci status](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![codecov](https://codecov.io/gh/Saransh-cpp/OCRed/branch/main/graph/badge.svg?token=L6ObHKhaZ7)](https://codecov.io/gh/Saransh-cpp/OCRed)
+[![discussion](https://img.shields.io/static/v1?label=Discussions&message=Ask&color=blue&logo=github)](https://github.com/Saransh-cpp/OCRed/discussions)
+![GitHub](https://img.shields.io/github/license/Saransh-cpp/OCRed?color=blue)
+
 
 Under a huge refactor.
-
-Update: I have exhausted all the free GitHub Action minutes. This repository will have to wait till 6th August for any more development.
 
 ## Structure
 
@@ -27,7 +29,7 @@ git clone https://github.com/Saransh-cpp/OCRed
 3. Change directory
 
 ```
-cd OCR
+cd OCRed
 ```
 
 4. Install the package
