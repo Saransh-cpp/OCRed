@@ -12,3 +12,4 @@ scanned.png
 thick_font.png
 noise_free.png
 .coverage
+.env

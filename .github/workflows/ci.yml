@@ -58,7 +58,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install wheel coverage
+        python -m pip uninstall --yes opencv-python
         python -m pip install -r requirements.txt
+        python -m pip uninstall --yes opencv-contrib-python opencv-contrib-python-headless
 
     - name: Install Tesseract OCR Engine on Ubuntu
       if: matrix.os == 'ubuntu-latest'
