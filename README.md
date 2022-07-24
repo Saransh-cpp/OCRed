@@ -6,6 +6,8 @@
 
 Under a huge refactor.
 
+Update: I have exhausted all the free GitHub Action minutes. This repository will have to wait till 6th August for any more development.
+
 ## Structure
 
 `OCR` is performed using the [`OCR`](https://github.com/Saransh-cpp/OCRed/blob/main/ocred/ocr.py) class and preprocessing of an image is performed using the [`Preprocessor`](https://github.com/Saransh-cpp/OCRed/blob/main/ocred/preprocessing.py) class. All the details are available in the docstrings.
