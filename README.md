@@ -7,7 +7,6 @@
 [![discussion](https://img.shields.io/static/v1?label=Discussions&message=Ask&color=blue&logo=github)](https://github.com/Saransh-cpp/OCRed/discussions)
 ![GitHub](https://img.shields.io/github/license/Saransh-cpp/OCRed?color=blue)
 
-
 Under a huge refactor.
 
 ## Structure
