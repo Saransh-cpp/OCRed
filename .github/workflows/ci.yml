@@ -13,7 +13,7 @@ concurrency:
   # Skip intermediate builds: always.
   # Cancel intermediate builds: only if it is a pull request build.
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
+  cancel-in-progress: true
 
 jobs:
   style:
@@ -64,10 +64,10 @@ jobs:
           brew update
           brew install tesseract-lang
 
-      - name: Install Tesseract OCR Engine on Windows
-        if: matrix.os == 'windows-latest'
-        run: |
-          vcpkg install tesseract:x64-windows
+#       - name: Install Tesseract OCR Engine on Windows
+#         if: matrix.os == 'windows-latest'
+#         run: |
+#           vcpkg install tesseract:x64-windows
 
       - name: Run unit tests and generate coverage report
         run: |
