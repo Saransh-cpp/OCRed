@@ -64,10 +64,14 @@ jobs:
           brew update
           brew install tesseract-lang
 
-#       - name: Install Tesseract OCR Engine on Windows
-#         if: matrix.os == 'windows-latest'
-#         run: |
-#           vcpkg install tesseract:x64-windows
+      - name: Cache Tesseract installed through vcpkg on Windows
+        if: matrix.os == 'windows-latest'
+        uses: actions/cache@v2
+        env:
+          cache-name: vckpg_binary_cache
+        with:
+          path: C:\Users\runneradmin\AppData\Local\vcpkg\archives
+          key: ${{ runner.os }}-build-VS2022-${{ env.cache-name }}-${{ hashFiles('vcpkg*.json') }}
 
       - name: Run unit tests and generate coverage report
         run: |
