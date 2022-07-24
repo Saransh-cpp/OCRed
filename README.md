@@ -1,11 +1,11 @@
-# OCR module for AiView
+# OCRed
 
-[![ocred](https://github.com/AI-View/OCR/actions/workflows/ocred.yml/badge.svg)](https://github.com/AI-View/OCR/actions/workflows/ocred.yml)
+[![CI](https://github.com/Saransh-cpp/OCRed/actions/workflows/ci.yml/badge.svg)](https://github.com/Saransh-cpp/OCRed/actions/workflows/ci.yml)
 
-This module is the base module for all the OCR related things that will be performed in [AiView](https://github.com/AI-View).
+Your text just got OCRed.
 
 ## Structure
-`OCR` is performed using the [`OCR`](https://github.com/AI-View/OCR/blob/main/ocred/ocr.py) class and preprocessing of an image is performed using the [`Preprocessor`](https://github.com/AI-View/OCR/blob/main/ocred/preprocessing.py) class. All the details are available in the docstrings.
+`OCR` is performed using the [`OCR`](https://github.com/Saransh-cpp/OCRed/blob/main/ocred/ocr.py) class and preprocessing of an image is performed using the [`Preprocessor`](https://github.com/Saransh-cpp/OCRed/blob/main/ocred/preprocessing.py) class. All the details are available in the docstrings.
 
 ## Installation
 1. Install Tesseract for your OS
@@ -14,7 +14,7 @@ The installation guide is available [here](https://tesseract-ocr.github.io/tessd
 
 2. Clone this repository
 ```
-git clone https://github.com/AI-View/OCR
+git clone https://github.com/Saransh-cpp/OCRed
 ```
 3. Change directory
 ```

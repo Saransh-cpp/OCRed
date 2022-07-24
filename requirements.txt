@@ -1,5 +1,5 @@
 pytesseract>=0.3.8
-opencv-python>=4.5.3.56
+opencv-python==4.5.3.56
 gTTS>=2.2.3
 scikit-image>=0.18.3
 scipy>=1.5.4
