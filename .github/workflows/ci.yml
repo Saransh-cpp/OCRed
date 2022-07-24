@@ -40,7 +40,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ["3.7", "3.8", "3.9", "3.10"]
+        python-version: ["3.7", "3.8", "3.9"]
 
     steps:
     - uses: actions/checkout@v2
@@ -53,14 +53,6 @@ jobs:
     - name: Install OCRed
       run: |
         python -m pip install .
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install wheel coverage
-        python -m pip uninstall --yes opencv-python
-        python -m pip install -r requirements.txt
-        python -m pip uninstall --yes opencv-contrib-python opencv-contrib-python-headless
 
     - name: Install Tesseract OCR Engine on Ubuntu
       if: matrix.os == 'ubuntu-latest'
@@ -77,10 +69,12 @@ jobs:
     - name: Install Tesseract OCR Engine on Windows
       if: matrix.os == 'windows-latest'
       run: |
-        vcpkg install tesseract-ocr
+        vcpkg install tesseract:x64-windows
 
     - name: Run unit tests and generate coverage report
-      run: coverage run -m unittest -v
+      run: |
+        python -m pip install coverage
+        coverage run -m unittest -v
 
     - name: Upload coverage report
       uses: codecov/codecov-action@v2.1.0
