@@ -1,0 +1,9 @@
+[run] 
+omit=*/test*
+
+[report]
+exclude_lines =
+    if not self.testing:
+    if not testing:
+    pragma: no cover
+    if __name__ == .__main__.:
