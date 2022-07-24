@@ -2,9 +2,12 @@
 
 [![CI](https://github.com/Saransh-cpp/OCRed/actions/workflows/ci.yml/badge.svg)](https://github.com/Saransh-cpp/OCRed/actions/workflows/ci.yml)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Saransh-cpp/OCRed/main.svg)](https://results.pre-commit.ci/latest/github/Saransh-cpp/OCRed/main)
+[![codecov](https://codecov.io/gh/Saransh-cpp/OCRed/branch/main/graph/badge.svg?token=L6ObHKhaZ7)](https://codecov.io/gh/Saransh-cpp/OCRed)
+[![discussion](https://img.shields.io/static/v1?label=Discussions&message=Ask&color=blue&logo=github)](https://github.com/Saransh-cpp/OCRed/discussions)
+[![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+![GitHub](https://img.shields.io/github/license/Saransh-cpp/OCRed?color=blue)
 
-
-Your text just got OCRed.
+Under a huge refactor.
 
 ## Structure
 
@@ -25,23 +28,14 @@ git clone https://github.com/Saransh-cpp/OCRed
 3. Change directory
 
 ```
-cd OCR
+cd OCRed
 ```
 
-4. Create a wheel file
+4. Install the package
 
 ```
-python setup.py bdist_wheel
+python -m pip install -e .
 ```
-
-5. Install the package using the wheel file
-
-```
-cd dist
-python -m pip install ocred-0.1.0-py3-none-any.whl
-```
-
-**NOTE**: To update the package, first uninstall the existing package and then follow the same steps.
 
 ## Usage example
 
