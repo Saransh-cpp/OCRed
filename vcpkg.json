@@ -1,7 +1,5 @@
 {
-    "name": "OCRed",
-    "version-string": "0.1.0",
-    "dependencies": [
-      "tesseract:x64-windows"
-    ]
+  "name": "OCRed",
+  "version-string": "0.1.0",
+  "dependencies": ["tesseract:x64-windows"]
 }
