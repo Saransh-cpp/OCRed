@@ -1,7 +1,7 @@
 import os
 import platform
 import unittest
-from aiview_ocr.ocr import OCR
+from ocred.ocr import OCR
 
 
 class TestOCR(unittest.TestCase):

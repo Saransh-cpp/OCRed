@@ -13,11 +13,11 @@ classifiers = [
 ]
 
 setup(
-    name="aiview_ocr",
+    name="ocred",
     version="0.1.0",
     license="MIT",
-    description="The OCR module for AiView startup.",
-    packages=find_packages(include=["aiview_ocr"]),
+    description="Your text just got OCRed.",
+    packages=find_packages(include=["ocred"]),
     classifiers=classifiers,
     install_requires=install_requires,
 )

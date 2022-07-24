@@ -2,7 +2,7 @@ import os
 import cv2
 import unittest
 import numpy as np
-from aiview_ocr.preprocessing import Preprocessor
+from ocred.preprocessing import Preprocessor
 
 
 class TestPreprocessing(unittest.TestCase):

@@ -3,7 +3,7 @@
 __pycache__
 build
 dist
-aiview_ocr.egg-info
+ocred.egg-info
 OCR.png
 output.txt
 audio.mp3

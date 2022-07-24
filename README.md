@@ -1,11 +1,11 @@
 # OCR module for AiView
 
-[![aiview_ocr](https://github.com/AI-View/OCR/actions/workflows/aiview_ocr.yml/badge.svg)](https://github.com/AI-View/OCR/actions/workflows/aiview_ocr.yml)
+[![ocred](https://github.com/AI-View/OCR/actions/workflows/ocred.yml/badge.svg)](https://github.com/AI-View/OCR/actions/workflows/ocred.yml)
 
 This module is the base module for all the OCR related things that will be performed in [AiView](https://github.com/AI-View).
 
 ## Structure
-`OCR` is performed using the [`OCR`](https://github.com/AI-View/OCR/blob/main/aiview_ocr/ocr.py) class and preprocessing of an image is performed using the [`Preprocessor`](https://github.com/AI-View/OCR/blob/main/aiview_ocr/preprocessing.py) class. All the details are available in the docstrings.
+`OCR` is performed using the [`OCR`](https://github.com/AI-View/OCR/blob/main/ocred/ocr.py) class and preprocessing of an image is performed using the [`Preprocessor`](https://github.com/AI-View/OCR/blob/main/ocred/preprocessing.py) class. All the details are available in the docstrings.
 
 ## Installation
 1. Install Tesseract for your OS
@@ -27,7 +27,7 @@ python setup.py bdist_wheel
 5. Install the package using the wheel file
 ```
 cd dist
-python -m pip install aiview_ocr-0.1.0-py3-none-any.whl
+python -m pip install ocred-0.1.0-py3-none-any.whl
 ```
 
 **NOTE**: To update the package, first uninstall the existing package and then follow the same steps.
@@ -35,9 +35,9 @@ python -m pip install aiview_ocr-0.1.0-py3-none-any.whl
 ## Usage example
 ```py
 # OCRing a book
-import aiview_ocr
+import ocred
 
-ocr = aiview_ocr.OCR(
+ocr = ocred.OCR(
     False, # is_scanned -> to preprocess the image
     "path/to/an/image", # path
     r"D:\Saransh\Softwares\Tesseract-OCR\tesseract.exe", # tesseract_location for windows users
@@ -49,9 +49,9 @@ ocr.text_to_speech()
 ```
 ```py
 # OCRing a signboard
-import aiview_ocr
+import ocred
 
-ocr = aiview_ocr.OCR(
+ocr = ocred.OCR(
     True, # is_scanned -> sign boards don't need to be preprocessed
     "path/to/an/image", # path
     # sign board OCR doesn't use Tesseract
@@ -61,9 +61,9 @@ print(extracted_text)
 ```
 ```py
 # OCRing an invoice
-import aiview_ocr
+import ocred
 
-ocr = aiview_ocr.OCR(
+ocr = ocred.OCR(
     True, # is_scanned -> invoices don't need to be preprocessed
     "path/to/an/image", # path
     # invoice OCR doesn't use Tesseract
@@ -78,7 +78,7 @@ print(extraxted_info)
 # manually preprocessing an image
 import cv2
 from scipy import ndimage
-from aiview_ocr import Preprocessor
+from ocred import Preprocessor
 
 preprocess = Preprocessor("path/to/an/image")
 

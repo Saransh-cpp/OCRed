@@ -5,7 +5,7 @@ import easyocr
 import pytesseract
 from gtts import gTTS
 from scipy import ndimage
-from aiview_ocr.preprocessing import Preprocessor
+from ocred.preprocessing import Preprocessor
 
 
 class OCR:
