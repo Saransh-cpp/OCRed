@@ -1,5 +1,6 @@
-import cv2
 import math
+
+import cv2
 import numpy as np
 from scipy import ndimage
 from skimage.filters import threshold_local
@@ -36,7 +37,6 @@ class Preprocessor:
         =======
         noise free image (array)
         """
-
         if image is None:
             image = cv2.imread(self.path)
 
@@ -69,7 +69,6 @@ class Preprocessor:
         =======
         thickened image (array)
         """
-
         if image is None:
             image = cv2.imread(self.path)
 
@@ -98,7 +97,6 @@ class Preprocessor:
         =======
         scanned image (array)
         """
-
         # apply threshold to "scannify" it
         if image is None:
             image = cv2.imread(self.path)
@@ -129,7 +127,6 @@ class Preprocessor:
         =======
         rotated image (array)
         """
-
         # read the original image
         if image is None:
             image = cv2.imread(self.path)

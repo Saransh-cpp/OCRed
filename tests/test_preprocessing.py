@@ -1,7 +1,9 @@
 import os
-import cv2
 import unittest
+
+import cv2
 import numpy as np
+
 from ocred.preprocessing import Preprocessor
 
 

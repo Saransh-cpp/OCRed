@@ -1,10 +1,12 @@
 import re
+
 import cv2
-import nltk
 import easyocr
+import nltk
 import pytesseract
 from gtts import gTTS
 from scipy import ndimage
+
 from ocred.preprocessing import Preprocessor
 
 
@@ -183,7 +185,7 @@ class OCR:
 
         # find date
         date_re = re.compile(
-            r"^([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])(\.|-|\/)([1-9]|0[1-9]|1[0-2])(\.|-|\/)([0-9][0-9]|19[0-9][0-9]|20[0-9][0-9])$",   # noqa
+            r"^([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])(\.|-|\/)([1-9]|0[1-9]|1[0-2])(\.|-|\/)([0-9][0-9]|19[0-9][0-9]|20[0-9][0-9])$",
         )
         date = list(filter(date_re.match, self.text_list))
 
@@ -222,7 +224,7 @@ class OCR:
         # of it
         try:
             price = re.findall(
-                r"(?:Rs\.?|INR|₹\.?|रे\.?)\s*(\d+(?:[.,]\d+)*)|(\d+(?:[.,]\d+)*)\s*(?:Rs\.?|INR)",  # noqa
+                r"(?:Rs\.?|INR|₹\.?|रे\.?)\s*(\d+(?:[.,]\d+)*)|(\d+(?:[.,]\d+)*)\s*(?:Rs\.?|INR)",
                 self.text,
             )
             price = list(map(float, price))
@@ -253,9 +255,7 @@ class OCR:
         return self.extracted_info
 
     def save_output(self):
-        """
-        Saves the extracted text in the `output.txt` file.
-        """
+        """Saves the extracted text in the `output.txt` file."""
         f = open("output.txt", "w", encoding="utf-8")
         f.write(self.text)
         f.close()

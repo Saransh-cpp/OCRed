@@ -1,8 +1,8 @@
-pytesseract>=0.3.8
-opencv-python==4.5.3.56
+easyocr>=1.4.1
 gTTS>=2.2.3
+nltk>=3.5
+numpy>=1.19.4
+opencv-python==4.5.3.56
+pytesseract>=0.3.8
 scikit-image>=0.18.3
 scipy>=1.5.4
-numpy>=1.19.4
-easyocr>=1.4.1
-nltk>=3.5

@@ -7,8 +7,7 @@ on:
   push:
   pull_request:
   schedule:
-    - cron: '0 7 * * *'
-
+    - cron: "0 7 * * *"
 
 concurrency:
   # Skip intermediate builds: always.
@@ -16,23 +15,22 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
 
-
 jobs:
   style:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Setup python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.9
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
 
-    - name: Check style
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install flake8
-        flake8 --max-line-length=89
+      - name: Check style
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install flake8
+          flake8 --max-line-length=89
   build:
     needs: style
     runs-on: ${{ matrix.os }}
@@ -43,38 +41,38 @@ jobs:
         python-version: ["3.7", "3.8", "3.9"]
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install OCRed
-      run: |
-        python -m pip install .
+      - name: Install OCRed
+        run: |
+          python -m pip install .
 
-    - name: Install Tesseract OCR Engine on Ubuntu
-      if: matrix.os == 'ubuntu-latest'
-      run: |
-        sudo apt-get update  
-        sudo apt-get install tesseract-ocr
+      - name: Install Tesseract OCR Engine on Ubuntu
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install tesseract-ocr
 
-    - name: Install Tesseract OCR Engine on MacOS
-      if: matrix.os == 'macos-latest'
-      run: |
-        brew update
-        brew install tesseract-lang
+      - name: Install Tesseract OCR Engine on MacOS
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew update
+          brew install tesseract-lang
 
-    - name: Install Tesseract OCR Engine on Windows
-      if: matrix.os == 'windows-latest'
-      run: |
-        vcpkg install tesseract:x64-windows
+      - name: Install Tesseract OCR Engine on Windows
+        if: matrix.os == 'windows-latest'
+        run: |
+          vcpkg install tesseract:x64-windows
 
-    - name: Run unit tests and generate coverage report
-      run: |
-        python -m pip install coverage
-        coverage run -m unittest -v
+      - name: Run unit tests and generate coverage report
+        run: |
+          python -m pip install coverage
+          coverage run -m unittest -v
 
-    - name: Upload coverage report
-      uses: codecov/codecov-action@v2.1.0
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v2.1.0

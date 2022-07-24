@@ -1,6 +1,7 @@
 import os
 import platform
 import unittest
+
 from ocred.ocr import OCR
 
 
@@ -10,7 +11,7 @@ class TestOCR(unittest.TestCase):
         self.path_real = "images/CosmosOne.jpg"
         self.path_sign_board = "images/signboard.jpg"
         self.path_invoice = "images/1146-receipt.jpg"
-        self.tesseract_path = r"D:\Saransh\Softwares\Tesseract-OCR\tesseract.exe"
+        self.tesseract_path = r"D:\Saransh\Software\Tesseract-OCR\tesseract.exe"
 
     def test_ocr_with_scanned_image(self):
 

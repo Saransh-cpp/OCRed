@@ -1,6 +1,6 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
-f = open("requirements.txt", "r")
+f = open("requirements.txt")
 install_requires = f.read().splitlines()
 f.close()
 
