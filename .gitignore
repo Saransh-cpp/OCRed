@@ -13,3 +13,4 @@ thick_font.png
 noise_free.png
 .coverage
 .env
+ocred/version.py
