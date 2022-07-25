@@ -15,7 +15,7 @@ Under a huge refactor.
 
 ## Installation
 
-1. Install Tesseract for your OS
+1. Install Tesseract for your OS and add it to PATH
 
 The installation guide is available [here](https://tesseract-ocr.github.io/tessdoc/Installation.html)
 
@@ -46,9 +46,6 @@ import ocred
 ocr = ocred.OCR(
     False, # is_scanned -> to preprocess the image
     "path/to/an/image", # path
-    r"D:\Saransh\Software\Tesseract-OCR\tesseract.exe", # tesseract_location for windows users
-    # r"/usr/bin/tesseract", # tesseract_location for linux users
-    # if not working, search for tesseract location using linux terminal command 'which tesseract'
 )
 ocr.ocr_meaningful_text(save_output=True)
 ocr.text_to_speech()
@@ -61,7 +58,6 @@ import ocred
 ocr = ocred.OCR(
     True, # is_scanned -> sign boards don't need to be preprocessed
     "path/to/an/image", # path
-    # sign board OCR doesn't use Tesseract
 )
 extracted_text = ocr.ocr_sparse_text()
 print(extracted_text)
@@ -74,7 +70,6 @@ import ocred
 ocr = ocred.OCR(
     True, # is_scanned -> invoices don't need to be preprocessed
     "path/to/an/image", # path
-    # invoice OCR doesn't use Tesseract
 )
 extracted_text = ocr.ocr_sparse_text()
 print(extracted_text)
