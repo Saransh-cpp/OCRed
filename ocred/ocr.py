@@ -27,6 +27,18 @@ class OCR:
         pre-processed before OCRing.
     path : str
         Path of the image to be used.
+
+    Examples
+    ========
+        >>> import sys
+        >>> sys.displayhook = lambda x: None
+        >>> import ocred
+        >>> ocr = ocred.OCR(
+        ...     False, # is_scanned -> to preprocess the image
+        ...     "./images/Page.png"
+        ... )
+        >>> ocr.ocr_meaningful_text(save_output=True)
+        >>> ocr.text_to_speech()
     """
 
     def __init__(self, preprocess, path, tesseract_location=None):
