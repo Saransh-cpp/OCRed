@@ -66,7 +66,7 @@ jobs:
           python -m pytest -ra --cov=ocred tests/
 
       - name: Run doctests
-        run: xdoctest ./src/vector/
+        run: xdoctest ./ocred/
 
       - name: Upload coverage report
         uses: codecov/codecov-action@v3.1.0
