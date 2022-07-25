@@ -11,8 +11,6 @@ write_to = "ocred/version.py"
 [tool.isort]
 profile = "black"
 
-ignore_missing_imports = true
-
 [tool.check-manifest]
 ignore = [
   ".*",
