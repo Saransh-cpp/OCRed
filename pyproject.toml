@@ -49,11 +49,13 @@ dynamic = [
 
 [project.optional-dependencies]
 dev = [
-    "coverage>=1",
+    "pytest-cov>=3.0.0",
+    "pytest>=6",
     "xdoctest>=1.0.0",
 ]
 test = [
-    "coverage>=1",
+    "pytest-cov>=3.0.0",
+    "pytest>=6",
     "xdoctest>=1.0.0",
 ]
 
@@ -65,6 +67,30 @@ Homepage = "https://github.com/Saransh-cpp/OCRed"
 [tool.hatch]
 version.source = "vcs"
 build.hooks.vcs.version-file = "ocred/version.py"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+xfail_strict = true
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+]
+testpaths = [
+    "tests",
+]
+markers = [
+    "slow",
+    "numba",
+    "awkward",
+    "dis",
+]
+log_cli_level = "DEBUG"
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning",
+    "ignore::UserWarning",
+]
 
 [tool.isort]
 profile = "black"

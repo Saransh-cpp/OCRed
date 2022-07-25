@@ -14,3 +14,4 @@ noise_free.png
 .coverage
 .env
 ocred/version.py
+.pytest_cache
