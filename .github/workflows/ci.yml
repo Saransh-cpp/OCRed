@@ -18,23 +18,19 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  style:
+  pre-commit:
     runs-on: ubuntu-latest
+    name: Check SDist
     steps:
       - uses: actions/checkout@v3
-
-      - name: Setup python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
-          python-version: 3.9
-
-      - name: Check style
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install flake8
-          flake8 --max-line-length=89
+          python-version: 3.x
+      - uses: pre-commit/action@v3.0.0
+        with:
+          extra_args: --hook-stage manual check-manifest
   build:
-    needs: style
+    needs: pre-commit
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false

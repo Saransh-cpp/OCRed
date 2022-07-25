@@ -1,0 +1,21 @@
+[build-system]
+requires = [
+    "setuptools>=42.0",
+    "setuptools_scm[toml]>=3.4"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+write_to = "ocred/version.py"
+
+[tool.isort]
+profile = "black"
+
+[tool.check-manifest]
+ignore = [
+  ".*",
+  "ocred/version.py",
+  "requirements.txt",
+  "images/*",
+  "ocred/*.py"
+]

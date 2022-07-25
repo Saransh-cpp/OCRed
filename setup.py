@@ -1,23 +1,17 @@
-from setuptools import find_packages, setup
+from setuptools import setup
 
-f = open("requirements.txt")
-install_requires = f.read().splitlines()
-f.close()
+extras = {
+    "test": [
+        "coverage>=1",  # migrate to pytest and pytest-cov
+        "xdoctest>=1.0.0",
+    ],
+    # "docs": [
+    # ],
+}
 
-classifiers = [
-    "Development Status :: 1 - Planning",
-    "Intended Audience :: Customer Service",
-    "Operating System :: OS Independent",
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3.9",
+extras["dev"] = [
+    # *extras["docs"],
+    *extras["test"],
 ]
 
-setup(
-    name="ocred",
-    version="0.1.0",
-    license="MIT",
-    description="Your text just got OCRed.",
-    packages=find_packages(include=["ocred"]),
-    classifiers=classifiers,
-    install_requires=install_requires,
-)
+setup(extras_require=extras)
