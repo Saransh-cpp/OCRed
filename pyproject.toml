@@ -17,5 +17,5 @@ ignore = [
   "ocred/version.py",
   "requirements.txt",
   "images/*",
-  "vector/*.py"
+  "ocred/*.py"
 ]
