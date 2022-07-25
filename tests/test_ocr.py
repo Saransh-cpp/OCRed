@@ -1,5 +1,4 @@
 import os
-import platform
 import unittest
 
 from ocred.ocr import OCR
@@ -11,22 +10,15 @@ class TestOCR(unittest.TestCase):
         self.path_real = "images/CosmosOne.jpg"
         self.path_sign_board = "images/signboard.jpg"
         self.path_invoice = "images/1146-receipt.jpg"
-        self.tesseract_path = r"D:\Saransh\Software\Tesseract-OCR\tesseract.exe"
 
     def test_ocr_with_scanned_image(self):
 
         ocr = OCR(
             False,
             self.path_scanned,
-            self.tesseract_path if platform.system() == "Windows" else None,
         )
 
         self.assertEqual(ocr.path, self.path_scanned)
-        self.assertIsNone(
-            ocr.tesseract_location
-        ) if platform.system() != "Windows" else self.assertEqual(
-            ocr.tesseract_location, self.tesseract_path
-        )
         self.assertFalse(ocr.preprocess)
 
         text = ocr.ocr_meaningful_text(save_output=True)
@@ -52,15 +44,9 @@ class TestOCR(unittest.TestCase):
         ocr = OCR(
             True,
             self.path_real,
-            self.tesseract_path if platform.system() == "Windows" else None,
         )
 
         self.assertEqual(ocr.path, "preprocessed.png")
-        self.assertIsNone(
-            ocr.tesseract_location
-        ) if platform.system() != "Windows" else self.assertEqual(
-            ocr.tesseract_location, self.tesseract_path
-        )
         self.assertTrue(ocr.preprocess)
 
         text = ocr.ocr_meaningful_text()

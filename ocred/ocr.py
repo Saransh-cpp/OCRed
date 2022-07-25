@@ -15,6 +15,8 @@ class OCR:
     Performs OCR on a given image, saves an image with boxes around the words, and
     converts the extracted text to an MP3 file.
 
+    Add Tesseract OCR's installation location in PATH for functions using it to work.
+
     Parameters
     ==========
     preprocess : bool
@@ -25,15 +27,11 @@ class OCR:
         pre-processed before OCRing.
     path : str
         Path of the image to be used.
-    tesseract_location : str (default = None)
-        Location of the executable file of Tesseract (usually used in Windows systems).
-        This is only required for OCRing books.
     """
 
     def __init__(self, preprocess, path, tesseract_location=None):
         self.path = path
         self.preprocess = preprocess
-        self.tesseract_location = tesseract_location
 
         if self.preprocess:
             preprocess = Preprocessor(self.path)
@@ -75,10 +73,6 @@ class OCR:
         text : str
             The extracted text.
         """
-        # specifying tesseract's installation path
-        if self.tesseract_location is not None:  # pragma: no cover
-            pytesseract.pytesseract.tesseract_cmd = self.tesseract_location
-
         # reading the image
         img = cv2.imread(self.path)
 
