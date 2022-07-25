@@ -15,4 +15,7 @@ profile = "black"
 ignore = [
   ".*",
   "ocred/version.py",
+  "requirements.txt",
+  "images/*",
+  "vector/*.py"
 ]
