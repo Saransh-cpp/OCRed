@@ -27,8 +27,7 @@ jobs:
         with:
           python-version: 3.x
       - uses: pre-commit/action@v3.0.0
-        with:
-          extra_args: --hook-stage manual check-manifest
+
   build:
     needs: pre-commit
     runs-on: ${{ matrix.os }}

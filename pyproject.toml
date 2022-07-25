@@ -1,21 +1,70 @@
 [build-system]
 requires = [
-    "setuptools>=42.0",
-    "setuptools_scm[toml]>=3.4"
+    "hatchling",
+    "hatch-vcs"
 ]
-build-backend = "setuptools.build_meta"
+build-backend = "hatchling.build"
 
-[tool.setuptools_scm]
-write_to = "ocred/version.py"
+[project]
+name = "OCRed"
+description = "OCR wrapper library for direct users (not researchers)"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.7"
+authors = [
+    { name = "Saransh Chopra", email = "saransh0701@gmail.com" },
+]
+keywords = [
+    "Computer Vision",
+    "Intended for direct users",
+    "OCR",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Customer Service",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "easyocr>=1.4.1",
+    "gTTS>=2.2.3",
+    "nltk>=3.5",
+    "numpy>=1.19.4",
+    "opencv-python==4.5.3.56",
+    "pytesseract>=0.3.8",
+    "scikit-image>=0.18.3",
+    "scipy>=1.5.4",
+]
+dynamic = [
+    "version",
+]
+
+[project.optional-dependencies]
+dev = [
+    "coverage>=1",
+    "xdoctest>=1.0.0",
+]
+test = [
+    "coverage>=1",
+    "xdoctest>=1.0.0",
+]
+
+[project.urls]
+"Bug Tracker" = "https://github.com/Saransh-cpp/OCRed/issues"
+Discussions = "https://github.com/Saransh-cpp/OCRed/discussions"
+Homepage = "https://github.com/Saransh-cpp/OCRed"
+
+[tool.hatch]
+version.source = "vcs"
+build.hooks.vcs.version-file = "ocred/version.py"
 
 [tool.isort]
 profile = "black"
-
-[tool.check-manifest]
-ignore = [
-  ".*",
-  "ocred/version.py",
-  "requirements.txt",
-  "images/*",
-  "ocred/*.py"
-]
