@@ -1,6 +1,6 @@
 # Installation
 
-Follow the following steps to install `ocred` locally.
+Follow the steps below to install `ocred` locally.
 
 ## Create a virtual environment
 
@@ -14,23 +14,23 @@ python -m venv env
 
 ## Install OCRed
 
-1. Install Tesseract for your OS and add it to PATH
+Install Tesseract for your OS and add it to PATH
 
 The installation guide is available [here](https://tesseract-ocr.github.io/tessdoc/Installation.html)
 
-2. Clone this repository
+Clone this repository
 
 ```bash
 git clone https://github.com/Saransh-cpp/OCRed
 ```
 
-3. Change directory
+Change directory
 
 ```bash
 cd OCRed
 ```
 
-4. Install the package
+Install the package
 
 ```bash
 python -m pip install -e .
