@@ -52,6 +52,13 @@ dev = [
     "pytest-cov>=3.0.0",
     "pytest>=6",
     "xdoctest>=1.0.0",
+    "mkdocs-material>=8.3.9",
+    "mkdocstrings-python>=0.7.1",
+]
+docs = [
+    "mkdocstrings-python-legacy>=0.2.3",
+    "mkdocs-material>=8.3.9",
+    "mkdocstrings-python>=0.7.1",
 ]
 test = [
     "pytest-cov>=3.0.0",
