@@ -10,13 +10,11 @@ class Preprocessor:
     """
     Preprocesses an image and makes it ready for OCR.
 
-    Parameters
-    ==========
-    path : str
-        Path of the image.
+    Args:
+        path (str):
+            Path of the image.
 
-    Examples
-    ========
+    Examples:
         >>> import cv2
         >>> from scipy import ndimage
         >>> from ocred import Preprocessor
@@ -46,18 +44,17 @@ class Preprocessor:
         """
         Removes noise from an image.
 
-        Parameters
-        ==========
-        image : array (default = None (image located at `path`))
-            Pass an image to be made noise free.
-        save : bool (default = False)
-            Saves the resultant image.
-        iterations : int (default = 1)
-            Number of times the image is processed.
+        Args:
+            image (array (default = image located at `path`)):
+                Pass an image to be made noise free.
+            save (bool):
+                Saves the resultant image.
+            iterations (int):
+                Number of times the image is processed.
 
-        Returns
-        =======
-        noise free image (array)
+        Returns:
+            noise_free_image (array):
+                The noise free image.
         """
         if image is None:
             image = cv2.imread(self.path)
@@ -78,18 +75,17 @@ class Preprocessor:
         """
         Thickens the ink of an image.
 
-        Parameters
-        ==========
-        image : array (default = None (image located at `path`))
-            Pass an image to be thickened.
-        save : bool (default = False)
-            Saves the resultant image.
-        iterations : int (default = 1)
-            Number of times the image is processed.
+        Args:
+            image (array (default = image located at `path`)):
+                Pass an image to be thickened.
+            save (bool):
+                Saves the resultant image.
+            iterations (int):
+                Number of times the image is processed.
 
-        Returns
-        =======
-        thickened image (array)
+        Returns:
+            thickened_image (array):
+                The thickened image.
         """
         if image is None:
             image = cv2.imread(self.path)
@@ -108,16 +104,15 @@ class Preprocessor:
         """
         Transforms an image/document view into B&W view (proper scanned colour scheme).
 
-        Parameters
-        ==========
-        image : array (default = None (image located at `path`))
-            Pass an image to be scanned.
-        save : bool (default = False)
-            Saves the image.
+        Args:
+            image (array (default = image located at `path`)):
+                Pass an image to be scanned.
+            save (bool):
+                Saves the image.
 
-        Returns
-        =======
-        scanned image (array)
+        Returns:
+            scanned_image (array):
+                The scanned image.
         """
         # apply threshold to "scannify" it
         if image is None:
@@ -138,16 +133,15 @@ class Preprocessor:
         """
         Rotates an image for a face-on view (view from the top).
 
-        Parameters
-        ==========
-        image : array (default = None (image located at `path`))
-            Pass an image to be rotated.
-        save : bool (default = False)
-            Saves the rotated image.
+        Args:
+            image (array (default = image located at `path`)):
+                Pass an image to be rotated.
+            save (bool):
+                Saves the rotated image.
 
-        Returns
-        =======
-        rotated image (array)
+        Returns:
+            rotated_image (array):
+                The rotated image.
         """
         # read the original image
         if image is None:

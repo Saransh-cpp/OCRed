@@ -17,19 +17,19 @@ class OCR:
 
     Add Tesseract OCR's installation location in PATH for functions using it to work.
 
-    Parameters
-    ==========
-    preprocess : bool
-        Set True if the image is a real life photo of some large meaningful (page of a
-        book). Usually set to False when OCRing using `ocr_meaningful_text` to
-        preprocess the image.
-        Set False if the image is a scanned photo (an e-book). It will not be
-        pre-processed before OCRing.
-    path : str
-        Path of the image to be used.
+    Args:
 
-    Examples
-    ========
+        preprocess (bool):
+            Set True if the image is a real life photo of some large meaningful (page of a
+            book). Usually set to False when OCRing using `ocr_meaningful_text` to
+            preprocess the image.
+            Set False if the image is a scanned photo (an e-book). It will not be
+            pre-processed before OCRing.
+        path (str):
+            Path of the image to be used.
+
+    Examples:
+
         >>> import sys
         >>> sys.displayhook = lambda x: None
         >>> import ocred
@@ -75,15 +75,13 @@ class OCR:
         Performs OCR on long meaningful text documents and saves the image with boxes
         around the words. For example - books, PDFs etc.
 
-        Parameters
-        ==========
-        save_output : bool (default = False)
-            Saves the text to `output.txt` file.
+        Args:
+            save_output (bool):
+                Saves the text to `output.txt` file.
 
-        Returns
-        =======
-        text : str
-            The extracted text.
+        Returns:
+            text (str):
+                The extracted text.
         """
         # reading the image
         img = cv2.imread(self.path)
@@ -122,22 +120,20 @@ class OCR:
         proper/meaningful sentences, or if there are very less meaningful sentences,
         for example - bills, sign-boards etc.
 
-        Parameters
-        ==========
-        languages : list (default = ["en", "hi"] where "en" = English and "hi" = Hindi)
-            A list of languages that the signboard possible has.
-            Note: Provide only the languages that are present in the image, adding
-            additional languages misguides the model.
-        decoder : str (default = "greedy)
-            If the document has a larger number of meaningful sentences then use
-            "beamsearch". For most of the cases "greedy" works very well.
-        save_output : bool (default = False)
-            Saves the text to `output.txt` file.
+        Args:
+            languages (list (default = ["en", "hi"] where "en" = English and "hi" = Hindi)):
+                A list of languages that the signboard possible has.
+                Note: Provide only the languages that are present in the image, adding
+                additional languages misguides the model.
+            decoder (str):
+                If the document has a larger number of meaningful sentences then use
+                "beamsearch". For most of the cases "greedy" works very well.
+            save_output (bool):
+                Saves the text to `output.txt` file.
 
-        Returns
-        =======
-        text : str
-            The extracted text.
+        Returns:
+            text (str):
+                The extracted text.
         """
         self.text = ""
 
@@ -177,10 +173,9 @@ class OCR:
         This method processes the extracted text from invoices, and returns some useful
         information.
 
-        Returns
-        =======
-        extracted_info : dict
-            The extracted information.
+        Returns:
+            extracted_info (dict):
+                The extracted information.
         """
         nltk.download("punkt")
         nltk.download("wordnet")
@@ -270,10 +265,9 @@ class OCR:
         """
         Converts the extracted text to speech and save it as an MP3 file.
 
-        Parameters
-        ==========
-        lang : str (default = "en" where "en" is English)
-            Language of the processed text.
+        Args:
+            lang (str (default = "en" where "en" is English)):
+                Language of the processed text.
         """
         speech = gTTS(self.text, lang="en", tld="com")
         speech.save("audio.mp3")

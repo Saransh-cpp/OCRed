@@ -15,3 +15,4 @@ noise_free.png
 .env
 ocred/version.py
 .pytest_cache
+site/
