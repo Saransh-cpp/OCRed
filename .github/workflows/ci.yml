@@ -8,12 +8,10 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
-  schedule:
-    - cron: "0 7 * * *"
 
 concurrency:
   # Skip intermediate builds: always.
-  # Cancel intermediate builds: only if it is a pull request build.
+  # Cancel intermediate builds: always.
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
