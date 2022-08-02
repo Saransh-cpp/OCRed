@@ -1,7 +1,9 @@
 import math
+from typing import Optional, Tuple, Union
 
 import cv2
 import numpy as np
+import numpy.typing as npt
 from scipy import ndimage
 from skimage.filters import threshold_local
 
@@ -37,16 +39,29 @@ class Preprocessor:
         True
     """
 
-    def __init__(self, path):
-        self.path = path
+    def __init__(
+        self,
+        image: Union[str, Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]],
+    ) -> None:
+        if isinstance(image, str):
+            self.img = cv2.imread(image)
+        else:
+            self.img = image
 
-    def remove_noise(self, image=None, save=False, iterations=1):
+    def remove_noise(
+        self,
+        *,
+        save: Optional[bool] = False,
+        inplace: Optional[bool] = False,
+        iterations: Optional[int] = 1,
+        overriden_image: Union[
+            npt.NDArray[np.int64], npt.NDArray[np.float64], None
+        ] = None
+    ) -> Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]:
         """
         Removes noise from an image.
 
         Args:
-            image (array (default = image located at `path`)):
-                Pass an image to be made noise free.
             save (bool):
                 Saves the resultant image.
             iterations (int):
@@ -56,28 +71,37 @@ class Preprocessor:
             noise_free_image (array):
                 The noise free image.
         """
-        if image is None:
-            image = cv2.imread(self.path)
+        if not inplace:
+            img = self.img.copy() if overriden_image is None else overriden_image.copy()
+        else:
+            img = self.img if overriden_image is None else overriden_image
 
+        kernel: Union[npt.NDArray[np.int64]] = np.ones((1, 1), np.uint8)
+        img = cv2.dilate(img, kernel, iterations=iterations)
         kernel = np.ones((1, 1), np.uint8)
-        image = cv2.dilate(image, kernel, iterations=iterations)
-        kernel = np.ones((1, 1), np.uint8)
-        image = cv2.erode(image, kernel, iterations=iterations)
-        image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
-        image = cv2.medianBlur(image, 3)
+        img = cv2.erode(img, kernel, iterations=iterations)
+        img = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
+        img = cv2.medianBlur(img, 3)
 
         if save:
-            cv2.imwrite("noise_free.png", image)
+            cv2.imwrite("noise_free.png", img)
 
-        return image
+        return self.img
 
-    def thicken_font(self, image=None, save=False, iterations=2):
+    def thicken_font(
+        self,
+        *,
+        save: Optional[bool] = False,
+        inplace: Optional[bool] = False,
+        iterations: Optional[int] = 2,
+        overriden_image: Union[
+            npt.NDArray[np.int64], npt.NDArray[np.float64], None
+        ] = None
+    ) -> Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]:
         """
         Thickens the ink of an image.
 
         Args:
-            image (array (default = image located at `path`)):
-                Pass an image to be thickened.
             save (bool):
                 Saves the resultant image.
             iterations (int):
@@ -87,20 +111,30 @@ class Preprocessor:
             thickened_image (array):
                 The thickened image.
         """
-        if image is None:
-            image = cv2.imread(self.path)
+        if not inplace:
+            img = self.img.copy() if overriden_image is None else overriden_image.copy()
+        else:
+            img = self.img if overriden_image is None else overriden_image
 
-        image = cv2.bitwise_not(image)
-        kernel = np.ones((2, 2), np.uint8)
-        image = cv2.dilate(image, kernel, iterations=iterations)
-        image = cv2.bitwise_not(image)
+        img = cv2.bitwise_not(img)
+        kernel: Union[npt.NDArray[np.int64]] = np.ones((2, 2), np.uint8)
+        img = cv2.dilate(img, kernel, iterations=iterations)
+        img = cv2.bitwise_not(img)
 
         if save:
-            cv2.imwrite("thick_font.png", image)
+            cv2.imwrite("thick_font.png", img)
 
-        return image
+        return img
 
-    def scan(self, image=None, save=False):
+    def scan(
+        self,
+        *,
+        save: Optional[bool] = False,
+        inplace: Optional[bool] = False,
+        overriden_image: Union[
+            npt.NDArray[np.int64], npt.NDArray[np.float64], None
+        ] = None
+    ) -> Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]:
         """
         Transforms an image/document view into B&W view (proper scanned colour scheme).
 
@@ -114,22 +148,29 @@ class Preprocessor:
             scanned_image (array):
                 The scanned image.
         """
-        # apply threshold to "scannify" it
-        if image is None:
-            image = cv2.imread(self.path)
+        if not inplace:
+            img = self.img.copy() if overriden_image is None else overriden_image.copy()
+        else:
+            img = self.img if overriden_image is None else overriden_image
 
-        # convert our image to grayscale, apply threshold
-        # to create scanned paper effect
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        thr = threshold_local(image, 11, offset=10, method="gaussian")
-        image = (image > thr).astype("uint8") * 255
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        thr = threshold_local(img, 11, offset=10, method="gaussian")
+        img = (img > thr).astype("uint8") * 255
 
         if save:
-            cv2.imwrite("scanned.png", image)
+            cv2.imwrite("scanned.png", img)
 
-        return image
+        return img
 
-    def rotate(self, image=None, save=False):
+    def rotate(
+        self,
+        *,
+        save: Optional[bool] = False,
+        inplace: Optional[bool] = False,
+        overriden_image: Union[
+            npt.NDArray[np.int64], npt.NDArray[np.float64], None
+        ] = None
+    ) -> Tuple[Union[npt.NDArray[np.int64], npt.NDArray[np.float64]], float]:
         """
         Rotates an image for a face-on view (view from the top).
 
@@ -143,11 +184,12 @@ class Preprocessor:
             rotated_image (array):
                 The rotated image.
         """
-        # read the original image
-        if image is None:
-            image = cv2.imread(self.path)
+        if not inplace:
+            img = self.img.copy() if overriden_image is None else overriden_image.copy()
+        else:
+            img = self.img if overriden_image is None else overriden_image
 
-        img_edges = cv2.Canny(image, 100, 100, apertureSize=3)
+        img_edges = cv2.Canny(img, 100, 100, apertureSize=3)
         lines = cv2.HoughLinesP(
             img_edges,
             rho=1,
@@ -157,20 +199,15 @@ class Preprocessor:
             maxLineGap=10,
         )
 
-        # calculate all the angles:
         angles = []
         for [[x1, y1, x2, y2]] in lines:
-            # drawing Hough lines
             angle = math.degrees(math.atan2(y2 - y1, x2 - x1))
             angles.append(angle)
 
-        # median angle
-        median_angle = np.median(angles)
-        # actual rotate
-        image = ndimage.rotate(image, median_angle)
+        median_angle = float(np.median(angles))
+        img = ndimage.rotate(img, median_angle)
 
         if save:
-            # save the image
-            cv2.imwrite("rotated.png", image)
+            cv2.imwrite("rotated.png", img)
 
-        return image, median_angle
+        return img, median_angle
