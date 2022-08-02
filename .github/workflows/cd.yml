@@ -1,0 +1,55 @@
+name: CD
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Deployment target. Can be "pypi" or "testpypi"'
+        default: "pypi"
+  release:
+    types:
+      - published
+
+jobs:
+  dist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Build SDist and wheel
+        run: pipx run build
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: dist/*
+
+      - name: Check metadata
+        run: pipx run twine check dist/*
+
+  publish:
+    needs: [dist]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' && github.event.action == 'published'
+
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: artifact
+          path: dist
+
+      - name: Publish on PyPI
+        if: github.event.inputs.target == 'pypi'
+        uses: pypa/gh-action-pypi-publish@v1.5.1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
+
+      - name: Publish on TestPyPI
+        if: github.event.inputs.target == 'testpypi'
+        uses: pypa/gh-action-pypi-publish@v1.5.1
+        with:
+          user: __token__
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          repository_url: https://test.pypi.org/legacy/
