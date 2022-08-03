@@ -52,4 +52,4 @@ cd OCRed
 python -m pip install -e ".[dev]"
 ```
 
-Feel free to read our [Developer Guide]() for more information on developing `OCRed`.
+Feel free to read our [Contributing Guide](https://github.com/Saransh-cpp/OCRed/blob/main/CONTRIBUTING.md) for more information on developing `OCRed`.

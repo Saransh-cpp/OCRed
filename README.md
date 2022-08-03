@@ -145,4 +145,4 @@ organisms of our globe, including hydrogen, sodiurn, magnesiuia, and iron. May i
 
 ## Contributing
 
-If you want to contribute to `OCRed` (thanks!), please have a look at our [Developer Guide]().
+If you want to contribute to `OCRed` (thanks!), please have a look at our [Contributing Guide](https://github.com/Saransh-cpp/OCRed/blob/main/CONTRIBUTING.md).
