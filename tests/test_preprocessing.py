@@ -10,7 +10,7 @@ path = "images/CosmosOne.jpg"
 
 def test_scan():
     pre = Preprocessor(path)
-    assert pre.path == path
+    assert isinstance(pre.img, np.ndarray)
 
     img = pre.scan()
     assert isinstance(img, np.ndarray)
@@ -23,13 +23,13 @@ def test_scan():
 
     img = cv2.imread(path)
 
-    img = pre.scan(image=img)
+    img = pre.scan(overriden_image=img)
     assert isinstance(img, np.ndarray)
 
 
 def test_rotate():
     pre = Preprocessor(path)
-    assert pre.path == path
+    assert isinstance(pre.img, np.ndarray)
 
     img, median_angle = pre.rotate()
     assert isinstance(median_angle, float)
@@ -42,8 +42,8 @@ def test_rotate():
 
     os.remove("rotated.png")
 
-    img, median_angle = pre.rotate(image=img)
-    img1, median_angle = pre.rotate(image=img)
+    img, median_angle = pre.rotate(overriden_image=img)
+    img1, median_angle = pre.rotate(overriden_image=img)
     assert isinstance(median_angle, float)
     assert isinstance(img, np.ndarray)
     assert isinstance(img1, np.ndarray)
@@ -52,7 +52,7 @@ def test_rotate():
 
 def test_remove_noise():
     pre = Preprocessor(path)
-    assert pre.path == path
+    assert isinstance(pre.img, np.ndarray)
 
     img = pre.remove_noise()
     assert isinstance(img, np.ndarray)
@@ -63,13 +63,13 @@ def test_remove_noise():
 
     os.remove("noise_free.png")
 
-    img = pre.remove_noise(image=img)
+    img = pre.remove_noise(overriden_image=img)
     assert isinstance(img, np.ndarray)
 
 
 def test_thicken_font():
     pre = Preprocessor(path)
-    assert pre.path == path
+    assert isinstance(pre.img, np.ndarray)
 
     img = pre.thicken_font()
     assert isinstance(img, np.ndarray)
@@ -80,5 +80,5 @@ def test_thicken_font():
 
     os.remove("thick_font.png")
 
-    img = pre.thicken_font(image=img)
+    img = pre.thicken_font(overriden_image=img)
     assert isinstance(img, np.ndarray)
