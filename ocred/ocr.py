@@ -20,13 +20,15 @@ class OCR:
 
     Args:
 
-        preprocess (bool):
+        preprocess:
             Set True if the image is a real life photo of some large meaningful (page of a
             book). Usually set to False when OCRing using `ocr_meaningful_text` to
             preprocess the image.
             Set False if the image is a scanned photo (an e-book). It will not be
             pre-processed before OCRing.
-        path (str):
+            All the preprocessing is performed inplace to maintain efficiency. Use the
+            `Preprocessor` class manually to have more control!
+        path:
             Path of the image to be used.
 
     Examples:
@@ -83,11 +85,11 @@ class OCR:
         around the words. For example - books, PDFs etc.
 
         Args:
-            save_output (bool):
+            save_output:
                 Saves the text to `output.txt` file.
 
         Returns:
-            text (str):
+            text:
                 The extracted text.
         """
         # reading the image
@@ -132,18 +134,18 @@ class OCR:
         for example - bills, sign-boards etc.
 
         Args:
-            languages (list (default = ["en", "hi"] where "en" = English and "hi" = Hindi)):
+            languages:
                 A list of languages that the signboard possible has.
                 Note: Provide only the languages that are present in the image, adding
                 additional languages misguides the model.
-            decoder (str):
+            decoder:
                 If the document has a larger number of meaningful sentences then use
                 "beamsearch". For most of the cases "greedy" works very well.
-            save_output (bool):
+            save_output:
                 Saves the text to `output.txt` file.
 
         Returns:
-            text (str):
+            text:
                 The extracted text.
         """
         self.text = ""
@@ -185,7 +187,7 @@ class OCR:
         information.
 
         Returns:
-            extracted_info (dict):
+            extracted_info:
                 The extracted information.
         """
         nltk.download("punkt")
@@ -277,7 +279,7 @@ class OCR:
         Converts the extracted text to speech and save it as an MP3 file.
 
         Args:
-            lang (str (default = "en" where "en" is English)):
+            lang:
                 Language of the processed text.
         """
         speech = gTTS(self.text, lang="en", tld="com")

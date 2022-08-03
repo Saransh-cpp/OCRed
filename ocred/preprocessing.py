@@ -13,29 +13,35 @@ class Preprocessor:
     Preprocesses an image and makes it ready for OCR.
 
     Args:
-        path (str):
-            Path of the image.
+        image:
+            Path of the image or a numpy array.
 
     Examples:
         >>> import cv2
         >>> from scipy import ndimage
         >>> from ocred import Preprocessor
         >>> # scan the image and copy the scanned image
-        >>> preprocess = Preprocessor("images/CosmosTwo.jpg")
+        >>> preprocessed = Preprocessor("images/CosmosTwo.jpg")
         >>> # scan the image and copy the scanned image
-        >>> scanned = preprocess.scan()
+        >>> scanned = preprocessed.scan(inplace=True)
         >>> orig = scanned.copy()
         >>> # remove noise
-        >>> noise_free = preprocess.remove_noise(scanned)
+        ... noise_free = preprocessed.remove_noise(
+        ...     inplace=True, overriden_image=scanned
+        ... )
         >>> # thicken the ink to draw Hough lines better
-        >>> thickened = preprocess.thicken_font(noise_free)
+        >>> thickened = preprocessed.thicken_font(
+        ...     inplace=True, overriden_image=noise_free
+        ... )
         >>> # calculate the median angle of all the Hough lines
-        >>> _, median_angle = preprocess.rotate(thickened)
+        >>> _, median_angle = preprocessed.rotate(
+        ...     inplace=True, overriden_image=thickened
+        ... )
         >>> # rotate the original scanned image
-        >>> preprocessed = ndimage.rotate(orig, median_angle)
+        >>> rotated = ndimage.rotate(orig, median_angle)
         >>> # remove noise again
-        >>> preprocessed = preprocess.remove_noise(preprocessed)
-        >>> cv2.imwrite("preprocessed.png", preprocessed)
+        >>> final_img = preprocessed.remove_noise(inplace=True, overriden_image=rotated)
+        >>> cv2.imwrite("preprocessed.png", final_img)
         True
     """
 
@@ -62,13 +68,17 @@ class Preprocessor:
         Removes noise from an image.
 
         Args:
-            save (bool):
+            save:
                 Saves the resultant image.
-            iterations (int):
+            inplace:
+                Edits the image inplace.
+            iterations:
                 Number of times the image is processed.
+            overriden_image:
+                Overrides the image passes through the constructor.
 
         Returns:
-            noise_free_image (array):
+            noise_free_image:
                 The noise free image.
         """
         if not inplace:
@@ -102,13 +112,17 @@ class Preprocessor:
         Thickens the ink of an image.
 
         Args:
-            save (bool):
+            save:
                 Saves the resultant image.
-            iterations (int):
+            inplace:
+                Edits the image inplace.
+            iterations:
                 Number of times the image is processed.
+            overriden_image:
+                Overrides the image passes through the constructor.
 
         Returns:
-            thickened_image (array):
+            thickened_image:
                 The thickened image.
         """
         if not inplace:
@@ -139,13 +153,15 @@ class Preprocessor:
         Transforms an image/document view into B&W view (proper scanned colour scheme).
 
         Args:
-            image (array (default = image located at `path`)):
-                Pass an image to be scanned.
-            save (bool):
-                Saves the image.
+            save:
+                Saves the resultant image.
+            inplace:
+                Edits the image inplace.
+            overriden_image:
+                Overrides the image passes through the constructor.
 
         Returns:
-            scanned_image (array):
+            scanned_image:
                 The scanned image.
         """
         if not inplace:
@@ -175,14 +191,18 @@ class Preprocessor:
         Rotates an image for a face-on view (view from the top).
 
         Args:
-            image (array (default = image located at `path`)):
-                Pass an image to be rotated.
-            save (bool):
-                Saves the rotated image.
+            save:
+                Saves the resultant image.
+            inplace:
+                Edits the image inplace.
+            overriden_image:
+                Overrides the image passes through the constructor.
 
         Returns:
-            rotated_image (array):
+            rotated_image:
                 The rotated image.
+            median_angle:
+                The angly by which it is rotated.
         """
         if not inplace:
             img = self.img.copy() if overriden_image is None else overriden_image.copy()
