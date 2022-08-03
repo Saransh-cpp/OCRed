@@ -39,14 +39,14 @@ jobs:
           path: dist
 
       - name: Publish on PyPI
-        if: github.event.inputs.target == 'pypi' or (github.event_name == 'release' && github.event.action == 'published')
+        if: github.event.inputs.target == 'pypi' || (github.event_name == 'release' && github.event.action == 'published')
         uses: pypa/gh-action-pypi-publish@v1.5.1
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
 
       - name: Publish on TestPyPI
-        if: github.event.inputs.target == 'testpypi' or (github.event_name == 'release' && github.event.action == 'published')
+        if: github.event.inputs.target == 'testpypi' || (github.event_name == 'release' && github.event.action == 'published')
         uses: pypa/gh-action-pypi-publish@v1.5.1
         with:
           user: __token__
