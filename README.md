@@ -6,8 +6,8 @@
 [![codecov](https://codecov.io/gh/Saransh-cpp/OCRed/branch/main/graph/badge.svg?token=L6ObHKhaZ7)](https://codecov.io/gh/Saransh-cpp/OCRed)
 [![discussion](https://img.shields.io/static/v1?label=Discussions&message=Ask&color=blue&logo=github)](https://github.com/Saransh-cpp/OCRed/discussions)
 
-[![black](https://img.shields.io/pypi/pyversions/ocred)](https://pypi.org/project/ocred/)
-[![black](https://badge.fury.io/py/ocred.svg)](https://pypi.org/project/ocred/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/ocred)](https://pypi.org/project/ocred/)
+[![Package Version](https://badge.fury.io/py/ocred.svg)](https://pypi.org/project/ocred/)
 [![PyPI Downloads](https://pepy.tech/badge/ocred)](https://pepy.tech/project/ocred)
 ![License](https://img.shields.io/github/license/Saransh-cpp/OCRed?color=blue)
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
