@@ -16,3 +16,5 @@ noise_free.png
 ocred/version.py
 .pytest_cache
 site/
+.nox/
+.mypy_cache/
