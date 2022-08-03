@@ -42,11 +42,6 @@ repos:
         args: [--show-error-codes]
         additional_dependencies:
           - numpy==1.22.0
-          - easyocr
-          - scipy
-          - gtts
-          - nltk
-          - pytesseract
           - opencv-python
           - packaging
 
