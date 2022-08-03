@@ -8,11 +8,15 @@
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 ![GitHub](https://img.shields.io/github/license/Saransh-cpp/OCRed?color=blue)
 
-Under a huge refactor.
+`OCRed` (pronounced as _OCR'd_) provides clever, simple, and intuitive wrapper functionalities for OCRing specific text material. You don't want to learn `OCR` or the libraries that will help you perform `OCR`, but you need to `OCR` something? This friendly neighborhood library hides all of that stuff under simple functions like `ocr_meaningful_text()`.
+
+In other words, instead of manual preprocessing, looking for an OCR library, learning the library, then finally getting what you were looking for, use `OCRed` instead.
+
+On the other hand, if you want to learn `OCR` and use the famous `OCR` libraries by yourself, then this library is not for you. But, it still can be a good start for your journey!
 
 ## Structure
 
-`OCR` is performed using the [`OCR`](https://github.com/Saransh-cpp/OCRed/blob/main/ocred/ocr.py) class and preprocessing of an image is performed using the [`Preprocessor`](https://github.com/Saransh-cpp/OCRed/blob/main/ocred/preprocessing.py) class. All the details are available in the docstrings.
+`OCR` is performed using the [`OCR`](https://github.com/Saransh-cpp/OCRed/blob/main/ocred/ocr.py) class and preprocessing of an image is performed using the [`Preprocessor`](https://github.com/Saransh-cpp/OCRed/blob/main/ocred/preprocessing.py) class. All the details are available in the [documentation](https://ocred.readthedocs.io/en/latest/).
 
 ## Installation
 
@@ -20,22 +24,12 @@ Under a huge refactor.
 
 The installation guide is available [here](https://tesseract-ocr.github.io/tessdoc/Installation.html)
 
-2. Clone this repository
+2. Use `pip` magic
+
+`OCRed` uses modern `Python` packaging and can be installed using `pip` -
 
 ```
-git clone https://github.com/Saransh-cpp/OCRed
-```
-
-3. Change directory
-
-```
-cd OCRed
-```
-
-4. Install the package
-
-```
-python -m pip install -e .
+python -m pip install ocred
 ```
 
 ## Usage example
@@ -122,7 +116,7 @@ The tests are present in the `tests` directory. New tests must be added with any
 To run the tests -
 
 ```
-python -m unittest -v
+pytest
 ```
 
 ## Some examples
@@ -148,3 +142,7 @@ Preface  This book deals with computer architecture as well as computer organiza
 ```
 organisms of our globe, including hydrogen, sodiurn, magnesiuia, and iron. May it not be thai, at least, the brighter stars are like our Sun, the upholding and energizing centres of systems of worlds, adapted to be the abode of living beings?  — William Hugeins, 1865  All my life I have wondered about the possibility of life elsewhere. What would it be like? Of what would it be made? All living things on our planet are constructed of organic molecules ~ complex microscopic architectures in which the carbon atom plays a central role. There was once a time before life, when the Earth was barren and utterly desolate. Our world is now overflowing with life. How did it come about? How, in the absence of life, were carbon-based organic molecules made? How did the first living things arise? How did life evolve to produce beings as elaborate and complex as we, able to explore the mystery of Our Own origins? And on ihe countless other planets that many circle other suns, is there life also? Is extraterrestrial life, if it exists, based on the same organic molecules as life on Earth? Do the beings of other worlds look much like life on Earth? Or are they stunningly different — other adaptations to other environments? What else is possible? The nature of life on Earth and the search for life elsewhere are two sides of the sarne question — the search for who we are.  In the great dark between the stars there are clouds of gas and dust and organic matter. Dozens of different kinds of organic molecules have been found there by radio telescopes. The abundance of these molecules suggests that the stuff of life is everywhere. Perhaps the origin and evolution of life is, given enough time, a cosmic inevitability. On some of the billions of planets in the Milky Way Galaxy, life may never arise. On others, it May arise and die out, or never evolve beyond its simplest forms. And on some small fraction of worlds there may 35
 ```
+
+## Contributing
+
+If you want to contribute to `OCRed` (thanks!), please have a look at our [Developer Guide]().
