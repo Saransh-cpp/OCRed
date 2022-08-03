@@ -85,28 +85,34 @@ import cv2
 from scipy import ndimage
 from ocred import Preprocessor
 
-preprocess = Preprocessor("path/to/an/image")
+preprocessed = Preprocessor("path/to/image")
 
 # scan the image and copy the scanned image
-scanned = preprocess.scan()
+scanned = preprocessed.scan(inplace=True)
 orig = scanned.copy()
 
 # remove noise
-noise_free = preprocess.remove_noise(scanned)
+noise_free = preprocessed.remove_noise(
+    inplace=True, overriden_image=scanned
+)
 
 # thicken the ink to draw Hough lines better
-thickened = preprocess.thicken_font(noise_free)
+thickened = preprocessed.thicken_font(
+    inplace=True, overriden_image=noise_free
+)
 
 # calculate the median angle of all the Hough lines
-_, median_angle = preprocess.rotate(thickened)
+_, median_angle = preprocessed.rotate(
+    inplace=True, overriden_image=thickened
+)
 
 # rotate the original scanned image
-preprocessed = ndimage.rotate(orig, median_angle)
+rotated = ndimage.rotate(orig, median_angle)
 
 # remove noise again
-preprocessed = preprocess.remove_noise(preprocessed)
+final_img = preprocessed.remove_noise(inplace=True, overriden_image=rotated)
 
-cv2.imwrite("preprocessed.png", preprocessed)
+cv2.imwrite("preprocessed.png", final_img)
 ```
 
 ## Testing

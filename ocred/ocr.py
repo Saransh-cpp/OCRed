@@ -1,4 +1,5 @@
 import re
+from typing import Any, Dict, List, Optional, Union
 
 import cv2
 import easyocr
@@ -19,13 +20,15 @@ class OCR:
 
     Args:
 
-        preprocess (bool):
+        preprocess:
             Set True if the image is a real life photo of some large meaningful (page of a
             book). Usually set to False when OCRing using `ocr_meaningful_text` to
             preprocess the image.
             Set False if the image is a scanned photo (an e-book). It will not be
             pre-processed before OCRing.
-        path (str):
+            All the preprocessing is performed inplace to maintain efficiency. Use the
+            `Preprocessor` class manually to have more control!
+        path:
             Path of the image to be used.
 
     Examples:
@@ -41,46 +44,52 @@ class OCR:
         >>> ocr.text_to_speech()
     """
 
-    def __init__(self, preprocess, path, tesseract_location=None):
+    def __init__(self, preprocess: bool, path: str) -> None:
         self.path = path
         self.preprocess = preprocess
 
         if self.preprocess:
-            preprocess = Preprocessor(self.path)
+            preprocessed = Preprocessor(self.path)
 
             # scan the image and copy the scanned image
-            scanned = preprocess.scan()
+            scanned = preprocessed.scan(inplace=True)
             orig = scanned.copy()
 
             # remove noise
-            noise_free = preprocess.remove_noise(scanned)
+            noise_free = preprocessed.remove_noise(
+                inplace=True, overriden_image=scanned
+            )
 
             # thicken the ink to draw Hough lines better
-            thickened = preprocess.thicken_font(noise_free)
+            thickened = preprocessed.thicken_font(
+                inplace=True, overriden_image=noise_free
+            )
 
             # calculate the median angle of all the Hough lines
-            _, median_angle = preprocess.rotate(thickened)
+            _, median_angle = preprocessed.rotate(
+                inplace=True, overriden_image=thickened
+            )
 
             # rotate the original scanned image
-            preprocessed = ndimage.rotate(orig, median_angle)
+            rotated = ndimage.rotate(orig, median_angle)
 
             # remove noise again
-            preprocessed = preprocess.remove_noise(preprocessed)
+            final_img = preprocessed.remove_noise(inplace=True, overriden_image=rotated)
 
-            cv2.imwrite("preprocessed.png", preprocessed)
+            cv2.imwrite("preprocessed.png", final_img)
             self.path = "preprocessed.png"
 
-    def ocr_meaningful_text(self, save_output=False):
+    def ocr_meaningful_text(self, *, save_output: Optional[bool] = False) -> str:
         """
         Performs OCR on long meaningful text documents and saves the image with boxes
         around the words. For example - books, PDFs etc.
 
         Args:
-            save_output (bool):
+            save_output:
                 Saves the text to `output.txt` file.
 
         Returns:
-            text (str):
+            text:
                 The extracted text.
         """
         # reading the image
@@ -112,8 +121,12 @@ class OCR:
         return self.text
 
     def ocr_sparse_text(
-        self, languages=["en", "hi"], decoder="greedy", save_output=False
-    ):
+        self,
+        *,
+        languages: Optional[List[str]] = ["en", "hi"],
+        decoder: Optional[str] = "greedy",
+        save_output: Optional[bool] = False,
+    ) -> str:
         """
         Performs OCR on sparse text and saves the image with boxes around the words.
         This method can be used to OCR documents in which the characters don't form any
@@ -121,18 +134,18 @@ class OCR:
         for example - bills, sign-boards etc.
 
         Args:
-            languages (list (default = ["en", "hi"] where "en" = English and "hi" = Hindi)):
+            languages:
                 A list of languages that the signboard possible has.
                 Note: Provide only the languages that are present in the image, adding
                 additional languages misguides the model.
-            decoder (str):
+            decoder:
                 If the document has a larger number of meaningful sentences then use
                 "beamsearch". For most of the cases "greedy" works very well.
-            save_output (bool):
+            save_output:
                 Saves the text to `output.txt` file.
 
         Returns:
-            text (str):
+            text:
                 The extracted text.
         """
         self.text = ""
@@ -168,13 +181,13 @@ class OCR:
 
         return self.text
 
-    def process_extracted_text_from_invoice(self):
+    def process_extracted_text_from_invoice(self) -> Dict[str, Any]:
         """
         This method processes the extracted text from invoices, and returns some useful
         information.
 
         Returns:
-            extracted_info (dict):
+            extracted_info:
                 The extracted information.
         """
         nltk.download("punkt")
@@ -209,7 +222,7 @@ class OCR:
         ]
 
         # find order number
-        order_number = ""
+        order_number: Union[str, int] = ""
         for i in range(len(post_processed_word_list)):
             if post_processed_word_list[i].lower() == "order":
                 try:
@@ -219,7 +232,7 @@ class OCR:
                 break
 
         # find total price
-        price = ""
+        price: Union[List[Any], str] = ""
 
         # try finding a number with Rs, INR, ₹ or रे in front of it or Rs, INR at the end
         # of it
@@ -255,18 +268,18 @@ class OCR:
 
         return self.extracted_info
 
-    def save_output(self):
+    def save_output(self) -> None:
         """Saves the extracted text in the `output.txt` file."""
         f = open("output.txt", "w", encoding="utf-8")
         f.write(self.text)
         f.close()
 
-    def text_to_speech(self, lang="en"):
+    def text_to_speech(self, *, lang: Optional[str] = "en") -> None:
         """
         Converts the extracted text to speech and save it as an MP3 file.
 
         Args:
-            lang (str (default = "en" where "en" is English)):
+            lang:
                 Language of the processed text.
         """
         speech = gTTS(self.text, lang="en", tld="com")
