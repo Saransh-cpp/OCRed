@@ -20,6 +20,9 @@ plugins:
 
 markdown_extensions:
   - pymdownx.arithmatex
+  - pymdownx.magiclink
+  - pymdownx.snippets:
+      check_paths: true
 
 extra_javascript:
   - mathjax-config.js
@@ -32,5 +35,6 @@ nav:
   - Installation: "install.md"
   # - Examples:
   - Reference: "reference.md"
-  - Code of conduct: "conduct.md"
+  - Changelog: "changelog.md"
   # - Contributing: 'contributing.md'
+  - Code of Conduct: "conduct.md"
