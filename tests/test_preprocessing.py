@@ -23,8 +23,12 @@ def test_scan():
 
     img = cv2.imread(path)
 
-    img = pre.scan(overriden_image=img)
-    assert isinstance(img, np.ndarray)
+    image = pre.scan(overriden_image=img)
+    assert isinstance(image, np.ndarray)
+
+    orig = img.copy()
+    _ = pre.scan(inplace=True, overriden_image=img)
+    assert not np.testing.assert_array_equal(img, orig)
 
 
 def test_rotate():
@@ -49,6 +53,10 @@ def test_rotate():
     assert isinstance(img1, np.ndarray)
     np.testing.assert_array_equal(img, img1)
 
+    orig = img.copy()
+    _ = pre.rotate(inplace=True, overriden_image=img)
+    assert not np.testing.assert_array_equal(img, orig)
+
 
 def test_remove_noise():
     pre = Preprocessor(path)
@@ -66,6 +74,10 @@ def test_remove_noise():
     img = pre.remove_noise(overriden_image=img)
     assert isinstance(img, np.ndarray)
 
+    orig = img.copy()
+    _ = pre.remove_noise(inplace=True, overriden_image=img)
+    assert not np.testing.assert_array_equal(img, orig)
+
 
 def test_thicken_font():
     pre = Preprocessor(path)
@@ -82,3 +94,7 @@ def test_thicken_font():
 
     img = pre.thicken_font(overriden_image=img)
     assert isinstance(img, np.ndarray)
+
+    orig = img.copy()
+    _ = pre.thicken_font(inplace=True, overriden_image=img)
+    assert not np.testing.assert_array_equal(img, orig)
