@@ -42,7 +42,6 @@ repos:
         args: [--show-error-codes]
         additional_dependencies:
           - numpy==1.22.0
-          - opencv-python
           - packaging
 
   - repo: https://github.com/PyCQA/flake8
