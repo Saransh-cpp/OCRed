@@ -35,6 +35,6 @@ nav:
   - Installation: "install.md"
   # - Examples:
   - Reference: "reference.md"
+  - Contributing: "contributing.md"
   - Changelog: "changelog.md"
-  # - Contributing: 'contributing.md'
   - Code of Conduct: "conduct.md"
