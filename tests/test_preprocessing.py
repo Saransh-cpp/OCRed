@@ -22,8 +22,9 @@ def test_scan():
     os.remove("scanned.png")
 
     img = cv2.imread(path)
+    pre = Preprocessor(img)
 
-    image = pre.scan(overriden_image=img)
+    image = pre.scan()
     assert isinstance(image, np.ndarray)
 
     orig = img.copy()
