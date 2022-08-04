@@ -1,17 +1,14 @@
-# [Unreleased](https://github.com/Saransh-cpp/OCRed)
-
-## Features
-
-- Added `__version__` to `OCRed`'s namespace ([#50](https://github.com/Saransh-cpp/OCRed/pull/50))
+# [v0.1.1](https://github.com/Saransh-cpp/OCRed/tree/v0.1.1)
 
 ## Maintenance
 
 - Updated classifiers and links in `pyproject.toml` ([#49](https://github.com/Saransh-cpp/OCRed/pull/49))
 - `nltk` is now not a part of the default dependencies ([#49](https://github.com/Saransh-cpp/OCRed/pull/49))
+- Added `__version__` to `OCRed`'s namespace ([#50](https://github.com/Saransh-cpp/OCRed/pull/50))
 
 ## Deprecations
 
-- `text_to_speech` is deprecated and will be removed in `v0.2.0`, use gTTS manually ([#50](https://github.com/Saransh-cpp/OCRed/pull/50))
+- `text_to_speech` is deprecated and will be removed in `v0.2.0`, use `gTTS` manually ([#50](https://github.com/Saransh-cpp/OCRed/pull/50))
 
 # [v0.1.0](https://github.com/Saransh-cpp/OCRed/tree/v0.1.0)
 
