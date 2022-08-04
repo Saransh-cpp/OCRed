@@ -43,6 +43,7 @@ The developer installation of `OCRed` comes with a lot of options -
 - `test`: the test dependencies
 - `docs`: extra dependencies to build and develop `OCRed`'s documentation
 - `dev`: installs the `test` and `docs` dependencies
+- `nltk`: installs `nltk`
 
 These options can be used with `pip` with the editable (`-e`) mode of installation in the following ways -
 
