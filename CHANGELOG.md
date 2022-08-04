@@ -1,3 +1,10 @@
+# [Unreleased](https://github.com/Saransh-cpp/OCRed)
+
+## Maintenance
+
+- Updated classifiers and links in `pyproject.toml` ([#49](https://github.com/Saransh-cpp/OCRed/pull/49))
+- `nltk` is now not a part of the default dependencies ([#49](https://github.com/Saransh-cpp/OCRed/pull/49))
+
 # [v0.1.0](https://github.com/Saransh-cpp/OCRed/tree/v0.1.0)
 
 - Added ability to `OCR` various textual mediums.
