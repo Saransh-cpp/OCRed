@@ -5,8 +5,12 @@
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Saransh-cpp/OCRed/main.svg)](https://results.pre-commit.ci/latest/github/Saransh-cpp/OCRed/main)
 [![codecov](https://codecov.io/gh/Saransh-cpp/OCRed/branch/main/graph/badge.svg?token=L6ObHKhaZ7)](https://codecov.io/gh/Saransh-cpp/OCRed)
 [![discussion](https://img.shields.io/static/v1?label=Discussions&message=Ask&color=blue&logo=github)](https://github.com/Saransh-cpp/OCRed/discussions)
+
+[![Python Versions](https://img.shields.io/pypi/pyversions/ocred)](https://pypi.org/project/ocred/)
+[![Package Version](https://badge.fury.io/py/ocred.svg)](https://pypi.org/project/ocred/)
+[![PyPI Downloads](https://pepy.tech/badge/ocred)](https://pepy.tech/project/ocred)
+![License](https://img.shields.io/github/license/Saransh-cpp/OCRed?color=blue)
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-![GitHub](https://img.shields.io/github/license/Saransh-cpp/OCRed?color=blue)
 
 `OCRed` (pronounced as _OCR'd_) provides clever, simple, and intuitive wrapper functionalities for OCRing specific text material. You don't want to learn `OCR` or the libraries that will help you perform `OCR`, but you need to `OCR` something? This friendly neighborhood library hides all of that stuff under simple functions like `ocr_meaningful_text()`.
 
