@@ -41,11 +41,8 @@ dependencies = [
     "pytesseract>=0.3.8",
     "scikit-image>=0.18.3",
     "scipy>=1.5.4",
-<<<<<<< HEAD
     "easyocr>=1.4.1",
-=======
     "packaging",
->>>>>>> 36434c3 (chore: deprecate `text_to_speech`)
 ]
 dynamic = [
     "version",
