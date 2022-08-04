@@ -3,7 +3,6 @@ from typing import Any, Dict, List, Optional, Union
 
 import cv2
 import easyocr
-import nltk
 import pytesseract
 from gtts import gTTS
 from scipy import ndimage
@@ -190,6 +189,8 @@ class OCR:
             extracted_info:
                 The extracted information.
         """
+        import nltk
+
         nltk.download("punkt")
         nltk.download("wordnet")
         nltk.download("stopwords")
