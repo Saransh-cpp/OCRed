@@ -6,8 +6,8 @@ requires = [
 build-backend = "hatchling.build"
 
 [project]
-name = "OCRed"
-description = "OCR wrapper library for direct users (not researchers)"
+name = "ocred"
+description = "Clever, simple, and intuitive wrapper functionalities for OCRing specific textual materials"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.7"
@@ -15,9 +15,9 @@ authors = [
     { name = "Saransh Chopra", email = "saransh0701@gmail.com" },
 ]
 keywords = [
+    "OCR",
     "Computer Vision",
     "Intended for direct users",
-    "OCR",
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
