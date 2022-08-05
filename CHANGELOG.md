@@ -1,4 +1,4 @@
-# [Unreleased](https://github.com/Saransh-cpp/OCRed/)
+# [v0.1.2](https://github.com/Saransh-cpp/OCRed/tree/v0.1.2)
 
 ## Maintenance
 
