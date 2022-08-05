@@ -1,3 +1,15 @@
+# [Unreleased](https://github.com/Saransh-cpp/OCRed/)
+
+## Maintenance
+
+- Added support for Python 3.6 ([#52](https://github.com/Saransh-cpp/OCRed/pull/52))
+- Removed capitalism from `PyPI`'s name (`OCRed` -> `ocred`) ([#53](https://github.com/Saransh-cpp/OCRed/pull/53))
+
+## Bug fixes
+
+- Fixed the `DeprecatingWarning` in `text_to_speech` ([#52](https://github.com/Saransh-cpp/OCRed/pull/52))
+- Removed capitalism from `PyPI`'s name (`OCRed` -> `ocred`) ([#53](https://github.com/Saransh-cpp/OCRed/pull/53))
+
 # [v0.1.1](https://github.com/Saransh-cpp/OCRed/tree/v0.1.1)
 
 ## Maintenance

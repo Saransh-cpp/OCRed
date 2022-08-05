@@ -1,15 +1,14 @@
 import re
+import warnings
 from typing import Any, Dict, List, Optional, Union
 
 import cv2
 import easyocr
-import packaging.version
 import pytesseract
 from gtts import gTTS
 from scipy import ndimage
 
 from ocred.preprocessing import Preprocessor
-from ocred.version import version as __version__
 
 
 class OCR:
@@ -42,7 +41,6 @@ class OCR:
         ...     "./images/Page.png"
         ... )
         >>> ocr.ocr_meaningful_text(save_output=True)
-        >>> ocr.text_to_speech()
     """
 
     def __init__(self, preprocess: bool, path: str) -> None:
@@ -285,10 +283,11 @@ class OCR:
             lang:
                 Language of the processed text.
         """
-        if packaging.version.Version(__version__) > packaging.version.Version("0.1.0"):
-            raise DeprecationWarning(
-                "text_to_speech is deprecated and will be removed in v0.2.0, use gTTS manually"
-            )
+        warnings.simplefilter("always", DeprecationWarning)
+        warnings.warn(
+            "text_to_speech is deprecated and will be removed in v0.2.0; use gTTS manually",
+            DeprecationWarning,
+        )
 
         speech = gTTS(self.text, lang="en", tld="com")
         speech.save("audio.mp3")
