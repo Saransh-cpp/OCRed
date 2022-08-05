@@ -2,7 +2,6 @@
 
 ## Maintenance
 
-- Added support for Python 3.6 ([#52](https://github.com/Saransh-cpp/OCRed/pull/52))
 - Removed capitalisation from `PyPI`'s name (`OCRed` -> `ocred`) ([#52](https://github.com/Saransh-cpp/OCRed/pull/52))
 
 ## Bug fixes
