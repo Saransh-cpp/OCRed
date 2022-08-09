@@ -1,8 +1,12 @@
 # [Unreleased](https://github.com/Saransh-cpp/OCRed)
 
-## Feature
+## Features
 
 - `OCRed` can now be built from archive ([#56](https://github.com/Saransh-cpp/OCRed/pull/56))
+
+## Breaking changes
+
+- `text_to_speech` is deprecated and removed ([#58](https://github.com/Saransh-cpp/OCRed/pull/58))
 
 ## Maintenance
 

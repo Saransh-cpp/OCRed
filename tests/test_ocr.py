@@ -1,11 +1,23 @@
 import os
 
+import pytest
+
 from ocred.ocr import OCR
 
 path_scanned = "images/Page.png"
 path_real = "images/CosmosOne.jpg"
 path_sign_board = "images/signboard.jpg"
 path_invoice = "images/1146-receipt.jpg"
+
+
+def test_deprecations():
+    ocr = OCR(
+        False,
+        path_scanned,
+    )
+
+    with pytest.raises(DeprecationWarning):
+        ocr.text_to_speech()
 
 
 def test_ocr_with_scanned_image():
@@ -26,13 +38,7 @@ def test_ocr_with_scanned_image():
     assert os.path.exists("OCR.png")
     assert os.path.exists("output.txt")
     assert not os.path.exists("preprocessed.png")
-    assert not os.path.exists("audio.mp3")
 
-    ocr.text_to_speech()
-
-    assert os.path.exists("audio.mp3")
-
-    os.remove("audio.mp3")
     os.remove("OCR.png")
     os.remove("output.txt")
 
@@ -54,13 +60,7 @@ def test_ocr_with_real_image():
     assert text == ocr.text
     assert os.path.exists("OCR.png")
     assert os.path.exists("preprocessed.png")
-    assert not os.path.exists("audio.mp3")
 
-    ocr.text_to_speech()
-
-    assert os.path.exists("audio.mp3")
-
-    os.remove("audio.mp3")
     os.remove("OCR.png")
     os.remove("preprocessed.png")
 
@@ -82,13 +82,7 @@ def test_ocr_sign_board():
     assert os.path.exists("OCR.png")
     assert os.path.exists("output.txt")
     assert not os.path.exists("preprocessed.png")
-    assert not os.path.exists("audio.mp3")
 
-    ocr.text_to_speech(lang="hi")
-
-    assert os.path.exists("audio.mp3")
-
-    os.remove("audio.mp3")
     os.remove("OCR.png")
     os.remove("output.txt")
 
