@@ -44,6 +44,11 @@ repos:
           - numpy==1.22.0
           - packaging
 
+  - repo: https://github.com/tox-dev/pyproject-fmt
+    rev: 0.3.4
+    hooks:
+      - id: pyproject-fmt
+
   - repo: https://github.com/PyCQA/flake8
     rev: 5.0.4
     hooks:
