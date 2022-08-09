@@ -6,7 +6,7 @@
 
 ## Maintenance
 
-- fix building from archive (tarballs) ([#56](https://github.com/Saransh-cpp/OCRed/pull/56))
+- Fixed building from archive (tarballs) ([#56](https://github.com/Saransh-cpp/OCRed/pull/56))
 
 # [v0.1.2](https://github.com/Saransh-cpp/OCRed/tree/v0.1.2)
 
