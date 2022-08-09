@@ -1,11 +1,12 @@
 # [Unreleased](https://github.com/Saransh-cpp/OCRed)
 
-## Feature
+## Features
 
 - `OCRed` can now be built from archive ([#56](https://github.com/Saransh-cpp/OCRed/pull/56))
 
 ## Maintenance
 
+- Added `pyproject-fmt` pre-commit hook ([#57](https://github.com/Saransh-cpp/OCRed/pull/57))
 - Fixed building from archive (tarballs) ([#56](https://github.com/Saransh-cpp/OCRed/pull/56))
 
 # [v0.1.2](https://github.com/Saransh-cpp/OCRed/tree/v0.1.2)
