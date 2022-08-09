@@ -1,3 +1,13 @@
+# [Unreleased](https://github.com/Saransh-cpp/OCRed)
+
+## Feature
+
+- `OCRed` can now be built from archive ([#56](https://github.com/Saransh-cpp/OCRed/pull/56))
+
+## Maintenance
+
+- fix building from archive (tarballs) ([#56](https://github.com/Saransh-cpp/OCRed/pull/56))
+
 # [v0.1.2](https://github.com/Saransh-cpp/OCRed/tree/v0.1.2)
 
 ## Maintenance
