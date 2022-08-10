@@ -10,7 +10,12 @@
 
 ## Maintenance
 
+<<<<<<< HEAD
 - Added `pyproject-fmt` pre-commit hook ([#57](https://github.com/Saransh-cpp/OCRed/pull/57))
+=======
+- Added a check for docs in the `CI` ([#59](https://github.com/Saransh-cpp/OCRed/pull/58))
+- Fixed failing doc deployment ([#59](https://github.com/Saransh-cpp/OCRed/pull/58))
+>>>>>>> 63bfd4a (Fix doc deployment and add a CI check (#59))
 - Fixed building from archive (tarballs) ([#56](https://github.com/Saransh-cpp/OCRed/pull/56))
 
 # [v0.1.2](https://github.com/Saransh-cpp/OCRed/tree/v0.1.2)
