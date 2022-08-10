@@ -19,6 +19,7 @@ plugins:
       theme: dark
 
 markdown_extensions:
+  - callouts
   - pymdownx.arithmatex
   - pymdownx.magiclink
   - pymdownx.snippets:

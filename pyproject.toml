@@ -19,19 +19,6 @@ authors = [
     { name = "Saransh Chopra", email = "saransh0701@gmail.com" },
 ]
 requires-python = ">=3.7"
-dependencies = [
-  "easyocr>=1.4.1",
-  "gTTS>=2.2.3",
-  "numpy>=1.19.4",
-  "opencv-python==4.5.3.56",
-  "packaging",
-  "pytesseract>=0.3.8",
-  "scikit-image>=0.18.3",
-  "scipy>=1.5.4",
-]
-dynamic = [
-  "version",
-]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Customer Service",
@@ -47,6 +34,18 @@ classifiers = [
     "Topic :: Scientific/Engineering",
     "Typing :: Typed",
 ]
+dependencies = [
+    "numpy>=1.19.4",
+    "opencv-python==4.5.3.56",
+    "pytesseract>=0.3.8",
+    "scikit-image>=0.18.3",
+    "scipy>=1.5.4",
+    "easyocr>=1.4.1",
+]
+dynamic = [
+    "version",
+]
+
 [project.optional-dependencies]
 dev = [
   "nltk>=3.5",

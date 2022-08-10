@@ -1,11 +1,9 @@
 import re
-import warnings
 from typing import Any, Dict, List, Optional, Union
 
 import cv2
 import easyocr
 import pytesseract
-from gtts import gTTS
 from scipy import ndimage
 
 from ocred.preprocessing import Preprocessor
@@ -277,17 +275,15 @@ class OCR:
 
     def text_to_speech(self, *, lang: Optional[str] = "en") -> None:
         """
+        DANGER: Deprecated since version v0.2.0.
+        Instead, use gTTS manually.
+
         Converts the extracted text to speech and save it as an MP3 file.
 
         Args:
             lang:
                 Language of the processed text.
         """
-        warnings.simplefilter("always", DeprecationWarning)
-        warnings.warn(
-            "text_to_speech is deprecated and will be removed in v0.2.0; use gTTS manually",
-            DeprecationWarning,
+        raise DeprecationWarning(
+            "text_to_speech is deprecated and was removed in v0.2.0; use gTTS manually",
         )
-
-        speech = gTTS(self.text, lang="en", tld="com")
-        speech.save("audio.mp3")
