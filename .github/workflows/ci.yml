@@ -66,5 +66,11 @@ jobs:
       - name: Run doctests
         run: xdoctest ./ocred/
 
+      - name: Build docs
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.9'
+        run: |
+          python -m pip install -e .[docs]
+          mkdocs build
+
       - name: Upload coverage report
         uses: codecov/codecov-action@v3.1.0
