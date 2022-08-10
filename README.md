@@ -47,7 +47,6 @@ ocr = ocred.OCR(
     "path/to/an/image", # path
 )
 ocr.ocr_meaningful_text(save_output=True)
-ocr.text_to_speech()
 ```
 
 ```py
