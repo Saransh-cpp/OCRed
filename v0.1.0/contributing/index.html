@@ -1,0 +1,780 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Contributing - OCRed</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Saira";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#contributing-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+        </aside>
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="OCRed" class="md-header__button md-logo" aria-label="OCRed" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OCRed
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Contributing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="OCRed" class="md-nav__button md-logo" aria-label="OCRed" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    OCRed
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        Reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Contributing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Contributing
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-ocred" class="md-nav__link">
+    Installing OCRed
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing OCRed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-virtual-environment" class="md-nav__link">
+    Creating a virtual environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-ocred-for-notebooks" class="md-nav__link">
+    Adding OCRed for notebooks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activating-pre-commit" class="md-nav__link">
+    Activating pre-commit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-ocred" class="md-nav__link">
+    Testing OCRed
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing OCRed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-tests-locally" class="md-nav__link">
+    Running tests locally
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-tests-with-coverage-locally" class="md-nav__link">
+    Running tests with coverage locally
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-doctests" class="md-nav__link">
+    Running doctests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documenting-ocred" class="md-nav__link">
+    Documenting OCRed
+  </a>
+  
+    <nav class="md-nav" aria-label="Documenting OCRed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-documentation-locally" class="md-nav__link">
+    Building documentation locally
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nox" class="md-nav__link">
+    Nox
+  </a>
+  
+    <nav class="md-nav" aria-label="Nox">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-pre-commit-with-nox" class="md-nav__link">
+    Running pre-commit with nox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-tests-with-nox" class="md-nav__link">
+    Running tests with nox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-documentation-with-nox" class="md-nav__link">
+    Building documentation with nox
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conduct/" class="md-nav__link">
+        Code of Conduct
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-ocred" class="md-nav__link">
+    Installing OCRed
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing OCRed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-virtual-environment" class="md-nav__link">
+    Creating a virtual environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-ocred-for-notebooks" class="md-nav__link">
+    Adding OCRed for notebooks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activating-pre-commit" class="md-nav__link">
+    Activating pre-commit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-ocred" class="md-nav__link">
+    Testing OCRed
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing OCRed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-tests-locally" class="md-nav__link">
+    Running tests locally
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-tests-with-coverage-locally" class="md-nav__link">
+    Running tests with coverage locally
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-doctests" class="md-nav__link">
+    Running doctests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documenting-ocred" class="md-nav__link">
+    Documenting OCRed
+  </a>
+  
+    <nav class="md-nav" aria-label="Documenting OCRed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-documentation-locally" class="md-nav__link">
+    Building documentation locally
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nox" class="md-nav__link">
+    Nox
+  </a>
+  
+    <nav class="md-nav" aria-label="Nox">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-pre-commit-with-nox" class="md-nav__link">
+    Running pre-commit with nox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-tests-with-nox" class="md-nav__link">
+    Running tests with nox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-documentation-with-nox" class="md-nav__link">
+    Building documentation with nox
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="contributing-guide">Contributing guide</h1>
+<p>If you are planning to develop <code>OCRed</code>, or want to use the latest commit of <code>OCRed</code> on your local machine, you might want to install it from the source. This installation is not recommended for users who want to use the stable version of <code>OCRed</code>. The steps below describe the installation process of <code>OCRed</code>'s latest commit. It also describes how to test <code>OCRed</code>'s codebase and build <code>OCRed</code>'s documentation.</p>
+<p><strong>Note</strong>: <code>OCRed</code> uses <a href="https://scikit-hep.org/developer">Scikit-HEP's developer information</a> as a reference for all the development work. The guide is a general and much more explained collection of documentation available for developing <code>Scikit-HEP</code> packages. <code>OCRed</code> is not a <code>Scikit-HEP</code> package, but it still loosely follows this developer guide as it is absolutely amazing!</p>
+<h2 id="installing-ocred">Installing OCRed</h2>
+<p>We recommend using a virtual environment to install <code>OCRed</code>. This would isolate the library from your global <code>Python</code> environment, which would be beneficial for reproducing bugs, and the overall development of <code>OCRed</code>. The first step would be to clone <code>OCRed</code> -</p>
+<pre><code>git clone https://github.com/Scikit-hep/OCRed.git
+</code></pre>
+<p>and then we can change the current working directory and enter <code>OCRed</code> -</p>
+<pre><code>cd OCRed
+</code></pre>
+<h3 id="creating-a-virtual-environment">Creating a virtual environment</h3>
+<p>A virtual environment can be set up and activated using <code>venv</code> in both <code>UNIX</code> and <code>Windows</code> systems.</p>
+<p><strong>UNIX</strong>:</p>
+<pre><code>python3 -m venv .env
+. .env/bin/activate
+</code></pre>
+<p><strong>Windows</strong>:</p>
+<pre><code>python -m venv .env
+.env\bin\activate
+</code></pre>
+<h3 id="installation">Installation</h3>
+<p>The developer installation of <code>OCRed</code> comes with a lot of options -</p>
+<ul>
+<li><code>test</code>: the test dependencies</li>
+<li><code>docs</code>: extra dependencies to build and develop <code>OCRed</code>'s documentation</li>
+<li><code>dev</code>: installs the <code>test</code> and <code>docs</code> dependencies</li>
+<li><code>nltk</code>: installs <code>nltk</code></li>
+</ul>
+<p>These options can be used with <code>pip</code> with the editable (<code>-e</code>) mode of installation in the following ways -</p>
+<pre><code>pip install -e .[dev,test]
+</code></pre>
+<p>For example, if you want to install the <code>docs</code> dependencies along with the dependencies included above, use -</p>
+<pre><code>pip install -e .[dev,test,docs]
+</code></pre>
+<h3 id="adding-ocred-for-notebooks">Adding OCRed for notebooks</h3>
+<p><code>OCRed</code> can be added to the notebooks using the following commands -</p>
+<pre><code>python -m ipykernel install --user --name ocred
+</code></pre>
+<h2 id="activating-pre-commit">Activating pre-commit</h2>
+<p><code>OCRed</code> uses a set of <code>pre-commit</code> hooks and the <code>pre-commit</code> bot to format, type-check, and prettify the codebase. The hooks can be installed locally using -</p>
+<pre><code>pre-commit install
+</code></pre>
+<p>This would run the checks every time a commit is created locally. The checks will only run on the files modified by that commit, but the checks can be triggered for all the files using -</p>
+<pre><code>pre-commit run --all-files
+</code></pre>
+<p>If you would like to skip the failing checks and push the code for further discussion, use the <code>--no-verify</code> option with <code>git commit</code>.</p>
+<h2 id="testing-ocred">Testing OCRed</h2>
+<p><code>OCRed</code> is tested with <code>pytest</code> and <code>xdoctest</code>. <code>pytest</code> is responsible for testing the code, whose configuration is available in <a href="https://github.com/Saransh-cpp/OCRed/blob/main/pyproject.toml">pyproject.toml</a>, and on the other hand, <code>xdoctest</code> is responsible for testing the examples available in every docstring, which prevents them from going stale. Additionally, <code>OCRed</code> also uses <code>pytest-cov</code> to calculate the coverage of these unit tests.</p>
+<h3 id="running-tests-locally">Running tests locally</h3>
+<p>The tests can be executed using the <code>test</code> dependencies of <code>OCRed</code> in the following way -</p>
+<pre><code>python -m pytest -ra
+</code></pre>
+<h3 id="running-tests-with-coverage-locally">Running tests with coverage locally</h3>
+<p>The coverage value can be obtained while running the tests using <code>pytest-cov</code> in the following way -</p>
+<pre><code>python -m pytest -ra --cov=ocred tests/
+</code></pre>
+<h3 id="running-doctests">Running doctests</h3>
+<p>The doctests can be executed using the <code>test</code> dependencies of <code>OCRed</code> in the following way -</p>
+<pre><code>xdoctest ./src/ocred/
+</code></pre>
+<p>A much more detailed guide on testing with <code>pytest</code> is available <a href="https://scikit-hep.org/developer/pytest">here</a>.</p>
+<h2 id="documenting-ocred">Documenting OCRed</h2>
+<p><code>OCRed</code>'s documentation is mainly written in the form of <a href="https://peps.python.org/pep-0257/">docstrings</a> and <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>. The docstrings include the description, arguments, examples, return values, and attributes of a class or a function, and the <code>.md</code> files enable us to render this documentation on <code>OCRed</code>'s documentation website.</p>
+<p><code>OCRed</code> primarily uses <a href="https://www.mkdocs.org/">MkDocs</a> and <a href="https://mkdocstrings.github.io/">mkdocstrings</a> for rendering documentation on its website. The configuration file (<code>mkdocs.yml</code>) for <code>MkDocs</code> can be found <a href="https://github.com/Saransh-cpp/OCRed/blob/main/mkdocs.yml">here</a>. The documentation is deployed on <a href="https://readthedocs.io">https://readthedocs.io</a> <a href="https://ocred.readthedocs.io/en/latest/">here</a>.</p>
+<p>Ideally, with the addition of every new feature to <code>OCRed</code>, documentation should be added using comments, docstrings, and <code>.md</code> files.</p>
+<h3 id="building-documentation-locally">Building documentation locally</h3>
+<p>The documentation is located in the <code>docs</code> folder of the main repository. This documentation can be generated using the <code>docs</code> dependencies of <code>OCRed</code> in the following way -</p>
+<pre><code>mkdocs serve
+</code></pre>
+<p>The commands executed above will clean any existing documentation build, create a new build (in <code>./site/</code>), and serve it on your <code>localhost</code>. To just build the documentation, use -</p>
+<pre><code>mkdocs build
+</code></pre>
+<h2 id="nox">Nox</h2>
+<p><code>OCRed</code> supports running various critical commands using <a href="https://github.com/wntrblm/nox">nox</a> to make them less intimidating for new developers. All of these commands (or sessions in the language of <code>nox</code>) - <code>lint</code>, <code>tests</code>, <code>doctests</code>, <code>docs</code>, and <code>build</code> - are defined in <a href="https://github.com/Saransh-cpp/OCRed/blob/main/noxfile.py">noxfile.py</a>.</p>
+<p><code>nox</code> can be installed via <code>pip</code> using -</p>
+<pre><code>pip install nox
+</code></pre>
+<p>The default sessions (<code>lint</code>, <code>tests</code>, and <code>doctests</code>) can be executed
+using -</p>
+<pre><code>nox
+</code></pre>
+<h3 id="running-pre-commit-with-nox">Running pre-commit with nox</h3>
+<p>The <code>pre-commit</code> hooks can be run with <code>nox</code> in the following way -</p>
+<pre><code>nox -s lint
+</code></pre>
+<h3 id="running-tests-with-nox">Running tests with nox</h3>
+<p>Tests can be run with <code>nox</code> in the following way -</p>
+<pre><code>nox -s tests
+</code></pre>
+<h3 id="building-documentation-with-nox">Building documentation with nox</h3>
+<p>Docs can be built with <code>nox</code> in the following way -</p>
+<pre><code>nox -s docs
+</code></pre>
+<p>Use the following command if you want to deploy the docs on <code>localhost</code> -</p>
+<pre><code>nox -s docs -- serve
+</code></pre>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../reference/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Reference" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Reference
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../changelog/" class="md-footer__link md-footer__link--next" aria-label="Next: Changelog" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Changelog
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="../mathjax-config.js"></script>
+      
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>
