@@ -1,5 +1,5 @@
 import re
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import cv2
 import easyocr
@@ -35,7 +35,7 @@ class OCR:
         >>> sys.displayhook = lambda x: None
         >>> import ocred
         >>> ocr = ocred.OCR(
-        ...     False, # is_scanned -> to preprocess the image
+        ...     False, # preprocess -> to preprocess the image
         ...     "./images/Page.png"
         ... )
         >>> ocr.ocr_meaningful_text(save_output=True)
@@ -76,12 +76,22 @@ class OCR:
             cv2.imwrite("preprocessed.png", final_img)
             self.path = "preprocessed.png"
 
-    def ocr_meaningful_text(self, *, save_output: Optional[bool] = False) -> str:
+    def ocr_meaningful_text(
+        self,
+        *,
+        tesseract_config: Optional[str] = "-l eng --oem 1",
+        preserve_orientation: Optional[bool] = False,
+        save_output: Optional[bool] = False,
+    ) -> str:
         """
         Performs OCR on long meaningful text documents and saves the image with boxes
         around the words. For example - books, PDFs etc.
 
         Args:
+            tesseract_config:
+                Configuration passed down to the Tesseract OCR Engine.
+            preserve_orientation:
+                Preserves the orientation of OCRed text.
             save_output:
                 Saves the text to `output.txt` file.
 
@@ -93,8 +103,9 @@ class OCR:
         img = cv2.imread(self.path)
 
         # extracting the text
-        self.oriented_text = pytesseract.image_to_string(img, config="-l eng --oem 1")
-        self.text = self.oriented_text.replace("-\n", "").replace("\n", " ")
+        self.text = pytesseract.image_to_string(img, config=tesseract_config)
+        if not preserve_orientation:
+            self.text = self.text.replace("-\n", "").replace("\n", " ")
 
         # adding boxes around the words
         boxes = pytesseract.image_to_data(img)
@@ -123,7 +134,7 @@ class OCR:
         languages: Optional[List[str]] = ["en", "hi"],
         decoder: Optional[str] = "greedy",
         save_output: Optional[bool] = False,
-    ) -> str:
+    ) -> Tuple[str, Any]:
         """
         Performs OCR on sparse text and saves the image with boxes around the words.
         This method can be used to OCR documents in which the characters don't form any
@@ -144,6 +155,8 @@ class OCR:
         Returns:
             text:
                 The extracted text.
+            detailed_text:
+                Text with extra information (returned by easyocr.Reader.readtext()).
         """
         self.text = ""
 
@@ -152,7 +165,9 @@ class OCR:
         reader = easyocr.Reader(
             languages
         )  # slow for the first time (also depends upon CPU/GPU)
-        self.detailed_text = reader.readtext(self.path, decoder=decoder, batch_size=5)
+        self.detailed_text: Any = reader.readtext(
+            self.path, decoder=decoder, batch_size=5
+        )
 
         for text in self.detailed_text:
 
@@ -176,7 +191,7 @@ class OCR:
         if save_output:
             self.save_output()
 
-        return self.text
+        return self.text, self.detailed_text
 
     def process_extracted_text_from_invoice(self) -> Dict[str, Any]:
         """
@@ -187,6 +202,9 @@ class OCR:
             extracted_info:
                 The extracted information.
         """
+        if not hasattr(self, "detailed_text"):
+            raise ValueError("no invoice OCRed; OCR an invoice first")
+
         import nltk
 
         nltk.download("punkt")
@@ -269,6 +287,8 @@ class OCR:
 
     def save_output(self) -> None:
         """Saves the extracted text in the `output.txt` file."""
+        if not hasattr(self, "text"):
+            raise ValueError("no text OCRed; OCR a document first")
         f = open("output.txt", "w", encoding="utf-8")
         f.write(self.text)
         f.close()

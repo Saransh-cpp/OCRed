@@ -2,11 +2,18 @@
 
 ## Features
 
+- Introduced `tesseract_config` argument to pass down configuration for Tesseract OCR Engine in `ocr_meaningful_text` ([#61](https://github.com/Saransh-cpp/OCRed/pull/61))
+- Introduced `preserve_orientation` argument to preserve the orientation of OCRed text in `ocr_meaningful_text` ([#61](https://github.com/Saransh-cpp/OCRed/pull/61))
 - `OCRed` can now be built from archive ([#56](https://github.com/Saransh-cpp/OCRed/pull/56))
 
 ## Breaking changes
 
+- `ocr_sparse_text` now returns the output of `easyocr.Reader.readtext()` too ([#61](https://github.com/Saransh-cpp/OCRed/pull/61))
 - `text_to_speech` is deprecated and removed ([#58](https://github.com/Saransh-cpp/OCRed/pull/58))
+
+## Misc
+
+- Added custom and more informative errors in the `OCR` class ([#61](https://github.com/Saransh-cpp/OCRed/pull/61))
 
 ## Maintenance
 
