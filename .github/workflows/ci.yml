@@ -92,4 +92,4 @@ jobs:
         run: xdoctest ./ocred/
 
       - name: Build docs
-        run: mkocs build
+        run: mkdocs build
