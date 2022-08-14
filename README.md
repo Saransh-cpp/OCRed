@@ -13,8 +13,11 @@
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -166,6 +169,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://saransh-cpp.github.io/"><img src="https://avatars.githubusercontent.com/u/74055102?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Saransh</b></sub></a><br /><a href="https://github.com/Saransh-cpp/OCRed/commits?author=Saransh-cpp" title="Code">💻</a> <a href="https://github.com/Saransh-cpp/OCRed/issues?q=author%3ASaransh-cpp" title="Bug reports">🐛</a> <a href="#content-Saransh-cpp" title="Content">🖋</a> <a href="https://github.com/Saransh-cpp/OCRed/commits?author=Saransh-cpp" title="Documentation">📖</a> <a href="#design-Saransh-cpp" title="Design">🎨</a> <a href="#example-Saransh-cpp" title="Examples">💡</a> <a href="#ideas-Saransh-cpp" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-Saransh-cpp" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-Saransh-cpp" title="Maintenance">🚧</a> <a href="#platform-Saransh-cpp" title="Packaging/porting to new platform">📦</a> <a href="https://github.com/Saransh-cpp/OCRed/pulls?q=is%3Apr+reviewed-by%3ASaransh-cpp" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/Saransh-cpp/OCRed/commits?author=Saransh-cpp" title="Tests">⚠️</a> <a href="#tutorial-Saransh-cpp" title="Tutorials">✅</a> <a href="#mentoring-Saransh-cpp" title="Mentoring">🧑‍🏫</a></td>
+    <td align="center"><a href="https://github.com/priyanshi-git"><img src="https://avatars.githubusercontent.com/u/82112540?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Priyanshi Goel</b></sub></a><br /><a href="https://github.com/Saransh-cpp/OCRed/issues?q=author%3Apriyanshi-git" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

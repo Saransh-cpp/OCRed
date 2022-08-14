@@ -25,8 +25,17 @@
         "test",
         "tutorial",
         "mentoring"
+      ],
+    },
+    {
+      "login": "priyanshi-git",
+      "name": "Priyanshi Goel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/82112540?v=4",
+      "profile": "https://github.com/priyanshi-git",
+      "contributions": [
+        "bug"
       ]
-    }
+    },
   ],
   "contributorsPerLine": 7,
   "projectName": "OCRed",
