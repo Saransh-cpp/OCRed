@@ -96,7 +96,7 @@ class Preprocessor:
         if save:
             cv2.imwrite("noise_free.png", img)
 
-        return self.img
+        return img
 
     def thicken_font(
         self,

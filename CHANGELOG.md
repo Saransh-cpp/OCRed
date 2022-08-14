@@ -11,6 +11,10 @@
 - `ocr_sparse_text` now returns the output of `easyocr.Reader.readtext()` too ([#61](https://github.com/Saransh-cpp/OCRed/pull/61))
 - `text_to_speech` is deprecated and removed ([#58](https://github.com/Saransh-cpp/OCRed/pull/58))
 
+## Bug fixes
+
+- Fixed the return value of `Preprocessor.remove_noise` ([#62](https://github.com/Saransh-cpp/OCRed/pull/62))
+
 ## Misc
 
 - Added custom and more informative errors in the `OCR` class ([#61](https://github.com/Saransh-cpp/OCRed/pull/61))
