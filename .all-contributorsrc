@@ -6,6 +6,28 @@
   "commit": false,
   "contributors": [
     {
+      "login": "Saransh-cpp",
+      "name": "Saransh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/74055102?v=4",
+      "profile": "https://saransh-cpp.github.io/",
+      "contributions": [
+        "code",
+        "bug",
+        "content",
+        "doc",
+        "design",
+        "example",
+        "ideas",
+        "infra",
+        "maintenance",
+        "platform",
+        "review",
+        "test",
+        "tutorial",
+        "mentoring"
+      ],
+    },
+    {
       "login": "priyanshi-git",
       "name": "Priyanshi Goel",
       "avatar_url": "https://avatars.githubusercontent.com/u/82112540?v=4",
@@ -13,7 +35,7 @@
       "contributions": [
         "bug"
       ]
-    }
+    },
   ],
   "contributorsPerLine": 7,
   "projectName": "OCRed",
