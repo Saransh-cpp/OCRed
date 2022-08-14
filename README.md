@@ -1,11 +1,5 @@
 # OCRed
 
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-
 [![CI](https://github.com/Saransh-cpp/OCRed/actions/workflows/ci.yml/badge.svg)](https://github.com/Saransh-cpp/OCRed/actions/workflows/ci.yml)
 [![Documentation Status](https://readthedocs.org/projects/ocred/badge/?version=latest)](https://ocred.readthedocs.io/en/latest/?badge=latest)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Saransh-cpp/OCRed/main.svg)](https://results.pre-commit.ci/latest/github/Saransh-cpp/OCRed/main)
@@ -17,6 +11,14 @@
 [![PyPI Downloads](https://pepy.tech/badge/ocred)](https://pepy.tech/project/ocred)
 ![License](https://img.shields.io/github/license/Saransh-cpp/OCRed?color=blue)
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 `OCRed` (pronounced as _OCR'd_) provides clever, simple, and intuitive wrapper functionalities for OCRing specific text material. You don't want to learn `OCR` or the libraries that will help you perform `OCR`, but you need to `OCR` something? This friendly neighborhood library hides all of that stuff under simple functions like `ocr_meaningful_text()`.
 
