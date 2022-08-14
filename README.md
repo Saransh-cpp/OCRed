@@ -18,6 +18,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 `OCRed` (pronounced as _OCR'd_) provides clever, simple, and intuitive wrapper functionalities for OCRing specific text material. You don't want to learn `OCR` or the libraries that will help you perform `OCR`, but you need to `OCR` something? This friendly neighborhood library hides all of that stuff under simple functions like `ocr_meaningful_text()`.
