@@ -1,29 +1,70 @@
-site_name: OCRed
-
+# inspired from https://github.com/avik-pal/Lux.jl/blob/main/docs/mkdocs.yml
 theme:
   name: material
+  features:
+    - navigation.sections
   palette:
-    scheme: slate
+    - scheme: default
+      primary: white
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: black
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
   font:
-    text: Saira
+    text: Lato
+  icon:
+    repo: fontawesome/brands/github
+  custom_dir: "docs/_overrides/" # Overriding part of the HTML
+
+# TODO: look into this
+# twitter_name: "@saranshchopra7"
+# twitter_url: "https://twitter.com/saranshchopra7"
+
+site_name: OCRed
+site_description: Documentation for OCRed
+site_author: Saransh Chopra
+site_url: https://ocred.readthedocs.io/
+
+repo_url: https://github.com/Saransh-cpp/OCRed
+repo_name: Saransh-cpp/OCRed
+edit_uri: ./edit/main/docs
 
 extra_css:
   - stylesheets/extra.css
 
-strict: false
+strict: true
 
 plugins:
   - search
   - mkdocstrings
-  - mkdocs-jupyter:
-      theme: dark
+  - autorefs # Cross-links to headings
+  - include_exclude_files:
+      exclude:
+        - "_overrides"
 
 markdown_extensions:
   - callouts
   - pymdownx.arithmatex
   - pymdownx.magiclink
+  - pymdownx.details # Allowing hidden expandable regions denoted by ???
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences # Seems to enable syntax highlighting when used with the Material theme.
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.snippets:
       check_paths: true
+  - toc:
+      permalink: "¤" # Adds a clickable permalink to each section heading
+      toc_depth: 4
 
 extra_javascript:
   - mathjax-config.js

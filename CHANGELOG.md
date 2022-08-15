@@ -1,3 +1,13 @@
+# [Unreleased](https://github.com/Saransh-cpp/OCRed)
+
+## CI
+
+- Added a separate CI pipeline for documentation ([#67](https://github.com/Saransh-cpp/OCRed/pull/67))
+
+## Docs
+
+- Revamped the UI and fixed minor UI bugs ([#67](https://github.com/Saransh-cpp/OCRed/pull/67))
+
 # [v0.2.0](https://github.com/Saransh-cpp/OCRed/tree/v0.2.0)
 
 ## Features
