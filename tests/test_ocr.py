@@ -1,11 +1,36 @@
 import os
 
+import pytest
+
 from ocred.ocr import OCR
 
 path_scanned = "images/Page.png"
 path_real = "images/CosmosOne.jpg"
 path_sign_board = "images/signboard.jpg"
 path_invoice = "images/1146-receipt.jpg"
+
+
+def test_deprecations_and_errors():
+    ocr = OCR(
+        False,
+        path_scanned,
+    )
+    with pytest.raises(DeprecationWarning):
+        ocr.text_to_speech()
+
+    ocr = OCR(
+        False,
+        path_scanned,
+    )
+    with pytest.raises(ValueError):
+        ocr.save_output()
+
+    ocr = OCR(
+        False,
+        path_scanned,
+    )
+    with pytest.raises(ValueError):
+        ocr.process_extracted_text_from_invoice()
 
 
 def test_ocr_with_scanned_image():
@@ -26,13 +51,7 @@ def test_ocr_with_scanned_image():
     assert os.path.exists("OCR.png")
     assert os.path.exists("output.txt")
     assert not os.path.exists("preprocessed.png")
-    assert not os.path.exists("audio.mp3")
 
-    ocr.text_to_speech()
-
-    assert os.path.exists("audio.mp3")
-
-    os.remove("audio.mp3")
     os.remove("OCR.png")
     os.remove("output.txt")
 
@@ -47,20 +66,14 @@ def test_ocr_with_real_image():
     assert ocr.path == "preprocessed.png"
     assert ocr.preprocess is True
 
-    text = ocr.ocr_meaningful_text()
+    text = ocr.ocr_meaningful_text(preserve_orientation=True)
 
     assert isinstance(ocr.text, str)
     assert isinstance(text, str)
     assert text == ocr.text
     assert os.path.exists("OCR.png")
     assert os.path.exists("preprocessed.png")
-    assert not os.path.exists("audio.mp3")
 
-    ocr.text_to_speech()
-
-    assert os.path.exists("audio.mp3")
-
-    os.remove("audio.mp3")
     os.remove("OCR.png")
     os.remove("preprocessed.png")
 
@@ -74,21 +87,18 @@ def test_ocr_sign_board():
     assert ocr.path == path_sign_board
     assert ocr.preprocess is False
 
-    text = ocr.ocr_sparse_text(save_output=True)
+    text, detailed_text = ocr.ocr_sparse_text(save_output=True)
 
     assert isinstance(ocr.text, str)
     assert isinstance(text, str)
+    assert isinstance(ocr.detailed_text, list)
+    assert isinstance(detailed_text, list)
+    assert detailed_text == ocr.detailed_text
     assert text == ocr.text
     assert os.path.exists("OCR.png")
     assert os.path.exists("output.txt")
     assert not os.path.exists("preprocessed.png")
-    assert not os.path.exists("audio.mp3")
 
-    ocr.text_to_speech(lang="hi")
-
-    assert os.path.exists("audio.mp3")
-
-    os.remove("audio.mp3")
     os.remove("OCR.png")
     os.remove("output.txt")
 
@@ -103,10 +113,13 @@ def test_ocr_invoices():
     assert ocr.path == path_invoice
     assert ocr.preprocess is False
 
-    text = ocr.ocr_sparse_text()
+    text, detailed_text = ocr.ocr_sparse_text()
 
     assert isinstance(ocr.text, str)
     assert isinstance(text, str)
+    assert isinstance(ocr.detailed_text, list)
+    assert isinstance(detailed_text, list)
+    assert detailed_text == ocr.detailed_text
     assert text == ocr.text
     assert os.path.exists("OCR.png")
     assert not os.path.exists("preprocessed.png")
@@ -142,7 +155,7 @@ def test_ocr_invoices():
     assert ocr.path == path_invoice
     assert ocr.preprocess is False
 
-    text = ocr.ocr_sparse_text()
+    text, _ = ocr.ocr_sparse_text()
 
     assert isinstance(ocr.text, str)
     assert isinstance(text, str)

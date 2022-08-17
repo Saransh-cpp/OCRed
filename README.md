@@ -12,6 +12,15 @@
 ![License](https://img.shields.io/github/license/Saransh-cpp/OCRed?color=blue)
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
 `OCRed` (pronounced as _OCR'd_) provides clever, simple, and intuitive wrapper functionalities for OCRing specific text material. You don't want to learn `OCR` or the libraries that will help you perform `OCR`, but you need to `OCR` something? This friendly neighborhood library hides all of that stuff under simple functions like `ocr_meaningful_text()`.
 
 In other words, instead of manual preprocessing, looking for an OCR library, learning the library, then finally getting what you were looking for, use `OCRed` instead.
@@ -47,7 +56,6 @@ ocr = ocred.OCR(
     "path/to/an/image", # path
 )
 ocr.ocr_meaningful_text(save_output=True)
-ocr.text_to_speech()
 ```
 
 ```py
@@ -150,3 +158,24 @@ organisms of our globe, including hydrogen, sodiurn, magnesiuia, and iron. May i
 ## Contributing
 
 If you want to contribute to `OCRed` (thanks!), please have a look at our [Contributing Guide](https://github.com/Saransh-cpp/OCRed/blob/main/CONTRIBUTING.md).
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://saransh-cpp.github.io/"><img src="https://avatars.githubusercontent.com/u/74055102?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Saransh</b></sub></a><br /><a href="https://github.com/Saransh-cpp/OCRed/commits?author=Saransh-cpp" title="Code">💻</a> <a href="https://github.com/Saransh-cpp/OCRed/issues?q=author%3ASaransh-cpp" title="Bug reports">🐛</a> <a href="#content-Saransh-cpp" title="Content">🖋</a> <a href="https://github.com/Saransh-cpp/OCRed/commits?author=Saransh-cpp" title="Documentation">📖</a> <a href="#design-Saransh-cpp" title="Design">🎨</a> <a href="#example-Saransh-cpp" title="Examples">💡</a> <a href="#ideas-Saransh-cpp" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-Saransh-cpp" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-Saransh-cpp" title="Maintenance">🚧</a> <a href="#platform-Saransh-cpp" title="Packaging/porting to new platform">📦</a> <a href="https://github.com/Saransh-cpp/OCRed/pulls?q=is%3Apr+reviewed-by%3ASaransh-cpp" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/Saransh-cpp/OCRed/commits?author=Saransh-cpp" title="Tests">⚠️</a> <a href="#tutorial-Saransh-cpp" title="Tutorials">✅</a> <a href="#mentoring-Saransh-cpp" title="Mentoring">🧑‍🏫</a></td>
+    <td align="center"><a href="https://github.com/priyanshi-git"><img src="https://avatars.githubusercontent.com/u/82112540?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Priyanshi Goel</b></sub></a><br /><a href="https://github.com/Saransh-cpp/OCRed/issues?q=author%3Apriyanshi-git" title="Bug reports">🐛</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

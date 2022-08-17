@@ -1,11 +1,39 @@
 # [Unreleased](https://github.com/Saransh-cpp/OCRed)
 
-## Feature
+## CI
 
+- Added a separate CI pipeline for documentation ([#67](https://github.com/Saransh-cpp/OCRed/pull/67))
+
+## Docs
+
+- Revamped the UI and fixed minor UI bugs ([#67](https://github.com/Saransh-cpp/OCRed/pull/67))
+
+# [v0.2.0](https://github.com/Saransh-cpp/OCRed/tree/v0.2.0)
+
+## Features
+
+- Introduced `tesseract_config` argument to pass down configuration for Tesseract OCR Engine in `ocr_meaningful_text` ([#61](https://github.com/Saransh-cpp/OCRed/pull/61))
+- Introduced `preserve_orientation` argument to preserve the orientation of OCRed text in `ocr_meaningful_text` ([#61](https://github.com/Saransh-cpp/OCRed/pull/61))
 - `OCRed` can now be built from archive ([#56](https://github.com/Saransh-cpp/OCRed/pull/56))
+
+## Breaking changes
+
+- `ocr_sparse_text` now returns the output of `easyocr.Reader.readtext()` too ([#61](https://github.com/Saransh-cpp/OCRed/pull/61))
+- `text_to_speech` is deprecated and removed ([#58](https://github.com/Saransh-cpp/OCRed/pull/58))
+
+## Bug fixes
+
+- Fixed the return value of `Preprocessor.remove_noise` ([#62](https://github.com/Saransh-cpp/OCRed/pull/62))
+
+## Misc
+
+- Added custom and more informative errors in the `OCR` class ([#61](https://github.com/Saransh-cpp/OCRed/pull/61))
 
 ## Maintenance
 
+- Added a check for docs in the `CI` ([#59](https://github.com/Saransh-cpp/OCRed/pull/58))
+- Fixed failing doc deployment ([#59](https://github.com/Saransh-cpp/OCRed/pull/58))
+- Added `pyproject-fmt` pre-commit hook ([#57](https://github.com/Saransh-cpp/OCRed/pull/57))
 - Fixed building from archive (tarballs) ([#56](https://github.com/Saransh-cpp/OCRed/pull/56))
 
 # [v0.1.2](https://github.com/Saransh-cpp/OCRed/tree/v0.1.2)
