@@ -44,11 +44,9 @@ cv2_imshow(thickened)
 
 ```
 # calculate the median angle of all the Hough lines
-_, median_angle = preprocessed.rotate(
-    inplace=True, overriden_image=thickened
-)
+rotated, median_angle = preprocessed.rotate(overriden_image=thickened)
 
-cv2_imshow(_)
+cv2_imshow(rotated)
 ```
 
 ![image](https://user-images.githubusercontent.com/82112540/184901244-741ea02d-06de-4d39-a9a1-ce04c2eabf91.png)
