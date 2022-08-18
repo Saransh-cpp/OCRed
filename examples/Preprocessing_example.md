@@ -26,9 +26,7 @@ cv2_imshow(scanned)
 
 ```
 # remove noise
-noise_free = preprocessed.remove_noise(
-    inplace=True, overriden_image=scanned
-)
+noise_free = preprocessed.remove_noise(overriden_image=scanned)
 
 cv2_imshow(noise_free)
 ```
