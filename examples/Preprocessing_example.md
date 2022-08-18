@@ -35,9 +35,7 @@ cv2_imshow(noise_free)
 
 ```
 # thicken the ink to draw Hough lines better
-thickened = preprocessed.thicken_font(
-    inplace=True, overriden_image=noise_free
-)
+thickened = preprocessed.thicken_font(overriden_image=noise_free)
 
 cv2_imshow(thickened)
 ```
