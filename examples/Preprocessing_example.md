@@ -7,7 +7,6 @@ The main objective of the Preprocessing phase is to make as easy as possible for
 ```
 # manually preprocessing an image
 import cv2
-from scipy import ndimage
 from ocred import Preprocessor
 from google.colab.patches import cv2_imshow
 
