@@ -2,7 +2,7 @@
 
 The main objective of the Preprocessing phase is to make as easy as possible for the OCR system to distinguish a character/word from the background. There are several techniques used for Preprocessing but this **Preprocessor** class can do it without you going into details and jargon of traditional methods.
 
-`!pip install -U ocred --no-cache --force-reinstall`
+`!pip install -U ocred -q`
 
 ```
 # manually preprocessing an image
