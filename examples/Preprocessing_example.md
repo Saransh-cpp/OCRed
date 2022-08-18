@@ -17,10 +17,9 @@ preprocessed = Preprocessor("/content/images/CosmosOne.jpg")
 
 ```
 # scan the image and copy the scanned image
-scanned = preprocessed.scan(inplace=True)
-orig = scanned.copy()
+scanned = preprocessed.scan()
 
-cv2_imshow(orig)
+cv2_imshow(scanned)
 ```
 
 ![image](https://user-images.githubusercontent.com/82112540/184899616-2a418f9b-ad82-4bf4-92b7-98a96126dbd1.png)
