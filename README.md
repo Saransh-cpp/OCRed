@@ -91,7 +91,7 @@ import cv2
 from scipy import ndimage
 from ocred import Preprocessor
 
-preprocessed = Preprocessor(self.path)
+preprocessed = Preprocessor("path/to/img.jpg")
 
 # scan the image and copy the scanned image
 preprocessed.scan()
