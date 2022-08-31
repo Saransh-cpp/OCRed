@@ -1,5 +1,10 @@
 # [Unreleased](https://github.com/Saransh-cpp/OCRed)
 
+## Breaking changes
+
+- The arguments `inplace` and `overriden_image` have been deprecated and removed ([#71](https://github.com/Saransh-cpp/OCRed/pull/71))
+- `Preprocessor` now alters the `img` attribute in each method, which can be accessed via `self.img` ([#71](https://github.com/Saransh-cpp/OCRed/pull/71))
+
 ## CI
 
 - Added a separate CI pipeline for documentation ([#67](https://github.com/Saransh-cpp/OCRed/pull/67))
@@ -7,6 +12,10 @@
 ## Docs
 
 - Revamped the UI and fixed minor UI bugs ([#67](https://github.com/Saransh-cpp/OCRed/pull/67))
+
+## Tests
+
+- Simplify and fasten tests ([#71](https://github.com/Saransh-cpp/OCRed/pull/71))
 
 # [v0.2.0](https://github.com/Saransh-cpp/OCRed/tree/v0.2.0)
 
