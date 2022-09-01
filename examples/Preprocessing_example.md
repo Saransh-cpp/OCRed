@@ -69,7 +69,8 @@ cv2_imshow(final_img)
 ![image](https://user-images.githubusercontent.com/82112540/184902140-42582eac-e765-44b6-b518-b8aa81ada09c.png)
 
 # Another Example
-This example does not use inplace and editing a copy. 
+
+This example does not use inplace and editing a copy.
 
 ```
 from google.colab.patches import cv2_imshow
@@ -78,6 +79,7 @@ from ocred import Preprocessor
 
 preprocessed = Preprocessor("/content/images/CosmosTwo.jpg")
 ```
+
 ```
 # scan the image and copy the scanned image
 preprocessed.scan()
