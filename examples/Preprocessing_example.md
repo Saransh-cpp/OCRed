@@ -67,3 +67,69 @@ cv2_imshow(final_img)
 ```
 
 ![image](https://user-images.githubusercontent.com/82112540/184902140-42582eac-e765-44b6-b518-b8aa81ada09c.png)
+
+# Another Example
+This example does not use inplace and editing a copy. 
+
+```
+from google.colab.patches import cv2_imshow
+from scipy import ndimage
+from ocred import Preprocessor
+
+preprocessed = Preprocessor("/content/images/CosmosTwo.jpg")
+```
+```
+# scan the image and copy the scanned image
+preprocessed.scan()
+cv2_imshow(preprocessed.img)
+
+orig = preprocessed.img.copy()
+```
+
+![image](https://user-images.githubusercontent.com/82112540/187851140-4477b3ca-09d7-4b5c-a8e3-392b002fa913.png)
+
+```
+# remove noise
+preprocessed.remove_noise()
+
+cv2_imshow(preprocessed.img)
+```
+
+![image](https://user-images.githubusercontent.com/82112540/187851252-84fec2bd-9075-4e9a-bcb9-6ee8b2c523e3.png)
+
+```
+# thicken the ink to draw Hough lines better
+preprocessed.thicken_font()
+
+cv2_imshow(preprocessed.img)
+```
+
+![image](https://user-images.githubusercontent.com/82112540/187851321-ee757a57-3a5f-4ef7-9a33-66e1a974e83f.png)
+
+```
+# calculate the median angle of all the Hough lines
+_, median_angle = preprocessed.rotate()
+
+cv2_imshow(preprocessed.img)
+```
+
+![image](https://user-images.githubusercontent.com/82112540/187851384-4cc4eb6a-d7e0-4837-ad29-3bb08b7b097f.png)
+
+```
+# rotate the original scanned image
+rotated = ndimage.rotate(orig, median_angle)
+
+cv2_imshow(rotated)
+```
+
+![image](https://user-images.githubusercontent.com/82112540/187851455-5276c9f6-95dc-420e-811e-13078f83d427.png)
+
+```
+# remove noise again
+preprocessed = Preprocessor(rotated)
+preprocessed.remove_noise()
+
+cv2_imshow(preprocessed.img)
+```
+
+![image](https://user-images.githubusercontent.com/82112540/187851524-cf73b190-d1ed-49b6-bf09-47f428e57325.png)
