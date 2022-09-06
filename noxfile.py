@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import nox
 
 ALL_PYTHONS = ["3.7", "3.8", "3.9"]
