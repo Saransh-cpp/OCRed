@@ -1,5 +1,6 @@
+from __future__ import annotations
+
 import math
-from typing import Optional, Tuple, Union
 
 import cv2
 import numpy as np
@@ -47,7 +48,7 @@ class Preprocessor:
 
     def __init__(
         self,
-        image: Union[str, Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]],
+        image: str | npt.NDArray[np.int64] | npt.NDArray[np.float64],
     ) -> None:
         if isinstance(image, str):
             self.img = cv2.imread(image)
@@ -57,13 +58,13 @@ class Preprocessor:
     def remove_noise(
         self,
         *,
-        save: Optional[bool] = False,
-        inplace: Optional[Union[bool, None]] = None,
-        iterations: Optional[int] = 1,
-        overriden_image: Union[
-            npt.NDArray[np.int64], npt.NDArray[np.float64], None
-        ] = None
-    ) -> Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]:
+        save: bool | None = False,
+        inplace: bool | None | None = None,
+        iterations: int | None = 1,
+        overriden_image: (
+            npt.NDArray[np.int64] | npt.NDArray[np.float64] | None
+        ) = None,
+    ) -> npt.NDArray[np.int64] | npt.NDArray[np.float64]:
         """
         Removes noise from an image.
 
@@ -88,7 +89,7 @@ class Preprocessor:
         if overriden_image is not None:
             raise DeprecationWarning(_dep_warn_overriden_image)
 
-        kernel: Union[npt.NDArray[np.int64]] = np.ones((1, 1), np.uint8)
+        kernel: npt.NDArray[np.int64] = np.ones((1, 1), np.uint8)
         self.img = cv2.dilate(self.img, kernel, iterations=iterations)
         kernel = np.ones((1, 1), np.uint8)
         self.img = cv2.erode(self.img, kernel, iterations=iterations)
@@ -103,13 +104,13 @@ class Preprocessor:
     def thicken_font(
         self,
         *,
-        save: Optional[bool] = False,
-        inplace: Optional[Union[bool, None]] = None,
-        iterations: Optional[int] = 2,
-        overriden_image: Union[
-            npt.NDArray[np.int64], npt.NDArray[np.float64], None
-        ] = None
-    ) -> Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]:
+        save: bool | None = False,
+        inplace: bool | None | None = None,
+        iterations: int | None = 2,
+        overriden_image: (
+            npt.NDArray[np.int64] | npt.NDArray[np.float64] | None
+        ) = None,
+    ) -> npt.NDArray[np.int64] | npt.NDArray[np.float64]:
         """
         Thickens the ink of an image.
 
@@ -135,7 +136,7 @@ class Preprocessor:
             raise DeprecationWarning(_dep_warn_overriden_image)
 
         self.img = cv2.bitwise_not(self.img)
-        kernel: Union[npt.NDArray[np.int64]] = np.ones((2, 2), np.uint8)
+        kernel: npt.NDArray[np.int64] = np.ones((2, 2), np.uint8)
         self.img = cv2.dilate(self.img, kernel, iterations=iterations)
         self.img = cv2.bitwise_not(self.img)
 
@@ -147,12 +148,12 @@ class Preprocessor:
     def scan(
         self,
         *,
-        save: Optional[bool] = False,
-        inplace: Optional[Union[bool, None]] = None,
-        overriden_image: Union[
-            npt.NDArray[np.int64], npt.NDArray[np.float64], None
-        ] = None
-    ) -> Union[npt.NDArray[np.int64], npt.NDArray[np.float64]]:
+        save: bool | None = False,
+        inplace: bool | None | None = None,
+        overriden_image: (
+            npt.NDArray[np.int64] | npt.NDArray[np.float64] | None
+        ) = None,
+    ) -> npt.NDArray[np.int64] | npt.NDArray[np.float64]:
         """
         Transforms an image/document view into B&W view (proper scanned colour scheme).
 
@@ -187,12 +188,12 @@ class Preprocessor:
     def rotate(
         self,
         *,
-        save: Optional[bool] = False,
-        inplace: Optional[Union[bool, None]] = None,
-        overriden_image: Union[
-            npt.NDArray[np.int64], npt.NDArray[np.float64], None
-        ] = None
-    ) -> Tuple[Union[npt.NDArray[np.int64], npt.NDArray[np.float64]], float]:
+        save: bool | None = False,
+        inplace: bool | None | None = None,
+        overriden_image: (
+            npt.NDArray[np.int64] | npt.NDArray[np.float64] | None
+        ) = None,
+    ) -> tuple[npt.NDArray[np.int64] | npt.NDArray[np.float64], float]:
         """
         Rotates an image for a face-on view (view from the top).
 
