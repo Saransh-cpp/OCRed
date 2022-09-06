@@ -2,6 +2,7 @@
 
 ## Maintenance
 
+- Update pre-commit configuration ([#75](https://github.com/Saransh-cpp/OCRed/pull/75))
 - Back to the `__future__` ([#74](https://github.com/Saransh-cpp/OCRed/pull/74))
 
 # [v0.3.0](https://github.com/Saransh-cpp/OCRed/tree/v0.3.0)
