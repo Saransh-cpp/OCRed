@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 import re
-from typing import Any, Dict, List, Optional, Tuple, Union
+import typing
 
 import cv2
 import easyocr
@@ -72,9 +74,9 @@ class OCR:
     def ocr_meaningful_text(
         self,
         *,
-        tesseract_config: Optional[str] = "-l eng --oem 1",
-        preserve_orientation: Optional[bool] = False,
-        save_output: Optional[bool] = False,
+        tesseract_config: str | None = "-l eng --oem 1",
+        preserve_orientation: bool | None = False,
+        save_output: bool | None = False,
     ) -> str:
         """
         Performs OCR on long meaningful text documents and saves the image with boxes
@@ -124,13 +126,13 @@ class OCR:
     def ocr_sparse_text(
         self,
         *,
-        languages: Optional[List[str]] = ["en", "hi"],
-        decoder: Optional[str] = "greedy",
-        save_output: Optional[bool] = False,
-    ) -> Tuple[str, Any]:
+        languages: list[str] | None = ["en", "hi"],
+        decoder: str | None = "greedy",
+        save_output: bool | None = False,
+    ) -> tuple[str, typing.Any]:
         """
         Performs OCR on sparse text and saves the image with boxes around the words.
-        This method can be used to OCR documents in which the characters don't form any
+        This method can be used to OCR documents in which the characters don't form typing.any
         proper/meaningful sentences, or if there are very less meaningful sentences,
         for example - bills, sign-boards etc.
 
@@ -158,7 +160,7 @@ class OCR:
         reader = easyocr.Reader(
             languages
         )  # slow for the first time (also depends upon CPU/GPU)
-        self.detailed_text: Any = reader.readtext(
+        self.detailed_text: typing.Any = reader.readtext(
             self.path, decoder=decoder, batch_size=5
         )
 
@@ -186,7 +188,7 @@ class OCR:
 
         return self.text, self.detailed_text
 
-    def process_extracted_text_from_invoice(self) -> Dict[str, Any]:
+    def process_extracted_text_from_invoice(self) -> dict[str, typing.Any]:
         """
         This method processes the extracted text from invoices, and returns some useful
         information.
@@ -232,7 +234,7 @@ class OCR:
         ]
 
         # find order number
-        order_number: Union[str, int] = ""
+        order_number: str | int = ""
         for i in range(len(post_processed_word_list)):
             if post_processed_word_list[i].lower() == "order":
                 try:
@@ -242,7 +244,7 @@ class OCR:
                 break
 
         # find total price
-        price: Union[List[Any], str] = ""
+        price: list[typing.Any] | str = ""
 
         # try finding a number with Rs, INR, ₹ or रे in front of it or Rs, INR at the end
         # of it
@@ -286,7 +288,7 @@ class OCR:
         f.write(self.text)
         f.close()
 
-    def text_to_speech(self, *, lang: Optional[str] = "en") -> None:
+    def text_to_speech(self, *, lang: str | None = "en") -> None:
         """
         DANGER: Deprecated since version v0.2.0.
         Instead, use gTTS manually.
