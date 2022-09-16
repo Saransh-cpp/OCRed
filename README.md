@@ -1,5 +1,7 @@
 # OCRed
 
+![ocred](https://user-images.githubusercontent.com/74055102/190708403-0e29eca6-eb55-40f5-9c8b-787284f90f54.png)
+
 [![CI](https://github.com/Saransh-cpp/OCRed/actions/workflows/ci.yml/badge.svg)](https://github.com/Saransh-cpp/OCRed/actions/workflows/ci.yml)
 [![Documentation Status](https://readthedocs.org/projects/ocred/badge/?version=latest)](https://ocred.readthedocs.io/en/latest/?badge=latest)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Saransh-cpp/OCRed/main.svg)](https://results.pre-commit.ci/latest/github/Saransh-cpp/OCRed/main)
