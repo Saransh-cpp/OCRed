@@ -2,6 +2,9 @@ ci:
   autoupdate_commit_msg: "chore: update pre-commit hooks"
   autofix_commit_msg: "style: pre-commit fixes"
 
+default_language_version:
+  python: python3.10
+
 repos:
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.3.1
