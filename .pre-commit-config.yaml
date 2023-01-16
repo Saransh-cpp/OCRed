@@ -2,6 +2,9 @@ ci:
   autoupdate_commit_msg: "chore: update pre-commit hooks"
   autofix_commit_msg: "style: pre-commit fixes"
 
+default_language_version:
+  python: python3.10
+
 repos:
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.3.1
@@ -74,14 +77,14 @@ repos:
         exclude: assets/js/webapp\.js
 
   - repo: https://github.com/asottile/blacken-docs
-    rev: v1.12.1
+    rev: 1.13.0
     hooks:
       - id: blacken-docs
         args: ["-E"]
         additional_dependencies: [black==22.8.0]
 
   - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.9.0
+    rev: v1.10.0
     hooks:
       - id: python-check-blanket-noqa
       - id: python-check-blanket-type-ignore
