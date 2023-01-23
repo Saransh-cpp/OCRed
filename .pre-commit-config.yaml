@@ -49,7 +49,7 @@ repos:
           - packaging
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: 0.4.1
+    rev: 0.5.0
     hooks:
       - id: pyproject-fmt
 
