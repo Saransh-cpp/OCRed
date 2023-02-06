@@ -36,7 +36,6 @@ def test_deprecations_and_errors():
 
 
 def test_ocr_with_scanned_image():
-
     ocr = OCR(
         False,
         path_scanned,
@@ -59,7 +58,6 @@ def test_ocr_with_scanned_image():
 
 
 def test_ocr_with_real_image():
-
     ocr = OCR(
         True,
         path_real,
