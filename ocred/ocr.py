@@ -110,7 +110,6 @@ class OCR:
 
                 # if the data has a word
                 if len(box) == 12:
-
                     x, y = int(box[6]), int(box[7])
                     h, w = int(box[8]), int(box[9])
 
@@ -165,7 +164,6 @@ class OCR:
         )
 
         for text in self.detailed_text:
-
             # extracting the coordinates to highlight the text
             coords_lower = text[0][:2]
             coords_upper = text[0][2:4]
