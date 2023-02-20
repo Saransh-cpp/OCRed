@@ -71,7 +71,6 @@ test = [
   "pytest-cov>=3",
   "xdoctest>=1",
 ]
-
 [project.urls]
 "Bug Tracker" = "https://github.com/Saransh-cpp/OCRed/issues"
 Changelog = "https://ocred.readthedocs.io/en/latest/changelog/"
@@ -79,10 +78,12 @@ Discussions = "https://github.com/Saransh-cpp/OCRed/discussions"
 Documentation = "https://ocred.readthedocs.io/"
 Homepage = "https://github.com/Saransh-cpp/OCRed"
 
-
 [tool.hatch]
 version.source = "vcs"
 build.hooks.vcs.version-file = "ocred/version.py"
+
+[tool.isort]
+profile = "black"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -101,9 +102,6 @@ filterwarnings = [
     "ignore::DeprecationWarning",
     "ignore::UserWarning",
 ]
-
-[tool.isort]
-profile = "black"
 
 [tool.mypy]
 files = [
