@@ -7,7 +7,7 @@ default_language_version:
 
 repos:
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.9.0
+    rev: v3.10.1
     hooks:
       - id: pyupgrade
         args: [--py37-plus]
@@ -54,7 +54,7 @@ repos:
       - id: pyproject-fmt
 
   - repo: https://github.com/PyCQA/flake8
-    rev: 6.0.0
+    rev: 6.1.0
     hooks:
       - id: flake8
         additional_dependencies:
@@ -70,7 +70,7 @@ repos:
         exclude: ^(notebooks/xarray.ipynb|notebooks/BoostHistogramHandsOn.ipynb)$
 
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: "v3.0.0"
+    rev: "v3.0.1"
     hooks:
       - id: prettier
         types_or: [yaml, markdown, html, css, scss, javascript, json]
