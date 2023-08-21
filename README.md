@@ -54,8 +54,8 @@ python -m pip install ocred
 import ocred
 
 ocr = ocred.OCR(
-    False, # is_scanned -> to preprocess the image
-    "path/to/an/image", # path
+    False,  # is_scanned -> to preprocess the image
+    "path/to/an/image",  # path
 )
 ocr.ocr_meaningful_text(save_output=True)
 ```
@@ -65,8 +65,8 @@ ocr.ocr_meaningful_text(save_output=True)
 import ocred
 
 ocr = ocred.OCR(
-    True, # is_scanned -> sign boards don't need to be preprocessed
-    "path/to/an/image", # path
+    True,  # is_scanned -> sign boards don't need to be preprocessed
+    "path/to/an/image",  # path
 )
 extracted_text = ocr.ocr_sparse_text()
 print(extracted_text)
@@ -77,8 +77,8 @@ print(extracted_text)
 import ocred
 
 ocr = ocred.OCR(
-    True, # is_scanned -> invoices don't need to be preprocessed
-    "path/to/an/image", # path
+    True,  # is_scanned -> invoices don't need to be preprocessed
+    "path/to/an/image",  # path
 )
 extracted_text = ocr.ocr_sparse_text()
 print(extracted_text)
