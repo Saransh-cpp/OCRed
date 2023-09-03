@@ -10,7 +10,7 @@
 
 [![Python Versions](https://img.shields.io/pypi/pyversions/ocred)](https://pypi.org/project/ocred/)
 [![Package Version](https://badge.fury.io/py/ocred.svg)](https://pypi.org/project/ocred/)
-[![PyPI Downloads](https://pepy.tech/badge/ocred)](https://pepy.tech/project/ocred)
+[![Downloads](https://static.pepy.tech/badge/ocred)](https://pepy.tech/project/ocred)
 ![License](https://img.shields.io/github/license/Saransh-cpp/OCRed?color=blue)
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
