@@ -1,6 +1,10 @@
 # [Unreleased](https://github.com/Saransh-cpp/OCRed)
 
-# [v0.3.1](https://github.com/Saransh-cpp/OCRed/tree/v0.3.1)
+# [v0.4.0](https://github.com/Saransh-cpp/OCRed/tree/v0.4.0)
+
+## Features
+
+- Add support for Python `3.10` and `3.11` ([#137](https://github.com/Saransh-cpp/OCRed/pull/137))
 
 ## Bug fixes
 
