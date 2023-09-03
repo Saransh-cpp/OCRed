@@ -8,8 +8,8 @@ import numpy.typing as npt
 from scipy import ndimage
 from skimage.filters import threshold_local
 
-_dep_warn_inplace = "inplace is deprecated and was removed in v0.3.0; Preprocessor now alters self.img directly"
-_dep_warn_overriden_image = "overriden_image is deprecated and was removed in v0.3.0; Preprocessor now only alters self.img"
+_dep_warn_inplace = "inplace is deprecated and was removed in v0.3.0; Preprocessor now alters self.img directly"  # noqa: E501
+_dep_warn_overriden_image = "overriden_image is deprecated and was removed in v0.3.0; Preprocessor now only alters self.img"  # noqa: E501
 
 
 class Preprocessor:

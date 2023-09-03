@@ -21,8 +21,8 @@ class OCR:
     Args:
 
         preprocess:
-            Set True if the image is a real life photo of some large meaningful (page of a
-            book). Usually set to False when OCRing using `ocr_meaningful_text` to
+            Set True if the image is a real life photo of some large meaningful (page of
+            a book). Usually set to False when OCRing using `ocr_meaningful_text` to
             preprocess the image.
             Set False if the image is a scanned photo (an e-book). It will not be
             pre-processed before OCRing.
@@ -131,8 +131,8 @@ class OCR:
     ) -> tuple[str, typing.Any]:
         """
         Performs OCR on sparse text and saves the image with boxes around the words.
-        This method can be used to OCR documents in which the characters don't form typing.any
-        proper/meaningful sentences, or if there are very less meaningful sentences,
+        This method can be used to OCR documents in which the characters don't form
+        any proper/meaningful sentences, or if there are very less meaningful sentences,
         for example - bills, sign-boards etc.
 
         Args:
