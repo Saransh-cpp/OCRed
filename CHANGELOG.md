@@ -1,6 +1,10 @@
 # [Unreleased](https://github.com/Saransh-cpp/OCRed)
 
-# [v0.3.1](https://github.com/Saransh-cpp/OCRed/tree/v0.3.1)
+# [v0.4.0](https://github.com/Saransh-cpp/OCRed/tree/v0.4.0)
+
+## Features
+
+- Add support for Python `3.10` and `3.11` ([#137](https://github.com/Saransh-cpp/OCRed/pull/137))
 
 ## Bug fixes
 
@@ -18,6 +22,7 @@
 
 ## Maintenance
 
+- Revamp pre-commit configuration (https://github.com/Saransh-cpp/OCRed/commit/b9390834f5950b36fe873eaccf76f666c6bcbf4f)
 - Update pre-commit configuration ([#75](https://github.com/Saransh-cpp/OCRed/pull/75))
 - Back to the `__future__` ([#74](https://github.com/Saransh-cpp/OCRed/pull/74))
 
