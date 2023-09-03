@@ -18,6 +18,7 @@
 
 ## Maintenance
 
+- Revamp pre-commit configuration (https://github.com/Saransh-cpp/OCRed/commit/b9390834f5950b36fe873eaccf76f666c6bcbf4f)
 - Update pre-commit configuration ([#75](https://github.com/Saransh-cpp/OCRed/pull/75))
 - Back to the `__future__` ([#74](https://github.com/Saransh-cpp/OCRed/pull/74))
 
