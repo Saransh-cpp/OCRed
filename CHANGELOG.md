@@ -1,5 +1,21 @@
 # [Unreleased](https://github.com/Saransh-cpp/OCRed)
 
+# [v0.3.1](https://github.com/Saransh-cpp/OCRed/tree/v0.3.1)
+
+## Bug fixes
+
+- Fix pillow errors ([#132](https://github.com/Saransh-cpp/OCRed/pull/132))
+
+## CI
+
+- 3.7 again by ([#127](https://github.com/Saransh-cpp/OCRed/pull/127))
+- Fix macOS CI ([#97](https://github.com/Saransh-cpp/OCRed/pull/97))
+
+## Docs
+
+- Add pull request template [(#81](https://github.com/Saransh-cpp/OCRed/pull/81))
+- Issue template ([#80](https://github.com/Saransh-cpp/OCRed/pull/80))
+
 ## Maintenance
 
 - Update pre-commit configuration ([#75](https://github.com/Saransh-cpp/OCRed/pull/75))
