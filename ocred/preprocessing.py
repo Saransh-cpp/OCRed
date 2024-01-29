@@ -61,9 +61,7 @@ class Preprocessor:
         save: bool | None = False,
         inplace: bool | None | None = None,
         iterations: int | None = 1,
-        overriden_image: (
-            npt.NDArray[np.int64] | npt.NDArray[np.float64] | None
-        ) = None,
+        overriden_image: npt.NDArray[np.int64] | npt.NDArray[np.float64] | None = None,
     ) -> npt.NDArray[np.int64] | npt.NDArray[np.float64]:
         """
         Removes noise from an image.
@@ -107,9 +105,7 @@ class Preprocessor:
         save: bool | None = False,
         inplace: bool | None | None = None,
         iterations: int | None = 2,
-        overriden_image: (
-            npt.NDArray[np.int64] | npt.NDArray[np.float64] | None
-        ) = None,
+        overriden_image: npt.NDArray[np.int64] | npt.NDArray[np.float64] | None = None,
     ) -> npt.NDArray[np.int64] | npt.NDArray[np.float64]:
         """
         Thickens the ink of an image.
@@ -150,9 +146,7 @@ class Preprocessor:
         *,
         save: bool | None = False,
         inplace: bool | None | None = None,
-        overriden_image: (
-            npt.NDArray[np.int64] | npt.NDArray[np.float64] | None
-        ) = None,
+        overriden_image: npt.NDArray[np.int64] | npt.NDArray[np.float64] | None = None,
     ) -> npt.NDArray[np.int64] | npt.NDArray[np.float64]:
         """
         Transforms an image/document view into B&W view (proper scanned colour scheme).
@@ -190,9 +184,7 @@ class Preprocessor:
         *,
         save: bool | None = False,
         inplace: bool | None | None = None,
-        overriden_image: (
-            npt.NDArray[np.int64] | npt.NDArray[np.float64] | None
-        ) = None,
+        overriden_image: npt.NDArray[np.int64] | npt.NDArray[np.float64] | None = None,
     ) -> tuple[npt.NDArray[np.int64] | npt.NDArray[np.float64], float]:
         """
         Rotates an image for a face-on view (view from the top).
