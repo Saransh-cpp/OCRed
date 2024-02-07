@@ -27,7 +27,7 @@ jobs:
           # See issue: https://github.com/python/mypy/issues/13627
           # "(might be included in mypy 0.980, if not it will be in mypy 0.990)"
           python-version: 3.10.6
-      - uses: pre-commit/action@v3.0.0
+      - uses: pre-commit/action@v3.0.1
 
   build:
     needs: pre-commit
